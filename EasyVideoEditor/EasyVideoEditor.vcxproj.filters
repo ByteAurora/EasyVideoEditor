@@ -21,6 +21,12 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Code">
+      <UniqueIdentifier>{72e76180-0886-4ef2-a0e4-b870398da290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Model">
+      <UniqueIdentifier>{a3b60978-b7cd-4aa4-abab-c862d26060cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="EasyVideoEditor.qrc">
@@ -40,5 +46,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Widgets.cpp">
+      <Filter>Code\Model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Widgets.h">
+      <Filter>Code\Model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

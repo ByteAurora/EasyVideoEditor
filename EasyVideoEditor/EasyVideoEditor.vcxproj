@@ -94,11 +94,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Widgets.cpp" />
     <QtRcc Include="EasyVideoEditor.qrc" />
     <QtUic Include="EasyVideoEditor.ui" />
     <QtMoc Include="EasyVideoEditor.h" />
     <ClCompile Include="EasyVideoEditor.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Widgets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
