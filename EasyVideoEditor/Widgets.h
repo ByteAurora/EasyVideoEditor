@@ -11,11 +11,11 @@ Widgets class control all included widgets in QMainWindow. It is implemented as 
 class Widgets
 {
 private:
+    static Widgets* instance;
+private:
     Widgets();
     ~Widgets();
-private:
-    static Widgets* instance;
-
+public:
     // Window.
     QMainWindow* window;
 
