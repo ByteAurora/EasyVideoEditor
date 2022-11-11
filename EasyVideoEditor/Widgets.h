@@ -15,8 +15,14 @@ private:
     ~Widgets();
 private:
     static Widgets* instance;
+
+    // Window.
     QMainWindow* window;
+
+    // Window content area.
     QWidget* contentArea;
+
+    // Window menu bar.
     QObject* menuBar;
 public:
     // Get instance of Widgets class.
