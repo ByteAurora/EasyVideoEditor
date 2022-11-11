@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_EasyVideoEditor.h"
+#include "Widgets.h"
 
 class EasyVideoEditor : public QMainWindow
 {

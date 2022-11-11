@@ -13,8 +13,8 @@
   <property name="windowTitle">
    <string>EasyVideoEditor</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
-  <widget class="QMenuBar" name="menuBar">
+  <widget class="QWidget" name="w_contentarea"/>
+  <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
     <rect>
      <x>0</x>
