@@ -8,6 +8,7 @@
 2022-11-11. Created by Sohn Young Jin
 Widgets class control all included widgets in QMainWindow. It is implemented as a singleton pattern, so it can be accessed from anywhere in your code.
 */
+// test
 class Widgets
 {
 private:
