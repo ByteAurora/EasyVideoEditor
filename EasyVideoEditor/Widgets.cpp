@@ -8,6 +8,10 @@ Widgets::Widgets() {
     menuBar = NULL;
 }
 
+Widgets::~Widgets() {
+
+}
+
 Widgets* Widgets::getInstance() {
     if (instance == NULL) {
         instance = new Widgets();
