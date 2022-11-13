@@ -27,6 +27,9 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Code\Widget">
+      <UniqueIdentifier>{5873b7b9-ef09-4299-b9dc-231466ccad78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="EasyVideoEditor.qrc">
@@ -35,9 +38,6 @@
     <QtUic Include="EasyVideoEditor.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="EasyVideoEditor.h">
-      <Filter>Code\Header Files</Filter>
-    </QtMoc>
     <ClCompile Include="EasyVideoEditor.cpp">
       <Filter>Code\Source Files</Filter>
     </ClCompile>
@@ -47,12 +47,59 @@
       <Filter>Code\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Widgets.cpp">
+      <Filter>Code\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="SideMenu.cpp">
+      <Filter>Code\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="EveProject.cpp">
+      <Filter>Code\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Code\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Code\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Video.cpp">
+      <Filter>Code\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Code\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
       <Filter>Code\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Widgets.h">
+      <Filter>Code\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="SideMenu.h">
+      <Filter>Code\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="EveProject.h">
       <Filter>Code\Model</Filter>
     </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Code\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Code\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Video.h">
+      <Filter>Code\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Code\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Code\Model</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="EasyVideoEditor.h">
+      <Filter>Code\Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

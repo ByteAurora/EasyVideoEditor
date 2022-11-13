@@ -94,6 +94,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="EveProject.cpp" />
+    <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Image.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="SideMenu.cpp" />
+    <ClCompile Include="Video.cpp" />
     <ClCompile Include="Widgets.cpp" />
     <QtRcc Include="EasyVideoEditor.qrc" />
     <QtUic Include="EasyVideoEditor.ui" />
@@ -102,6 +109,13 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="EveProject.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SideMenu.h" />
+    <ClInclude Include="Video.h" />
     <ClInclude Include="Widgets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
