@@ -11,13 +11,16 @@
 class EveProject
 {
 private:
+    static EveProject* instance;
     std::list<Video*> videoList;
     std::list<Image*> imageList;
     std::list<Frame*> frameList;
     int currentFrameNumber;
-public:
+private:
     EveProject();
     ~EveProject();
+public:
+    static EveProject* getInstance();
 
     void addVideo(Video* video);
     Video* getVideo(int index);

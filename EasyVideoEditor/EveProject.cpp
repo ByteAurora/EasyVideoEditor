@@ -1,11 +1,21 @@
 #include "EveProject.h"
 
+EveProject* EveProject::instance = NULL;
+
 EveProject::EveProject() {
     currentFrameNumber = 0;
 }
 
 EveProject::~EveProject() {
 
+}
+
+EveProject* EveProject::getInstance() {
+    if (instance == NULL) {
+        instance = new EveProject();
+    }
+
+    return instance;
 }
 
 void EveProject::addVideo(Video* video) {
