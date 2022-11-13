@@ -37,6 +37,8 @@ public:
     int getBaseFrameCount();
     int getBaseWidth();
     int getBaseHeight();
+    bool forward1Frame();
+    bool backward1Frame();
     bool forward5Seconds();
     bool backward5Seconds();
 public:

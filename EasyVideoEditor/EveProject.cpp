@@ -95,25 +95,41 @@ int EveProject::getBaseHeight() {
     return videoList.front()->getHeight();
 }
 
+bool EveProject::forward1Frame() {
+    if (currentFrameNumber + 1 >= frameList.size()) {
+        return false;
+    }
+
+    currentFrameNumber++;
+    return true;
+}
+
+bool EveProject::backward1Frame() {
+    if (currentFrameNumber - 1 < 0) {
+        return false;
+    }
+
+    currentFrameNumber--;
+    return true;
+}
+
 bool EveProject::forward5Seconds() {
-    if (currentFrameNumber + videoList.front()->getFps() * 5 > frameList.size() - 1) {
+    if (currentFrameNumber + videoList.front()->getFps() * 5 >= frameList.size()) {
         currentFrameNumber = frameList.size() - 1;
         return false;
     }
 
     currentFrameNumber += videoList.front()->getFps() * 5;
-
     return true;
 }
 
 bool EveProject::backward5Seconds() {
-    if (currentFrameNumber - videoList.front()->getFps() * 5 <= 0) {
+    if (currentFrameNumber - videoList.front()->getFps() * 5 < 0) {
         currentFrameNumber = 0;
         return false;
     }
 
     currentFrameNumber -= videoList.front()->getFps() * 5;
-
     return true;
 }
 
