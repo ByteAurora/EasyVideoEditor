@@ -12,7 +12,7 @@ void Resource::setResourceId(int resourceId) {
     this->resourceId = resourceId;
 }
 
-void Resource::setResourceType(ResourceType resourceType) {
+void Resource::setResourceType(Resource::ResourceType resourceType) {
     this->resourceType = resourceType;
 }
 

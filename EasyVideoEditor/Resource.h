@@ -46,9 +46,9 @@ public:
     int getResourceId();
 
     // Resource type setter.
-    void setResourceType(ResourceType resourceType);
+    void setResourceType(Resource::ResourceType resourceType);
     // Resource type getter.
-    ResourceType getResourceType();
+    Resource::ResourceType getResourceType();
 
     // Resource path setter.
     void setResourcePath(std::string resourcePath);
