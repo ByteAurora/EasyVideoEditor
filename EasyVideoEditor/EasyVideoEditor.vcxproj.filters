@@ -30,6 +30,15 @@
     <Filter Include="Code\Widget">
       <UniqueIdentifier>{5873b7b9-ef09-4299-b9dc-231466ccad78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Code\Model\Resource">
+      <UniqueIdentifier>{a7c97f37-308e-4e5c-8a29-83806252160d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Model\Command">
+      <UniqueIdentifier>{2dd0e29d-1f77-4bc0-bd16-dd896366c956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Model\Base">
+      <UniqueIdentifier>{00ac45f2-c623-4e24-a209-26f3c8bcf3e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="EasyVideoEditor.qrc">
@@ -52,23 +61,23 @@
     <ClCompile Include="SideMenu.cpp">
       <Filter>Code\Widget</Filter>
     </ClCompile>
-    <ClCompile Include="EveProject.cpp">
-      <Filter>Code\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>Code\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="Frame.cpp">
-      <Filter>Code\Model</Filter>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Code\Model\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Video.cpp">
-      <Filter>Code\Model</Filter>
+      <Filter>Code\Model\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>Code\Model</Filter>
+      <Filter>Code\Model\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="Resource.cpp">
-      <Filter>Code\Model</Filter>
+    <ClCompile Include="Command.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="EveProject.cpp">
+      <Filter>Code\Model\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Code\Model\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,23 +87,23 @@
     <ClInclude Include="SideMenu.h">
       <Filter>Code\Widget</Filter>
     </ClInclude>
-    <ClInclude Include="EveProject.h">
-      <Filter>Code\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Command.h">
-      <Filter>Code\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Frame.h">
-      <Filter>Code\Model</Filter>
+    <ClInclude Include="Resource.h">
+      <Filter>Code\Model\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Video.h">
-      <Filter>Code\Model</Filter>
+      <Filter>Code\Model\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Image.h">
-      <Filter>Code\Model</Filter>
+      <Filter>Code\Model\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Code\Model</Filter>
+    <ClInclude Include="Command.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="EveProject.h">
+      <Filter>Code\Model\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Code\Model\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
