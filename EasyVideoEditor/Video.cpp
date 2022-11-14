@@ -1,7 +1,47 @@
 #include "Video.h"
 
 Video::Video() {
+    fps = 0;
+    delay = 0;
+    width = 0;
+    height = 0;
+    frameCount = 0;
+    resourceType = Resource::VIDEO;
+    resourceId = 0;
+    resourcePath = "";
+}
 
+Video::Video(int resourceId) {
+    fps = 0;
+    delay = 0;
+    width = 0;
+    height = 0;
+    frameCount = 0;
+    resourceType = Resource::VIDEO;
+    this->resourceId = resourceId;
+    this->resourcePath = "";
+}
+
+Video::Video(std::string resourcePath) {
+    fps = 0;
+    delay = 0;
+    width = 0;
+    height = 0;
+    frameCount = 0;
+    resourceType = Resource::VIDEO;
+    resourceId = 0;
+    this->resourcePath = resourcePath;
+}
+
+Video::Video(int resourceId, std::string resourcePath) {
+    fps = 0;
+    delay = 0;
+    width = 0;
+    height = 0;
+    frameCount = 0;
+    resourceType = Resource::VIDEO;
+    this->resourceId = resourceId;
+    this->resourcePath = resourcePath;
 }
 
 Video::~Video() {
