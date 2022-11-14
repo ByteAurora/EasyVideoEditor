@@ -6,7 +6,7 @@ Video::Video() {
     width = 0;
     height = 0;
     frameCount = 0;
-    resourceType = Resource::VIDEO;
+    resourceType = VIDEO;
     resourceId = 0;
     resourcePath = "";
 }
@@ -17,7 +17,7 @@ Video::Video(int resourceId) {
     width = 0;
     height = 0;
     frameCount = 0;
-    resourceType = Resource::VIDEO;
+    resourceType = VIDEO;
     this->resourceId = resourceId;
     this->resourcePath = "";
 }
@@ -28,7 +28,7 @@ Video::Video(std::string resourcePath) {
     width = 0;
     height = 0;
     frameCount = 0;
-    resourceType = Resource::VIDEO;
+    resourceType = VIDEO;
     resourceId = 0;
     this->resourcePath = resourcePath;
 }
@@ -39,7 +39,7 @@ Video::Video(int resourceId, std::string resourcePath) {
     width = 0;
     height = 0;
     frameCount = 0;
-    resourceType = Resource::VIDEO;
+    resourceType = VIDEO;
     this->resourceId = resourceId;
     this->resourcePath = resourcePath;
 }
