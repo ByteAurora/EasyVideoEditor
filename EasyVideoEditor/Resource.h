@@ -36,7 +36,7 @@ public:
     // A pure virtual function that must implement the resource loading process.
     virtual bool loadResource() = 0;
 
-    // A pure virtual function that must be implemente the process of returning a resource.
+    // A pure virtual function that must be implement the process of returning a resource.
     // The return value is void*, and it is used after converting to Video* or Image* depending on the type of resource.
     virtual void* getResource() = 0;
 public:
