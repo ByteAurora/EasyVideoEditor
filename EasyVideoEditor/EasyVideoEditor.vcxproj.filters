@@ -79,6 +79,42 @@
     <ClCompile Include="Frame.cpp">
       <Filter>Code\Model\Base</Filter>
     </ClCompile>
+    <ClCompile Include="AddImage.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="AddSubtitle.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="AddVideo.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeBrightness.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeContrast.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangePlaySpeed.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Chromaky.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorEmphasis.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="CutVideo.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterEffect.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="ResizeResolution.cpp">
+      <Filter>Code\Model\Command</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Widgets.h">
@@ -104,6 +140,42 @@
     </ClInclude>
     <ClInclude Include="Frame.h">
       <Filter>Code\Model\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AddImage.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="AddSubtitle.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="AddVideo.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeBrightness.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeContrast.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangePlaySpeed.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Chromaky.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorEmphasis.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="CutVideo.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizeResolution.h">
+      <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="FilterEffect.h">
+      <Filter>Code\Model\Command</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

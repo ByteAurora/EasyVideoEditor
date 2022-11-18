@@ -94,10 +94,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddImage.cpp" />
+    <ClCompile Include="AddSubtitle.cpp" />
+    <ClCompile Include="AddVideo.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="ChangeBrightness.cpp" />
+    <ClCompile Include="ChangeContrast.cpp" />
+    <ClCompile Include="ChangePlaySpeed.cpp" />
+    <ClCompile Include="Chromaky.cpp" />
+    <ClCompile Include="ColorEmphasis.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CutVideo.cpp" />
     <ClCompile Include="EveProject.cpp" />
+    <ClCompile Include="FilterEffect.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Image.cpp" />
+    <ClCompile Include="ResizeResolution.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="SideMenu.cpp" />
     <ClCompile Include="Video.cpp" />
@@ -109,10 +121,22 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddImage.h" />
+    <ClInclude Include="AddSubtitle.h" />
+    <ClInclude Include="AddVideo.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="ChangeBrightness.h" />
+    <ClInclude Include="ChangeContrast.h" />
+    <ClInclude Include="ChangePlaySpeed.h" />
+    <ClInclude Include="Chromaky.h" />
+    <ClInclude Include="ColorEmphasis.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CutVideo.h" />
     <ClInclude Include="EveProject.h" />
+    <ClInclude Include="FilterEffect.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="ResizeResolution.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SideMenu.h" />
     <ClInclude Include="Video.h" />
