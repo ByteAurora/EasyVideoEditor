@@ -1,4 +1,7 @@
 #pragma once
+
+#include <opencv2/opencv.hpp>
+
 class Command
 {
 public:
@@ -19,6 +22,9 @@ public:
 
     // A pure virtual function overloaded with an operator that must be implemented in relation to a command in a class that inherits Command class.
     virtual void operator()() = 0;
+
+    // A pure virtual function overloaded with an operator that must be implemented in relation to a command in a class that inherits Command class.
+    virtual void operator()(cv::Mat* mat) = 0;
 
     // Command type setter.
     void setCommand(CommandType commandType);
