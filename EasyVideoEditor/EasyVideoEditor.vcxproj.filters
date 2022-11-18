@@ -109,7 +109,7 @@
     <ClCompile Include="CutVideo.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
-    <ClCompile Include="FilterEffect.cpp">
+    <ClCompile Include="Filter.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
     <ClCompile Include="ResizeResolution.cpp">
@@ -174,7 +174,7 @@
     <ClInclude Include="ResizeResolution.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="FilterEffect.h">
+    <ClInclude Include="Filter.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
   </ItemGroup>
