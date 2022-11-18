@@ -23,13 +23,13 @@ private:
     static EveProject* instance;
 
     // List of all videos resources in use.
-    std::list<Video*> videoList;
+    std::vector<Video*> videoList;
 
     // List of all images resources in use.
-    std::list<Image*> imageList;
+    std::vector<Image*> imageList;
 
     // List of all frames being editing.
-    std::list<Frame*> frameList;
+    std::vector<Frame*> frameList;
 
     // Frame number currently being displayed.
     int currentFrameNumber;
@@ -56,6 +56,16 @@ public:
     void addFrame(Frame* frame);
     // Get frame from frame list.
     Frame* getFrame(int index);
+    // Get frame by time.
+    Frame* getFrame(long millisecond);
+    // Get index of frame.
+    int getFrameIndex(Frame* frame);
+    // Get index of frame by time.
+    int getFrameIndex(long millisecond);
+    // Get frame time.
+    int getFrameTime(Frame* frame);
+    // Get frame time by index.
+    int getFrameTime(int index);
 
     // Remove frame from frame list.
     void removeFrame(int index);
@@ -88,9 +98,9 @@ public:
     bool backward5Seconds();
 public:
     // Frame list setter.
-    void setFrameList(std::list<Frame*> frameList);
+    void setFrameList(std::vector<Frame*> frameList);
     // Frame list getter.
-    std::list<Frame*>* getFrameList();
+    std::vector<Frame*>* getFrameList();
 
     // Current frame number setter.
     void setCurrentFrameNumber(int frameNumber);

@@ -20,24 +20,20 @@ EveProject* EveProject::getInstance() {
 
 void EveProject::addVideo(Video* video) {
     videoList.push_back(video);
-    video->setResourceId(videoList.size());
+    video->setResourceId(videoList.size() - 1);
 }
 
 Video* EveProject::getVideo(int index) {
-    std::list<Video*>::iterator it = videoList.begin();
-    std::advance(it, index);
-    return *it;
+    return videoList.at(index);
 }
 
 void EveProject::addImage(Image* image) {
     imageList.push_back(image);
-    image->setResourceId(imageList.size());
+    image->setResourceId(imageList.size() - 1);
 }
 
 Image* EveProject::getImage(int index) {
-    std::list<Image*>::iterator it = imageList.begin();
-    std::advance(it, index);
-    return *it;
+    return imageList.at(index);
 }
 
 void EveProject::addFrame(Frame* frame) {
@@ -45,38 +41,45 @@ void EveProject::addFrame(Frame* frame) {
 }
 
 Frame* EveProject::getFrame(int index) {
-    std::list<Frame*>::iterator it = frameList.begin();
-    std::advance(it, index);
-    return *it;
+    return frameList.at(index);
+}
+
+Frame* EveProject::getFrame(long millisecond) {
+    return frameList.at(millisecond / getBaseDelay());
+}
+
+int EveProject::getFrameIndex(Frame* frame) {
+    std::vector<Frame*>::iterator it = std::find(frameList.begin(), frameList.end(), frame);
+    if (it != frameList.end()) return it - frameList.begin();
+    else return -1;
+}
+
+int EveProject::getFrameIndex(long millisecond) {
+    return millisecond / getBaseDelay();
+}
+
+int EveProject::getFrameTime(Frame* frame) {
+    return getFrameIndex(frame) * getBaseFps();
+}
+
+int EveProject::getFrameTime(int index) {
+    return index * getBaseDelay();
 }
 
 void EveProject::removeFrame(int index) {
-    std::list<Frame*>::iterator it = frameList.begin();
-    std::advance(it, index);
-    delete* it;
-    frameList.erase(it);
+    frameList.erase(frameList.begin() + index);
 }
 
 void EveProject::removeFrames(int index, int count) {
-    std::list<Frame*>::iterator it = frameList.begin();
-    std::advance(it, index);
-    for(int loop = 0; loop < count; loop++){
-        delete* it;
-        it = frameList.erase(it);
-    }
+    frameList.erase(frameList.begin() + index, frameList.begin() + index + count);
 }
 
 Frame* EveProject::getCurrentFrame() {
-    std::list<Frame*>::iterator it = frameList.begin();
-    std::advance(it, currentFrameNumber);
-    return *it;
+    return frameList.at(currentFrameNumber);
 }
 
 Frame* EveProject::getCurrentFrameAndUpdate() {
-    std::list<Frame*>::iterator it = frameList.begin();
-    std::advance(it, currentFrameNumber);
-    currentFrameNumber++;
-    return *it;
+    return frameList.at(currentFrameNumber++);
 }
 
 int EveProject::getBaseFps() {
@@ -114,30 +117,30 @@ bool EveProject::backward1Frame() {
 }
 
 bool EveProject::forward5Seconds() {
-    if (currentFrameNumber + videoList.front()->getFps() * 5 >= frameList.size()) {
+    if (currentFrameNumber + getBaseFps() * 5 >= frameList.size()) {
         currentFrameNumber = frameList.size() - 1;
         return false;
     }
 
-    currentFrameNumber += videoList.front()->getFps() * 5;
+    currentFrameNumber += getBaseFps() * 5;
     return true;
 }
 
 bool EveProject::backward5Seconds() {
-    if (currentFrameNumber - videoList.front()->getFps() * 5 < 0) {
+    if (currentFrameNumber - getBaseFps() * 5 < 0) {
         currentFrameNumber = 0;
         return false;
     }
 
-    currentFrameNumber -= videoList.front()->getFps() * 5;
+    currentFrameNumber -= getBaseFps() * 5;
     return true;
 }
 
-void EveProject::setFrameList(std::list<Frame*> frameList) {
+void EveProject::setFrameList(std::vector<Frame*> frameList) {
     this->frameList = frameList;
 }
 
-std::list<Frame*>* EveProject::getFrameList() {
+std::vector<Frame*>* EveProject::getFrameList() {
     return &frameList;
 }
 
