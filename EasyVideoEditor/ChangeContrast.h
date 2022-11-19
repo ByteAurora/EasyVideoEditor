@@ -1,6 +1,5 @@
 #pragma once
 #include "Command.h"
-#include <opencv2/opencv.hpp>
 
 class ChangeContrast : public Command
 {
