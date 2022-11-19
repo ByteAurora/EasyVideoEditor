@@ -12,6 +12,10 @@ ColorEmphasis::ColorEmphasis(int redChangeValue, int greenChangeValue, int blueC
     this->blueChangeValue = blueChangeValue;
 }
 
+ColorEmphasis::~ColorEmphasis() {
+
+}
+
 void ColorEmphasis::operator()() {
 
 }
