@@ -4,6 +4,7 @@
 #include <list>
 #include <string>
 #include "Command.h"
+#include "EveProject.h"
 
 /*
 * @version  v1.0.0
@@ -51,9 +52,13 @@ public:
 
     // Remove command which same as parameter.
     void removeCommand(Command* command);
+
+    // Get real frame data.
+    void getFrameData(cv::Mat* mat);
 public:
     // Source ID setter.
     void setSourceId(int sourceId);
+    // Source ID getter.
     int getSourceId();
 
     // Source frame index setter.

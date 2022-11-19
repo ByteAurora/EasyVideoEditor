@@ -42,7 +42,11 @@ void Frame::removeCommand(Command* command) {
     commandList.remove(command);
 }
 
-
+void Frame::getFrameData(cv::Mat* mat) {
+    cv::VideoCapture* video = ((cv::VideoCapture*)(EveProject::getInstance()->getVideo(sourceId)->getResource()));
+    video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+    (*video) >> (*mat);
+}
 
 void Frame::setSourceId(int sourceId) {
     this->sourceId = sourceId;
