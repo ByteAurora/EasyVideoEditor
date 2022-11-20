@@ -314,11 +314,14 @@
        <height>22</height>
       </rect>
      </property>
+     <property name="maximum">
+      <number>255</number>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QSlider" name="sb_coloremphasis_blue">
+    <widget class="QSlider" name="sd_coloremphasis_blue">
      <property name="geometry">
       <rect>
        <x>16</x>
@@ -326,6 +329,9 @@
        <width>460</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -339,6 +345,9 @@
        <width>460</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>255</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -604,6 +613,263 @@
     <property name="styleSheet">
      <string notr="true">background-color: #b1b1b1;</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="w_changebrightness" native="true">
+    <property name="geometry">
+     <rect>
+      <x>64</x>
+      <y>0</y>
+      <width>576</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ffffff;</string>
+    </property>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>16</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>밝기 조절</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sb_changebrightness_brightness">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>64</y>
+       <width>460</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>50</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changebrightness_brightness">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>492</x>
+       <y>61</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>100</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>324</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>적용영역</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_changebrightness_allframe">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>388</y>
+       <width>108</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>전체 프레임</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_changebrightness_currentframe">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>360</y>
+       <width>108</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>현재 프레임</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_changebrightness_rangeframe">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>416</y>
+       <width>108</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>범위 지정</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changebrightness_apply">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>492</y>
+       <width>544</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>적용</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changebrightness_rangestart">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changebrightness_rangestarttocurrent">
+     <property name="geometry">
+      <rect>
+       <x>136</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changebrightness_rangeendtocurrent">
+     <property name="geometry">
+      <rect>
+       <x>368</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changebrightness_rangeend">
+     <property name="geometry">
+      <rect>
+       <x>264</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>216</x>
+       <y>444</y>
+       <width>32</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>~</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
