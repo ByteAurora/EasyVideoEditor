@@ -39,170 +39,206 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #000000;</string>
+     <string notr="true">background-color: #ffffff;</string>
     </property>
-   </widget>
-   <widget class="QPushButton" name="btn_coloremphasis">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">b</string>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_changebrightness">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>64</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_changecontrast">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>128</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_filter">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>192</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_chromaky">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>256</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_animation">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>320</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_addimage">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>384</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_addvideo">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>448</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_cutvideo">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>512</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_resizeresolution">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>576</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_changeplayspeed">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>640</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_addsubtitle">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>704</y>
-      <width>64</width>
-      <height>64</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
+    <widget class="QPushButton" name="btn_addvideo">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>448</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>영상추가</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_chromaky">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>256</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>크로마키</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_addsubtitle">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>704</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>자막</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_cutvideo">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>512</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>자르기</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_coloremphasis">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>강조</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_addimage">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>384</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>사진추가</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changecontrast">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>128</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>대비</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_animation">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>320</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>전환</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changebrightness">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>64</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>밝기</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changeplayspeed">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>640</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>속도</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_filter">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>192</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>필터</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_resizeresolution">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>576</y>
+       <width>64</width>
+       <height>64</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>리사이즈</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="w_coloremphasis" native="true">
     <property name="geometry">
@@ -363,7 +399,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>255</string>
+      <string>0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -379,7 +415,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>255</string>
+      <string>0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -395,7 +431,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>255</string>
+      <string>0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -419,60 +455,6 @@
      </property>
      <property name="text">
       <string>적용영역</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="rbtn_coloremphasis_allframe">
-     <property name="geometry">
-      <rect>
-       <x>16</x>
-       <y>388</y>
-       <width>108</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>전체 프레임</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="rbtn_coloremphasis_currentframe">
-     <property name="geometry">
-      <rect>
-       <x>16</x>
-       <y>360</y>
-       <width>108</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>현재 프레임</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="rbtn_coloremphasis_rangeframe">
-     <property name="geometry">
-      <rect>
-       <x>16</x>
-       <y>416</y>
-       <width>108</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>범위 지정</string>
      </property>
     </widget>
     <widget class="QPushButton" name="btn_coloremphasis_apply">
@@ -587,6 +569,60 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>360</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QRadioButton" name="rbtn_coloremphasis_currentframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>현재 프레임</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_coloremphasis_allframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>전체 프레임</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_coloremphasis_rangeframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>범위 지정</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
    <widget class="QWidget" name="w_videoarea" native="true">
     <property name="geometry">
@@ -646,7 +682,7 @@
       <string>밝기 조절</string>
      </property>
     </widget>
-    <widget class="QSlider" name="sb_changebrightness_brightness">
+    <widget class="QSlider" name="sd_changebrightness_brightness">
      <property name="geometry">
       <rect>
        <x>16</x>
@@ -654,6 +690,9 @@
        <width>460</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSliter::groove::horizontal::background-color: #123456;</string>
      </property>
      <property name="maximum">
       <number>100</number>
@@ -678,7 +717,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>100</string>
+      <string>50</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -704,60 +743,6 @@
       <string>적용영역</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="rbtn_changebrightness_allframe">
-     <property name="geometry">
-      <rect>
-       <x>16</x>
-       <y>388</y>
-       <width>108</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>전체 프레임</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="rbtn_changebrightness_currentframe">
-     <property name="geometry">
-      <rect>
-       <x>16</x>
-       <y>360</y>
-       <width>108</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>현재 프레임</string>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="rbtn_changebrightness_rangeframe">
-     <property name="geometry">
-      <rect>
-       <x>16</x>
-       <y>416</y>
-       <width>108</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>범위 지정</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="btn_changebrightness_apply">
      <property name="geometry">
       <rect>
@@ -768,10 +753,13 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">b</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>적용</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
      </property>
      <property name="flat">
       <bool>false</bool>
@@ -870,7 +858,736 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>360</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QRadioButton" name="rbtn_changebrightness_currentframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>현재 프레임</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_changebrightness_allframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>전체 프레임</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_changebrightness_rangeframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>범위 지정</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
+   <widget class="QWidget" name="w_filter" native="true">
+    <property name="geometry">
+     <rect>
+      <x>64</x>
+      <y>0</y>
+      <width>576</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ffffff;</string>
+    </property>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>16</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>필터</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sd_filter_clarity">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>128</y>
+       <width>460</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSliter::groove::horizontal::background-color: #123456;</string>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>50</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_filter_clarity">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>492</x>
+       <y>123</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>50</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>324</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>적용영역</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_filter_apply">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>492</y>
+       <width>544</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>적용</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_filter_rangestart">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_filter_rangestarttocurrent">
+     <property name="geometry">
+      <rect>
+       <x>136</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_filter_rangeendtocurrent">
+     <property name="geometry">
+      <rect>
+       <x>368</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_filter_rangeend">
+     <property name="geometry">
+      <rect>
+       <x>264</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_16">
+     <property name="geometry">
+      <rect>
+       <x>216</x>
+       <y>444</y>
+       <width>32</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>~</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>96</y>
+       <width>80</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="text">
+      <string>부드럽게</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>396</x>
+       <y>96</y>
+       <width>80</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="text">
+      <string>날카롭게</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>176</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>색감</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>64</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>선명도</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>216</y>
+       <width>541</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_colorsene_none">
+        <property name="text">
+         <string>기본</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_colorsense_gray">
+        <property name="text">
+         <string>회색조</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_colorsense_warm">
+        <property name="text">
+         <string>따뜻하게</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_colorsense_cool">
+        <property name="text">
+         <string>차갑게</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_colorsense_bright">
+        <property name="text">
+         <string>화사하게</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>360</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_currentframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>현재 프레임</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_allframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>전체 프레임</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_filter_rangeframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>범위 지정</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w_changecontrast" native="true">
+    <property name="geometry">
+     <rect>
+      <x>64</x>
+      <y>0</y>
+      <width>576</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ffffff;</string>
+    </property>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>16</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>대비 조절</string>
+     </property>
+    </widget>
+    <widget class="QSlider" name="sd_changecontrast_contrast">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>64</y>
+       <width>460</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSliter::groove::horizontal::background-color: #123456;</string>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changecontrast_contrast">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>492</x>
+       <y>61</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>324</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>적용영역</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changecontrast_apply">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>492</y>
+       <width>544</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>적용</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changecontrast_rangestart">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changecontrast_rangestarttocurrent">
+     <property name="geometry">
+      <rect>
+       <x>136</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changecontrast_rangeendtocurrent">
+     <property name="geometry">
+      <rect>
+       <x>368</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changecontrast_rangeend">
+     <property name="geometry">
+      <rect>
+       <x>264</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>216</x>
+       <y>444</y>
+       <width>32</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>~</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>360</y>
+       <width>111</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="rbtn_changecontrast_currentframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>현재 프레임</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_changecontrast_allframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>전체 프레임</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_changecontrast_rangeframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>범위 지정</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <zorder>w_sidemenuarea</zorder>
+   <zorder>w_coloremphasis</zorder>
+   <zorder>w_videoarea</zorder>
+   <zorder>w_videoinfoarea</zorder>
+   <zorder>w_changebrightness</zorder>
+   <zorder>w_changecontrast</zorder>
+   <zorder>w_filter</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
