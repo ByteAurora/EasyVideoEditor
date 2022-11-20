@@ -14,13 +14,13 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
-
     
     ////// Init data.
     new SideMenu(ui.btn_coloremphasis, ui.w_coloremphasis);
     new SideMenu(ui.btn_changebrightness, ui.w_changebrightness);
     new SideMenu(ui.btn_changecontrast, ui.w_changecontrast);
     new SideMenu(ui.btn_filter, ui.w_filter);
+    new SideMenu(ui.btn_chromaky, ui.w_chromaky);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
 
     ////// Init signal, slot.
@@ -28,6 +28,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_filter, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.btn_chromaky, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     
     // Connect slider <-> line edit.
     connect(ui.sd_coloremphasis_red, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));
