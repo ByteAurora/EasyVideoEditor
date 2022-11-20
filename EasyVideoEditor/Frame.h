@@ -6,6 +6,8 @@
 #include "Command.h"
 #include "EveProject.h"
 
+class EveProject;
+
 /*
 * @version  v1.0.0
 * @author   Sohn Young Jin

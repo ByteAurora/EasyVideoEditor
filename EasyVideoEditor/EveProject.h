@@ -2,11 +2,14 @@
 
 #include <string>
 #include <list>
+#include <vector>
 #include "Command.h"
 #include "Resource.h"
 #include "Image.h"
 #include "Video.h"
 #include "Frame.h"
+
+class Frame;
 
 /*
 * @version  v1.0.0
