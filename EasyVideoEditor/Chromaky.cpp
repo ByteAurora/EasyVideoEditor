@@ -38,6 +38,7 @@ void Chromaky::operator()(cv::Mat* mat) {
     if (reverse) mask = ~mask;
 
     cv::Mat background = ((cv::Mat*)EveProject::getInstance()->getImage(backgroundImageResourceId)->getResource())->clone();
+    cv::resize(background, background, cv::Size(mat->cols, mat->rows));
 
     copyTo(*mat, background, mask);
 }
