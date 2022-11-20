@@ -11,7 +11,6 @@ SideMenu::SideMenu() {
 SideMenu::SideMenu(QPushButton* sideMenuButton, QWidget* sideMenuPage) {
     this->sideMenuButton = sideMenuButton;
     this->sideMenuPage = sideMenuPage;
-    this->sideMenuButton->setCheckable(true);
     sideMenuList.push_back(this);
 }
 
