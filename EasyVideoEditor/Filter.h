@@ -5,7 +5,7 @@ class Filter : public Command
 {
 public:
     enum FilterType {
-        NONE, SPRING, SUMMER, AUTUMN, WINTER, OCEAN, WARM, COOL
+        NONE, GRAY, WARM, COOL, BRIGHT
     };
 private:
     FilterType filterType;
