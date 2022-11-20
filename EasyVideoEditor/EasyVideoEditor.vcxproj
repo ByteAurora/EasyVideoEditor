@@ -101,7 +101,7 @@
     <ClCompile Include="ChangeBrightness.cpp" />
     <ClCompile Include="ChangeContrast.cpp" />
     <ClCompile Include="ChangePlaySpeed.cpp" />
-    <ClCompile Include="Chromaky.cpp" />
+    <ClCompile Include="Chromakey.cpp" />
     <ClCompile Include="ColorEmphasis.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CutVideo.cpp" />
@@ -128,7 +128,7 @@
     <ClInclude Include="ChangeBrightness.h" />
     <ClInclude Include="ChangeContrast.h" />
     <ClInclude Include="ChangePlaySpeed.h" />
-    <ClInclude Include="Chromaky.h" />
+    <ClInclude Include="Chromakey.h" />
     <ClInclude Include="ColorEmphasis.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CutVideo.h" />

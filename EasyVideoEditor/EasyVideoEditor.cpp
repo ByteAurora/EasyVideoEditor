@@ -20,7 +20,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     new SideMenu(ui.btn_changebrightness, ui.w_changebrightness);
     new SideMenu(ui.btn_changecontrast, ui.w_changecontrast);
     new SideMenu(ui.btn_filter, ui.w_filter);
-    new SideMenu(ui.btn_chromaky, ui.w_chromaky);
+    new SideMenu(ui.btn_chromakey, ui.w_chromakey);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
 
     ////// Init signal, slot.
@@ -28,7 +28,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_filter, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
-    connect(ui.btn_chromaky, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.btn_chromakey, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     
     // Connect slider <-> line edit.
     connect(ui.sd_coloremphasis_red, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));

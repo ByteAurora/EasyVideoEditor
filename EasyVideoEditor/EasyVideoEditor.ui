@@ -57,7 +57,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_chromaky">
+    <widget class="QPushButton" name="btn_chromakey">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -1581,7 +1581,7 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="w_chromaky" native="true">
+   <widget class="QWidget" name="w_chromakey" native="true">
     <property name="geometry">
      <rect>
       <x>64</x>
@@ -1633,7 +1633,7 @@
       <string>적용영역</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_chromaky_apply">
+    <widget class="QPushButton" name="btn_chromakey_apply">
      <property name="geometry">
       <rect>
        <x>16</x>
@@ -1655,7 +1655,7 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QLineEdit" name="edt_chromaky_rangestart">
+    <widget class="QLineEdit" name="edt_chromakey_rangestart">
      <property name="geometry">
       <rect>
        <x>32</x>
@@ -1671,7 +1671,7 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_chromaky_rangestarttocurrent">
+    <widget class="QPushButton" name="btn_chromakey_rangestarttocurrent">
      <property name="geometry">
       <rect>
        <x>136</x>
@@ -1690,7 +1690,7 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_chromaky_rangeendtocurrent">
+    <widget class="QPushButton" name="btn_chromakey_rangeendtocurrent">
      <property name="geometry">
       <rect>
        <x>368</x>
@@ -1709,7 +1709,7 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QLineEdit" name="edt_chromaky_rangeend">
+    <widget class="QLineEdit" name="edt_chromakey_rangeend">
      <property name="geometry">
       <rect>
        <x>264</x>
@@ -1752,7 +1752,7 @@
      <property name="geometry">
       <rect>
        <x>16</x>
-       <y>176</y>
+       <y>245</y>
        <width>91</width>
        <height>32</height>
       </rect>
@@ -1765,7 +1765,7 @@
       </font>
      </property>
      <property name="text">
-      <string>색감</string>
+      <string>적용할 배경</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_26">
@@ -1799,7 +1799,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_custom">
+       <widget class="QRadioButton" name="rbtn_chromakey_custom">
         <property name="text">
          <string>사용자지정</string>
         </property>
@@ -1809,35 +1809,35 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_white">
+       <widget class="QRadioButton" name="rbtn_chromakey_white">
         <property name="text">
          <string>흰색</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_black">
+       <widget class="QRadioButton" name="rbtn_chromakey_black">
         <property name="text">
          <string>검정색</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_red">
+       <widget class="QRadioButton" name="rbtn_chromakey_red">
         <property name="text">
          <string>빨간색</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_green">
+       <widget class="QRadioButton" name="rbtn_chromakey_green">
         <property name="text">
          <string>녹색</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_blue">
+       <widget class="QRadioButton" name="rbtn_chromakey_blue">
         <property name="text">
          <string>파란색</string>
         </property>
@@ -1856,7 +1856,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_currentframe">
+       <widget class="QRadioButton" name="rbtn_chromakey_currentframe">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
@@ -1871,7 +1871,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_allframe">
+       <widget class="QRadioButton" name="rbtn_chromakey_allframe">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
@@ -1883,7 +1883,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="rbtn_chromaky_rangeframe">
+       <widget class="QRadioButton" name="rbtn_chromakey_rangeframe">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
@@ -1895,6 +1895,217 @@
        </widget>
       </item>
      </layout>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_backgroudpath">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>285</y>
+       <width>506</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>171</y>
+       <width>48</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #00ff00;</string>
+     </property>
+     <property name="text">
+      <string>채도</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>203</y>
+       <width>48</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #0000ff;</string>
+     </property>
+     <property name="text">
+      <string>명도</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_32">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>140</y>
+       <width>48</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #ff0000;</string>
+     </property>
+     <property name="text">
+      <string>색조</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_huestart">
+     <property name="geometry">
+      <rect>
+       <x>96</x>
+       <y>137</y>
+       <width>64</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_satstart">
+     <property name="geometry">
+      <rect>
+       <x>96</x>
+       <y>169</y>
+       <width>64</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_valstart">
+     <property name="geometry">
+      <rect>
+       <x>96</x>
+       <y>201</y>
+       <width>64</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_33">
+     <property name="geometry">
+      <rect>
+       <x>192</x>
+       <y>169</y>
+       <width>32</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>~</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_valend">
+     <property name="geometry">
+      <rect>
+       <x>256</x>
+       <y>201</y>
+       <width>64</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>255</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_hueend">
+     <property name="geometry">
+      <rect>
+       <x>256</x>
+       <y>137</y>
+       <width>64</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>255</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_chromakey_satend">
+     <property name="geometry">
+      <rect>
+       <x>256</x>
+       <y>169</y>
+       <width>64</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>255</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_chromakey_filepicker">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>285</y>
+       <width>30</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
     </widget>
    </widget>
   </widget>

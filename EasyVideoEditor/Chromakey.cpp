@@ -1,6 +1,6 @@
-#include "Chromaky.h"
+#include "Chromakey.h"
 
-Chromaky::Chromaky() {
+Chromakey::Chromakey() {
     hueMin = 0;
     hueMax = 180;
     saturationMin = 0;
@@ -11,7 +11,7 @@ Chromaky::Chromaky() {
     backgroundImageResourceId = 0;
 }
 
-Chromaky::Chromaky(int hueMin, int hueMax, int saturationMin, int saturationMax, int valueMin, int valueMax, bool reverse, int backgroundImageResourceId) {
+Chromakey::Chromakey(int hueMin, int hueMax, int saturationMin, int saturationMax, int valueMin, int valueMax, bool reverse, int backgroundImageResourceId) {
     this->hueMin = hueMin;
     this->hueMax = hueMax;
     this->saturationMin = saturationMin;
@@ -22,15 +22,15 @@ Chromaky::Chromaky(int hueMin, int hueMax, int saturationMin, int saturationMax,
     this->backgroundImageResourceId = backgroundImageResourceId;
 }
 
-Chromaky::~Chromaky() {
+Chromakey::~Chromakey() {
 
 }
 
-void Chromaky::operator()() {
+void Chromakey::operator()() {
 
 }
 
-void Chromaky::operator()(cv::Mat* mat) {
+void Chromakey::operator()(cv::Mat* mat) {
     cv::Mat hsv;
     cvtColor(*mat, hsv, cv::COLOR_BGR2HSV);
     cv::Mat mask;

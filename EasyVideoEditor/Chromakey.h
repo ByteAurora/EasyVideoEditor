@@ -2,7 +2,7 @@
 #include "Command.h"
 #include "EveProject.h"
 
-class Chromaky : public Command
+class Chromakey : public Command
 {
 private:
     int hueMin, hueMax;
@@ -11,9 +11,9 @@ private:
     bool reverse;
     int backgroundImageResourceId;
 public:
-    Chromaky();
-    Chromaky(int hueMin, int hueMax, int saturationMin, int saturationMax, int valueMin, int valueMax, bool reverse, int backgroundImageResourceId);
-    ~Chromaky();
+    Chromakey();
+    Chromakey(int hueMin, int hueMax, int saturationMin, int saturationMax, int valueMin, int valueMax, bool reverse, int backgroundImageResourceId);
+    ~Chromakey();
 
     virtual void operator()();
     virtual void operator()(cv::Mat* mat);

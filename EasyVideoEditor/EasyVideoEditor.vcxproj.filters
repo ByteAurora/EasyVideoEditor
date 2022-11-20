@@ -100,7 +100,7 @@
     <ClCompile Include="ChangePlaySpeed.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Chromaky.cpp">
+    <ClCompile Include="Chromakey.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
     <ClCompile Include="ColorEmphasis.cpp">
@@ -162,7 +162,7 @@
     <ClInclude Include="ChangePlaySpeed.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Chromaky.h">
+    <ClInclude Include="Chromakey.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
     <ClInclude Include="ColorEmphasis.h">
