@@ -125,7 +125,7 @@ void EasyVideoEditor::workAfterMainWindowShowed() {
         ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
 
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
 }
@@ -191,7 +191,7 @@ void EasyVideoEditor::resetButtonClicked() {
     ui.sd_videoprogress->setValue(0);
     EveProject::getInstance()->setCurrentFrameNumber(0);
     cv::Mat showFrame;
-    EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+    EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame);
     UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     mutex.unlock();
 }
@@ -203,7 +203,7 @@ void EasyVideoEditor::forward5SecondsButtonclicked() {
         ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(currentFrameIndex)));
         ui.sd_videoprogress->setValue(currentFrameIndex);
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
     }
     mutex.unlock();
@@ -217,7 +217,7 @@ void EasyVideoEditor::backward5SecondsButtonClicked() {
         ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(currentFrameIndex)));
         ui.sd_videoprogress->setValue(currentFrameIndex);
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
     }
     mutex.unlock();

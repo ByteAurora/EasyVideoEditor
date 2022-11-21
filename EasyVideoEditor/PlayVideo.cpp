@@ -38,7 +38,7 @@ void PlayVideo::run() {
 
         loop = EveProject::getInstance()->getCurrentFrameNumber();
 
-        EveProject::getInstance()->getCurrentFrameAndUpdate()->getFrameData(&showFrame);
+        EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame);
         UsefulFunction::showMatToLabel(lblVideoFrame, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         tickMeter.stop();
         EasyVideoEditor::mutex.unlock();

@@ -48,10 +48,20 @@ void Frame::removeCommand(Command* command) {
     commandList.remove(command);
 }
 
-void Frame::getFrameData(cv::Mat* mat) {
+void Frame::getRealFrameData(cv::Mat* mat) {
     cv::VideoCapture* video = ((cv::VideoCapture*)(EveProject::getInstance()->getVideo(sourceId)->getResource()));
     video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
     (*video) >> (*mat);
+}
+
+void Frame::getCommandAppliedFrameData(cv::Mat* mat) {
+    cv::VideoCapture* video = ((cv::VideoCapture*)(EveProject::getInstance()->getVideo(sourceId)->getResource()));
+    video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+    (*video) >> (*mat);
+
+    for (std::list<Command*>::iterator it = commandList.begin(); it != commandList.end(); it++) {
+        (*(*it))(mat);
+    }
 }
 
 void Frame::setSourceId(int sourceId) {
