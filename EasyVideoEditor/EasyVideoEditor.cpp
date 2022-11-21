@@ -122,26 +122,28 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
 }
 
 void EasyVideoEditor::colorEmphasisApplyButtonClicked() {
-    ColorEmphasis* colorEmphasis = new ColorEmphasis(
-        ui.edt_coloremphasis_red->text().toInt(),
-        ui.edt_coloremphasis_green->text().toInt(),
-        ui.edt_coloremphasis_blue->text().toInt()
-    );
+    if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
+        ColorEmphasis* colorEmphasis = new ColorEmphasis(
+            ui.edt_coloremphasis_red->text().toInt(),
+            ui.edt_coloremphasis_green->text().toInt(),
+            ui.edt_coloremphasis_blue->text().toInt()
+        );
 
-    if (ui.rbtn_coloremphasis_currentframe->isChecked()) {
-        EveProject::getInstance()->getCurrentFrame()->addCommand(colorEmphasis);
-    }
-    else if (ui.rbtn_coloremphasis_allframe->isChecked()) {
-        std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
-        for (int loop = 0; loop < allFrames->size(); loop++) {
-            allFrames->at(loop)->addCommand(colorEmphasis);
+        if (ui.rbtn_coloremphasis_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(colorEmphasis);
         }
-    }
-    else if (ui.rbtn_coloremphasis_rangeframe->isChecked()) {
-        int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasls_rangestart->text()));
-        int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasis_rangeend->text()));
-        for (int loop = startIndex; loop < endIndex; loop++) {
-            EveProject::getInstance()->getFrameByIndex(loop)->addCommand(colorEmphasis);
+        else if (ui.rbtn_coloremphasis_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(colorEmphasis);
+            }
+        }
+        else if (ui.rbtn_coloremphasis_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasls_rangestart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasis_rangeend->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(colorEmphasis);
+            }
         }
     }
 };
