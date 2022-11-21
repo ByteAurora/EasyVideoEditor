@@ -6,6 +6,6 @@
 class UsefulFunction
 {
 public:
-    static QString getMillisecondsFromString(QString timeString);
+    static int getMillisecondsFromString(QString timeString);
 };
 
