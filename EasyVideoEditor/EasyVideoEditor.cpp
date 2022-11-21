@@ -225,34 +225,86 @@ void EasyVideoEditor::backward5SecondsButtonClicked() {
 
 void EasyVideoEditor::colorEmphasisApplyButtonClicked() {
     if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
-        ColorEmphasis* colorEmphasis = new ColorEmphasis(
+        QLineEdit* rangeStart = ui.edt_coloremphasis_rangestart;
+        QLineEdit* rangeEnd = ui.edt_coloremphasis_rangeend;
+        Command* command = new ColorEmphasis(
             ui.edt_coloremphasis_red->text().toInt(),
             ui.edt_coloremphasis_green->text().toInt(),
             ui.edt_coloremphasis_blue->text().toInt()
         );
 
         if (ui.rbtn_coloremphasis_currentframe->isChecked()) {
-            EveProject::getInstance()->getCurrentFrame()->addCommand(colorEmphasis);
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
         }
         else if (ui.rbtn_coloremphasis_allframe->isChecked()) {
             std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
             for (int loop = 0; loop < allFrames->size(); loop++) {
-                allFrames->at(loop)->addCommand(colorEmphasis);
+                allFrames->at(loop)->addCommand(command);
             }
         }
         else if (ui.rbtn_coloremphasis_rangeframe->isChecked()) {
-            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasls_rangestart->text()));
-            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasis_rangeend->text()));
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
             for (int loop = startIndex; loop < endIndex; loop++) {
-                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(colorEmphasis);
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
     }
 };
 
-void EasyVideoEditor::changeBrightnessApplyButtonClicked() {};
+void EasyVideoEditor::changeBrightnessApplyButtonClicked() {
+    if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
+        QLineEdit* rangeStart = ui.edt_changebrightness_rangestart;
+        QLineEdit* rangeEnd = ui.edt_changebrightness_rangeend;
+        Command* command = new ChangeBrightness(
+            ui.edt_changebrightness_brightness->text().toInt()
+        );
 
-void EasyVideoEditor::changeContrastApplyButtonClicked() {};
+        if (ui.rbtn_changebrightness_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_changebrightness_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_changebrightness_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
+    }
+};
+
+void EasyVideoEditor::changeContrastApplyButtonClicked() {
+    if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
+        QLineEdit* rangeStart = ui.edt_changecontrast_rangestart;
+        QLineEdit* rangeEnd = ui.edt_changecontrast_rangeend;
+        Command* command = new ChangeBrightness(
+            ui.edt_changecontrast_contrast->text().toInt()
+        );
+
+        if (ui.rbtn_changecontrast_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_changecontrast_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_changecontrast_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
+    }
+};
 
 void EasyVideoEditor::filterApplyButtonClicked() {};
 
