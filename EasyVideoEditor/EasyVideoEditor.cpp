@@ -21,6 +21,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     new SideMenu(ui.btn_changecontrast, ui.w_changecontrast);
     new SideMenu(ui.btn_filter, ui.w_filter);
     new SideMenu(ui.btn_chromakey, ui.w_chromakey);
+    new SideMenu(ui.btn_transition, ui.w_transition);
     new SideMenu(ui.btn_addimage, ui.w_addimage);
     new SideMenu(ui.btn_addvideo, ui.w_addvideo);
     new SideMenu(ui.btn_cutvideo, ui.w_cutvideo);
@@ -33,6 +34,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_filter, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_chromakey, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.btn_transition, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addimage, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_cutvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
