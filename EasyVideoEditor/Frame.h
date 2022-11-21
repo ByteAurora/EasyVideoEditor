@@ -40,6 +40,7 @@ public:
 
     // Set frame informations.
     void setFrameInfo(int sourceId, int sourceFrameIndex);
+
     // Get command corresponding to the index.
     Command* getCommand(int index);
 
