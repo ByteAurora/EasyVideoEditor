@@ -674,7 +674,7 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_coloremphasls_rangestart">
+     <widget class="QLineEdit" name="edt_coloremphasis_rangestart">
       <property name="geometry">
        <rect>
         <x>32</x>
