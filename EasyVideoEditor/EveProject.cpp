@@ -3,7 +3,7 @@
 EveProject* EveProject::instance = NULL;
 
 EveProject::EveProject() {
-    currentFrameNumber = 0;
+    currentFrameNumber = -1;
 }
 
 EveProject::~EveProject() {
@@ -19,6 +19,7 @@ EveProject* EveProject::getInstance() {
 }
 
 void EveProject::addVideo(Video* video) {
+    if (currentFrameNumber == -1) currentFrameNumber = 0;
     videoList.push_back(video);
     video->setResourceId(videoList.size() - 1);
 }
