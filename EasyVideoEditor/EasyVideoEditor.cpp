@@ -1,6 +1,6 @@
 #include "EasyVideoEditor.h"
 
-EasyVideoEditor::EasyVideoEditor(QWidget *parent)
+EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
@@ -14,7 +14,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
-    
+
     ////// Init data.
     new SideMenu(ui.btn_coloremphasis, ui.w_coloremphasis);
     new SideMenu(ui.btn_changebrightness, ui.w_changebrightness);
@@ -43,7 +43,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     connect(ui.btn_resize, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
-    
+
     // Connect slider <-> line edit.
     connect(ui.sd_coloremphasis_red, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));
     connect(ui.sd_coloremphasis_green, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));
@@ -57,10 +57,33 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     connect(ui.edt_changecontrast_contrast, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
     connect(ui.sd_filter_clarity, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));;
     connect(ui.edt_filter_clarity, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
+
+    // Start.
+
 }
 
 EasyVideoEditor::~EasyVideoEditor()
 {}
+
+void EasyVideoEditor::workAfterMainWindowShowed() {
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, tr("Select video to edit"), QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
+    if (baseVideoPath.isEmpty()) {
+        QMessageBox::information(this, tr("Info"), tr("Please select video file to edit"), QMessageBox::Ok);
+    }
+    else {
+        EveProject::getInstance()->addVideo(new Video(0, baseVideoPath.toStdString()));
+    }
+}
+
+bool EasyVideoEditor::event(QEvent* event) {
+    const bool ret_val = QMainWindow::event(event);
+    if (!workAfterMainWindowShowedCalled && event->type() == QEvent::Paint) {
+        workAfterMainWindowShowedCalled = true;
+        workAfterMainWindowShowed();
+    }
+
+    return ret_val;
+}
 
 void EasyVideoEditor::sideMenuClicked() {
     SideMenu::selectSideMenu((QPushButton*)sender());
