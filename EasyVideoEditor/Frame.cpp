@@ -1,7 +1,13 @@
 #include "Frame.h"
 
 Frame::Frame() {
+    sourceId = 0;
     sourceFrameIndex = 0;
+}
+
+Frame::Frame(int sourceId, int sourceFrameIndex) {
+    this->sourceId = sourceId;
+    this->sourceFrameIndex = sourceFrameIndex;
 }
 
 Frame::~Frame() {

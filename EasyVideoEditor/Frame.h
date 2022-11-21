@@ -32,6 +32,9 @@ public:
     // Default constructor.
     Frame();
 
+    // Custom constructor.
+    Frame(int sourceId, int sourceFrameIndex);
+
     // Default destructor.
     ~Frame();
 

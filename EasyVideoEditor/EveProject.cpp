@@ -19,9 +19,10 @@ EveProject* EveProject::getInstance() {
 }
 
 void EveProject::addVideo(Video* video) {
-    if (currentFrameNumber == -1) currentFrameNumber = 0;
+    if (currentFrameNumber == -1) { currentFrameNumber = 0; }
     videoList.push_back(video);
     video->setResourceId(videoList.size() - 1);
+    video->loadResource();
 }
 
 Video* EveProject::getVideo(int index) {

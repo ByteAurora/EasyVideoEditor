@@ -118,6 +118,9 @@
     <ClCompile Include="UsefulFunction.cpp">
       <Filter>Code\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PlayVideo.cpp">
+      <Filter>Code\Model\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Widgets.h">
@@ -187,6 +190,9 @@
   <ItemGroup>
     <QtMoc Include="EasyVideoEditor.h">
       <Filter>Code\Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PlayVideo.h">
+      <Filter>Code\Model\Base</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

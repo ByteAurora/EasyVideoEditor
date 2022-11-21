@@ -1,5 +1,13 @@
 #include "EasyVideoEditor.h"
 
+int EasyVideoEditor::top = 0;
+int EasyVideoEditor::down = 0;
+int EasyVideoEditor::left = 0;
+int EasyVideoEditor::right = 0;
+EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
+QMutex EasyVideoEditor::mutex;
+cv::Size EasyVideoEditor::resizeData;
+
 EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     : QMainWindow(parent)
 {
@@ -14,8 +22,10 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
+    ui.btn_pause->setVisible(false);
 
     ////// Init data.
+    mode = Mode::MODE_EDIT;
     new SideMenu(ui.btn_coloremphasis, ui.w_coloremphasis);
     new SideMenu(ui.btn_changebrightness, ui.w_changebrightness);
     new SideMenu(ui.btn_changecontrast, ui.w_changecontrast);
@@ -43,6 +53,11 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     connect(ui.btn_resize, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.btn_play, SIGNAL(clicked()), this, SLOT(playButtonClicked()));
+    connect(ui.btn_pause, SIGNAL(clicked()), this, SLOT(pauseButtonClicked()));
+    connect(ui.btn_reset, SIGNAL(clicked()), this, SLOT(resetButtonClicked()));
+    connect(ui.btn_forward5seconds, SIGNAL(clicked()), this, SLOT(forward5SecondsButtonclicked()));
+    connect(ui.btn_backward5seconds, SIGNAL(clicked()), this, SLOT(backward5SecondsButtonClicked()));
 
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -76,14 +91,42 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
 EasyVideoEditor::~EasyVideoEditor()
 {}
 
-QString EasyVideoEditor::kor(std::string korString) {
-    return QString::fromLocal8Bit(korString);
-}
-
 void EasyVideoEditor::workAfterMainWindowShowed() {
     QString baseVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
-        EveProject::getInstance()->addVideo(new Video(0, baseVideoPath.toStdString()));
+        Video* baseVideo = new Video(0, baseVideoPath.toStdString());
+        EveProject::getInstance()->addVideo(baseVideo);
+        for (int loop = 0; loop < baseVideo->getFrameCount(); loop++) {
+            EveProject::getInstance()->addFrame(new Frame(0, loop));
+        }
+
+        int originalWidth = EveProject::getInstance()->getBaseWidth();
+        int originalHeight = EveProject::getInstance()->getBaseHeight();
+        int showWidth = 960;
+        int showHeight = 444;
+        int convertedWidth;
+        int convertedHeight;
+
+        double h1 = showWidth * (originalHeight / (double)originalWidth);
+        double w2 = showHeight * (originalWidth / (double)originalHeight);
+
+        if (h1 < showHeight) {
+            resizeData = cv::Size(showWidth, h1);
+        }
+        else {
+            resizeData = cv::Size(w2, showHeight);
+        }
+
+        top = (showHeight - resizeData.height) / 2;
+        down = (showHeight - resizeData.height + 1) / 2;
+        left = (showWidth - resizeData.width) / 2;
+        right = (showWidth - resizeData.width + 1) / 2;
+
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
+
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
 }
 
@@ -119,6 +162,65 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
     else if (senderObject == ui.edt_changebrightness_brightness) ui.sd_changebrightness_brightness->setValue(value.toInt());
     else if (senderObject == ui.edt_changecontrast_contrast) ui.sd_changecontrast_contrast->setValue(value.toInt());
     else if (senderObject == ui.edt_filter_clarity) ui.sd_filter_clarity->setValue(value.toInt());
+}
+
+void EasyVideoEditor::playButtonClicked() {
+    mutex.lock();
+    mode = Mode::MODE_WATCH_PLAY;
+    ui.btn_play->setVisible(false);
+    ui.btn_pause->setVisible(true);
+    mutex.unlock();
+    PlayVideo* playVideo = new PlayVideo(this);
+    playVideo->start();
+}
+
+void EasyVideoEditor::pauseButtonClicked() {
+    mutex.lock();
+    mode = Mode::MODE_WATCH_PAUSE;
+    ui.btn_play->setVisible(true);
+    ui.btn_pause->setVisible(false);
+    mutex.unlock();
+}
+
+void EasyVideoEditor::resetButtonClicked() {
+    mutex.lock();
+    mode = Mode::MODE_WATCH_PAUSE;
+    ui.btn_play->setVisible(true);
+    ui.btn_pause->setVisible(false);
+    ui.lbl_currentplaytime->setText("00:00:00.000");
+    ui.sd_videoprogress->setValue(0);
+    EveProject::getInstance()->setCurrentFrameNumber(0);
+    cv::Mat showFrame;
+    EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+    UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    mutex.unlock();
+}
+void EasyVideoEditor::forward5SecondsButtonclicked() {
+    mutex.lock();
+    EveProject::getInstance()->forward5Seconds();
+    if (mode == Mode::MODE_WATCH_PAUSE) {
+        int currentFrameIndex = EveProject::getInstance()->getCurrentFrameNumber();
+        ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(currentFrameIndex)));
+        ui.sd_videoprogress->setValue(currentFrameIndex);
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+    }
+    mutex.unlock();
+}
+
+void EasyVideoEditor::backward5SecondsButtonClicked() {
+    mutex.lock();
+    EveProject::getInstance()->backward5Seconds();
+    if (mode == Mode::MODE_WATCH_PAUSE) {
+        int currentFrameIndex = EveProject::getInstance()->getCurrentFrameNumber();
+        ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(currentFrameIndex)));
+        ui.sd_videoprogress->setValue(currentFrameIndex);
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getFrameData(&showFrame);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+    }
+    mutex.unlock();
 }
 
 void EasyVideoEditor::colorEmphasisApplyButtonClicked() {
