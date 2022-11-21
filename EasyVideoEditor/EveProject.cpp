@@ -108,15 +108,6 @@ int EveProject::getBaseHeight() {
 }
 
 bool EveProject::forward1Frame() {
-    if (currentFrameNumber + 1 >= frameList.size()) {
-        return false;
-    }
-
-    currentFrameNumber++;
-    return true;
-}
-
-bool EveProject::backward1Frame() {
     if (currentFrameNumber - 1 < 0) {
         return false;
     }
@@ -125,23 +116,32 @@ bool EveProject::backward1Frame() {
     return true;
 }
 
-bool EveProject::forward5Seconds() {
-    if (currentFrameNumber + getBaseFps() * 5 >= frameList.size()) {
-        currentFrameNumber = frameList.size() - 1;
+bool EveProject::backward1Frame() {
+    if (currentFrameNumber + 1 >= frameList.size()) {
         return false;
     }
 
-    currentFrameNumber += getBaseFps() * 5;
+    currentFrameNumber++;
     return true;
 }
 
-bool EveProject::backward5Seconds() {
+bool EveProject::forward5Seconds() {
     if (currentFrameNumber - getBaseFps() * 5 < 0) {
         currentFrameNumber = 0;
         return false;
     }
 
     currentFrameNumber -= getBaseFps() * 5;
+    return true;
+}
+
+bool EveProject::backward5Seconds() {
+    if (currentFrameNumber + getBaseFps() * 5 >= frameList.size()) {
+        currentFrameNumber = frameList.size() - 1;
+        return false;
+    }
+
+    currentFrameNumber += getBaseFps() * 5;
     return true;
 }
 
