@@ -6,6 +6,8 @@ private:
 	int start_time;
 	int end_time;
 public:
-
+	AddVideo();
+	AddVideo(int start_time, int end_time);
+	~AddVideo();
 };
 
