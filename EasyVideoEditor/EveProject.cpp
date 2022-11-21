@@ -40,6 +40,14 @@ void EveProject::addFrame(Frame* frame) {
     frameList.push_back(frame);
 }
 
+void EveProject::addFrame(Frame* frame, int index) {
+    frameList.insert(frameList.begin() + index, frame);
+}
+
+void EveProject::addFrames(std::vector<Frame*> frames, int index) {
+    frameList.insert(frameList.begin() + index, frames.begin(), frames.end());
+}
+
 Frame* EveProject::getFrame(int index) {
     return frameList.at(index);
 }

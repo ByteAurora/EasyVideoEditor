@@ -55,8 +55,12 @@ public:
     // Get image resource from image list.
     Image* getImage(int index);
 
-    // Add frame into frame list.
+    // Add frame into last index of frame list.
     void addFrame(Frame* frame);
+    // Add frame into frame list by index.
+    void addFrame(Frame* frame, int index);
+    // Add frames into frame list by index.
+    void addFrames(std::vector<Frame*>frames, int index);
     // Get frame from frame list.
     Frame* getFrame(int index);
     // Get frame by time.
