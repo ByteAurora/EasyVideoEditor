@@ -115,6 +115,9 @@
     <ClCompile Include="EasyVideoEditor.cpp">
       <Filter>Code\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UsefulFunction.cpp">
+      <Filter>Code\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Widgets.h">
@@ -176,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="Filter.h">
       <Filter>Code\Model\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="UsefulFunction.h">
+      <Filter>Code\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

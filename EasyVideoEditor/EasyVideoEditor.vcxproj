@@ -114,6 +114,7 @@
     <ClCompile Include="Resize.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="SideMenu.cpp" />
+    <ClCompile Include="UsefulFunction.cpp" />
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="Widgets.cpp" />
     <QtRcc Include="EasyVideoEditor.qrc" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Resize.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SideMenu.h" />
+    <ClInclude Include="UsefulFunction.h" />
     <ClInclude Include="Video.h" />
     <ClInclude Include="Widgets.h" />
   </ItemGroup>
