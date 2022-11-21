@@ -24,6 +24,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     new SideMenu(ui.btn_addimage, ui.w_addimage);
     new SideMenu(ui.btn_addvideo, ui.w_addvideo);
     new SideMenu(ui.btn_cutvideo, ui.w_cutvideo);
+    new SideMenu(ui.btn_addsubtitle, ui.w_addsubtitle);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
 
     ////// Init signal, slot.
@@ -35,6 +36,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget *parent)
     connect(ui.btn_addimage, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_cutvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     
     // Connect slider <-> line edit.
     connect(ui.sd_coloremphasis_red, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));
