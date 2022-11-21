@@ -68,7 +68,7 @@ public:
     // Get index of frame.
     int getFrameIndex(Frame* frame);
     // Get index of frame by time.
-    int getFrameIndex(long millisecond);
+    int getFrameIndex(int millisecond);
     // Get frame time.
     int getFrameTime(Frame* frame);
     // Get frame time by index.

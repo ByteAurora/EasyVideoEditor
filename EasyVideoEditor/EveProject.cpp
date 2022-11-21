@@ -64,7 +64,7 @@ int EveProject::getFrameIndex(Frame* frame) {
     else return -1;
 }
 
-int EveProject::getFrameIndex(long millisecond) {
+int EveProject::getFrameIndex(int millisecond) {
     return millisecond / getBaseDelay();
 }
 
