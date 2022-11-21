@@ -48,11 +48,11 @@ void EveProject::addFrames(std::vector<Frame*> frames, int index) {
     frameList.insert(frameList.begin() + index, frames.begin(), frames.end());
 }
 
-Frame* EveProject::getFrame(int index) {
+Frame* EveProject::getFrameByIndex(int index) {
     return frameList.at(index);
 }
 
-Frame* EveProject::getFrame(long millisecond) {
+Frame* EveProject::getFrameByTime(int millisecond) {
     return frameList.at(millisecond / getBaseDelay());
 }
 

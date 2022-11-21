@@ -9,6 +9,21 @@
 #include "ui_EasyVideoEditor.h"
 #include "Widgets.h"
 #include "EveProject.h"
+#include "UsefulFunction.h"
+
+// Command class.
+#include "ColorEmphasis.h"
+#include "ChangeBrightness.h"
+#include "ChangeContrast.h"
+#include "Filter.h"
+#include "Chromakey.h"
+#include "Transition.h"
+#include "AddImage.h"
+#include "AddVideo.h"
+#include "CutVideo.h"
+#include "Resize.h"
+#include "ChangePlaySpeed.h"
+#include "AddSubtitle.h"
 
 class EasyVideoEditor : public QMainWindow
 {
@@ -29,4 +44,17 @@ private slots:
     void setLineEditBySlider(int value);
     void setSliderByLineEdit(QString value);
     void sideMenuClicked();
+
+    void colorEmphasisApplyButtonClicked();
+    void changeBrightnessApplyButtonClicked();
+    void changeContrastApplyButtonClicked();
+    void filterApplyButtonClicked();
+    void chromakeyApplyButtonClicked();
+    void transitionApplyButtonClicked();
+    void addImageApplyButtonClicked();
+    void addVideoApplyButtonClicked();
+    void cutVideoApplyButtonClicked();
+    void resizeApplyButtonClicked();
+    void changePlaySpeedButtonClicked();
+    void addSubtitleButtonClicked();
 };

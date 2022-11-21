@@ -62,9 +62,9 @@ public:
     // Add frames into frame list by index.
     void addFrames(std::vector<Frame*>frames, int index);
     // Get frame from frame list.
-    Frame* getFrame(int index);
+    Frame* getFrameByIndex(int index);
     // Get frame by time.
-    Frame* getFrame(long millisecond);
+    Frame* getFrameByTime(int millisecond);
     // Get index of frame.
     int getFrameIndex(Frame* frame);
     // Get index of frame by time.

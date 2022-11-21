@@ -44,6 +44,20 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
 
+    // Connect apply button.
+    connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
+    connect(ui.btn_changebrightness_apply, SIGNAL(clicked()), this, SLOT(changeBrightnessApplyButtonClicked()));
+    connect(ui.btn_changecontrast_apply, SIGNAL(clicked()), this, SLOT(changeContrastApplyButtonClicked()));
+    connect(ui.btn_filter_apply, SIGNAL(clicked()), this, SLOT(filterApplyButtonClicked()));
+    connect(ui.btn_chromakey_apply, SIGNAL(clicked()), this, SLOT(chromakeyApplyButtonClicked()));
+    connect(ui.btn_transition_apply, SIGNAL(clicked()), this, SLOT(transitionApplyButtonClicked()));
+    connect(ui.btn_addimage_apply, SIGNAL(clicked()), this, SLOT(addImageApplyButtonClicked()));
+    connect(ui.btn_addvideo_apply, SIGNAL(clicked()), this, SLOT(addVideoApplyButtonClicked()));
+    connect(ui.btn_cutvideo_apply, SIGNAL(clicked()), this, SLOT(cutVideoApplyButtonClicked()));
+    connect(ui.btn_resize_apply, SIGNAL(clicked()), this, SLOT(resizeApplyButtonClicked()));
+    connect(ui.btn_changeplayspeed_apply, SIGNAL(clicked()), this, SLOT(changePlaySpeedButtonClicked()));
+    connect(ui.btn_addsubtitle_apply, SIGNAL(clicked()), this, SLOT(addSubtitleButtonClicked()));
+
     // Connect slider <-> line edit.
     connect(ui.sd_coloremphasis_red, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));
     connect(ui.sd_coloremphasis_green, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));
@@ -106,3 +120,50 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
     else if (senderObject == ui.edt_changecontrast_contrast) ui.sd_changecontrast_contrast->setValue(value.toInt());
     else if (senderObject == ui.edt_filter_clarity) ui.sd_filter_clarity->setValue(value.toInt());
 }
+
+void EasyVideoEditor::colorEmphasisApplyButtonClicked() {
+    ColorEmphasis* colorEmphasis = new ColorEmphasis(
+        ui.edt_coloremphasis_red->text().toInt(),
+        ui.edt_coloremphasis_green->text().toInt(),
+        ui.edt_coloremphasis_blue->text().toInt()
+    );
+
+    if (ui.rbtn_coloremphasis_currentframe->isChecked()) {
+        EveProject::getInstance()->getCurrentFrame()->addCommand(colorEmphasis);
+    }
+    else if (ui.rbtn_coloremphasis_allframe->isChecked()) {
+        std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+        for (int loop = 0; loop < allFrames->size(); loop++) {
+            allFrames->at(loop)->addCommand(colorEmphasis);
+        }
+    }
+    else if (ui.rbtn_coloremphasis_rangeframe->isChecked()) {
+        int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasls_rangestart->text()));
+        int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(ui.edt_coloremphasis_rangeend->text()));
+        for (int loop = startIndex; loop < endIndex; loop++) {
+            EveProject::getInstance()->getFrameByIndex(loop)->addCommand(colorEmphasis);
+        }
+    }
+};
+
+void EasyVideoEditor::changeBrightnessApplyButtonClicked() {};
+
+void EasyVideoEditor::changeContrastApplyButtonClicked() {};
+
+void EasyVideoEditor::filterApplyButtonClicked() {};
+
+void EasyVideoEditor::chromakeyApplyButtonClicked() {};
+
+void EasyVideoEditor::transitionApplyButtonClicked() {};
+
+void EasyVideoEditor::addImageApplyButtonClicked() {};
+
+void EasyVideoEditor::addVideoApplyButtonClicked() {};
+
+void EasyVideoEditor::cutVideoApplyButtonClicked() {};
+
+void EasyVideoEditor::resizeApplyButtonClicked() {};
+
+void EasyVideoEditor::changePlaySpeedButtonClicked() {};
+
+void EasyVideoEditor::addSubtitleButtonClicked() {};
