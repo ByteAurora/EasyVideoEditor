@@ -109,7 +109,7 @@
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Image.cpp" />
-    <ClCompile Include="ResizeResolution.cpp" />
+    <ClCompile Include="Resize.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="SideMenu.cpp" />
     <ClCompile Include="Video.cpp" />
@@ -136,7 +136,7 @@
     <ClInclude Include="Filter.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="ResizeResolution.h" />
+    <ClInclude Include="Resize.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SideMenu.h" />
     <ClInclude Include="Video.h" />

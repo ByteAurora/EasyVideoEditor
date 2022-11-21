@@ -1,6 +1,6 @@
 #pragma once
 #include "Command.h"
-class ResizeResolution :
+class Resize :
     public Command
 {
 };

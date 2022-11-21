@@ -8,7 +8,7 @@ public:
     // An enumeration of the type of command.
     enum CommandType {
         COLOR_EMPHASIS, CHANGE_BRIGHTNESS, CHANGE_CONTRAST, FILTER_EFFECT, CHROMAKEY, TRANSITION
-        , ADD_IMAGE, ADD_VIDEO, CUT_VIDEO, RESIZE_RESOLUTION, CHANGE_PLAY_SPEED, ADD_SUBTITLE
+        , ADD_IMAGE, ADD_VIDEO, CUT_VIDEO, RESIZE, CHANGE_PLAY_SPEED, ADD_SUBTITLE
     };
 protected:
     // Command type.
