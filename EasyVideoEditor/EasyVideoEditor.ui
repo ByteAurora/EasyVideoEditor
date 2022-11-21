@@ -169,7 +169,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>전환</string>
+      <string>화면전환</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -3024,6 +3024,289 @@
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="w_transition" native="true">
+    <property name="geometry">
+     <rect>
+      <x>64</x>
+      <y>0</y>
+      <width>576</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ffffff;</string>
+    </property>
+    <widget class="QLabel" name="label_38">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>16</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>화면전환</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_39">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>64</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Fade-In</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_transition_apply">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>492</y>
+       <width>544</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>적용</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_transition_fadein">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>104</y>
+       <width>152</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>현재 프레임 기준</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_transition_zoomout_range">
+     <property name="geometry">
+      <rect>
+       <x>184</x>
+       <y>104</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0초</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_41">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>154</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Fade-Out</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_transition_zoomin_range">
+     <property name="geometry">
+      <rect>
+       <x>184</x>
+       <y>190</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0초</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_transition_fadeout">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>194</y>
+       <width>152</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>현재 프레임 기준</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_transition_fadeout_range">
+     <property name="geometry">
+      <rect>
+       <x>184</x>
+       <y>284</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0초</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_transition_zoomin">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>284</y>
+       <width>152</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>현재 프레임 기준</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_42">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>244</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Zoom-In</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_transition_fadein_range">
+     <property name="geometry">
+      <rect>
+       <x>184</x>
+       <y>374</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0초</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rbtn_transition_zoomout">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>374</y>
+       <width>152</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>현재 프레임 기준</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>334</y>
+       <width>101</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Zoom-Out</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>w_sidemenuarea</zorder>
    <zorder>w_coloremphasis</zorder>
    <zorder>w_videoarea</zorder>
@@ -3035,6 +3318,7 @@
    <zorder>w_addimage</zorder>
    <zorder>w_addvideo</zorder>
    <zorder>w_cutvideo</zorder>
+   <zorder>w_transition</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
@@ -3100,4 +3384,8 @@
   <include location="EasyVideoEditor.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="btngrp_transition_zoom"/>
+  <buttongroup name="btngrp_transition_fade"/>
+ </buttongroups>
 </ui>
