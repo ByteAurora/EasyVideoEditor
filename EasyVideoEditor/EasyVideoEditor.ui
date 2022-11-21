@@ -4104,6 +4104,253 @@
      </property>
     </widget>
    </widget>
+   <widget class="QWidget" name="w_changeplayspeed" native="true">
+    <property name="geometry">
+     <rect>
+      <x>64</x>
+      <y>0</y>
+      <width>576</width>
+      <height>540</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #ffffff;</string>
+    </property>
+    <widget class="QLabel" name="label_46">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>16</y>
+       <width>121</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>영상 속도 조절</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changeplayspeed_speed">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>115</x>
+       <y>56</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_49">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>322</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>적용영역</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changeplayspeed_apply">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>492</y>
+       <width>544</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>적용</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changeplayspeed_rangestart">
+     <property name="geometry">
+      <rect>
+       <x>32</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changeplayspeed_rangestarttocurrent">
+     <property name="geometry">
+      <rect>
+       <x>136</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_changeplayspeed_rangeendtocurrent">
+     <property name="geometry">
+      <rect>
+       <x>368</x>
+       <y>444</y>
+       <width>64</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">b</string>
+     </property>
+     <property name="text">
+      <string>현재위치</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="edt_changeplayspeed_rangeend">
+     <property name="geometry">
+      <rect>
+       <x>264</x>
+       <y>444</y>
+       <width>96</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00.000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_50">
+     <property name="geometry">
+      <rect>
+       <x>216</x>
+       <y>444</y>
+       <width>32</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Noto Sans KR</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>~</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_7">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>351</y>
+       <width>111</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <item>
+       <widget class="QRadioButton" name="rbtn_changeplayspeed_allframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>전체 프레임</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbtn_changeplayspeed_rangeframe">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>범위 지정</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_51">
+     <property name="geometry">
+      <rect>
+       <x>16</x>
+       <y>56</y>
+       <width>91</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>재생속도:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
    <zorder>w_sidemenuarea</zorder>
    <zorder>w_coloremphasis</zorder>
    <zorder>w_videoarea</zorder>
@@ -4118,6 +4365,7 @@
    <zorder>w_transition</zorder>
    <zorder>w_addsubtitle</zorder>
    <zorder>w_resize</zorder>
+   <zorder>w_changeplayspeed</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
