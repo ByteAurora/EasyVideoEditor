@@ -45,6 +45,7 @@ private slots:
     void setSliderByLineEdit(QString value);
     void sideMenuClicked();
 
+    // Apply button slots.
     void colorEmphasisApplyButtonClicked();
     void changeBrightnessApplyButtonClicked();
     void changeContrastApplyButtonClicked();
