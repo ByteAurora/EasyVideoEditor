@@ -159,7 +159,7 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="btn_animation">
+    <widget class="QPushButton" name="btn_transition">
      <property name="geometry">
       <rect>
        <x>0</x>

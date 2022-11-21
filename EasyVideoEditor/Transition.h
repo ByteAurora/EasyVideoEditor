@@ -1,6 +1,7 @@
 #pragma once
 #include "Command.h"
-class Animation :
+
+class Transition :
     public Command
 {
 };

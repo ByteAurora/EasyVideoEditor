@@ -88,7 +88,7 @@
     <ClCompile Include="AddVideo.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
+    <ClCompile Include="Transition.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
     <ClCompile Include="ChangeBrightness.cpp">
@@ -150,7 +150,7 @@
     <ClInclude Include="AddVideo.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
+    <ClInclude Include="Transition.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
     <ClInclude Include="ChangeBrightness.h">

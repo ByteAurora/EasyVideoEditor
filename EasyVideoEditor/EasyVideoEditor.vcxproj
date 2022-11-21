@@ -97,7 +97,7 @@
     <ClCompile Include="AddImage.cpp" />
     <ClCompile Include="AddSubtitle.cpp" />
     <ClCompile Include="AddVideo.cpp" />
-    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Transition.cpp" />
     <ClCompile Include="ChangeBrightness.cpp" />
     <ClCompile Include="ChangeContrast.cpp" />
     <ClCompile Include="ChangePlaySpeed.cpp" />
@@ -124,7 +124,7 @@
     <ClInclude Include="AddImage.h" />
     <ClInclude Include="AddSubtitle.h" />
     <ClInclude Include="AddVideo.h" />
-    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Transition.h" />
     <ClInclude Include="ChangeBrightness.h" />
     <ClInclude Include="ChangeContrast.h" />
     <ClInclude Include="ChangePlaySpeed.h" />
