@@ -25,6 +25,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -97,6 +98,7 @@
     <ClCompile Include="AddImage.cpp" />
     <ClCompile Include="AddSubtitle.cpp" />
     <ClCompile Include="AddVideo.cpp" />
+    <ClCompile Include="EasyVideoEditor.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="ChangeBrightness.cpp" />
     <ClCompile Include="ChangeContrast.cpp" />
@@ -117,7 +119,6 @@
     <QtRcc Include="EasyVideoEditor.qrc" />
     <QtUic Include="EasyVideoEditor.ui" />
     <QtMoc Include="EasyVideoEditor.h" />
-    <ClCompile Include="EasyVideoEditor.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

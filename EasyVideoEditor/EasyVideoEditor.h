@@ -17,13 +17,16 @@ class EasyVideoEditor : public QMainWindow
 public:
     EasyVideoEditor(QWidget* parent = nullptr);
     ~EasyVideoEditor();
+public:
+    static QString kor(std::string korString);
 private:
     Ui::EasyVideoEditorClass ui;
     bool workAfterMainWindowShowedCalled = false;
+private:
+    void workAfterMainWindowShowed();
+    bool event(QEvent* event);
 private slots:
     void setLineEditBySlider(int value);
     void setSliderByLineEdit(QString value);
     void sideMenuClicked();
-    void workAfterMainWindowShowed();
-    bool event(QEvent* event);
 };

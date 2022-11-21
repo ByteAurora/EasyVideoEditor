@@ -47,9 +47,6 @@
     <QtUic Include="EasyVideoEditor.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <ClCompile Include="EasyVideoEditor.cpp">
-      <Filter>Code\Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -114,6 +111,9 @@
     </ClCompile>
     <ClCompile Include="Resize.cpp">
       <Filter>Code\Model\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="EasyVideoEditor.cpp">
+      <Filter>Code\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

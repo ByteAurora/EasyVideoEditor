@@ -57,20 +57,18 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     connect(ui.edt_changecontrast_contrast, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
     connect(ui.sd_filter_clarity, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));;
     connect(ui.edt_filter_clarity, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
-
-    // Start.
-
 }
 
 EasyVideoEditor::~EasyVideoEditor()
 {}
 
+QString EasyVideoEditor::kor(std::string korString) {
+    return QString::fromLocal8Bit(korString);
+}
+
 void EasyVideoEditor::workAfterMainWindowShowed() {
-    QString baseVideoPath = QFileDialog::getOpenFileName(this, tr("Select video to edit"), QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
-    if (baseVideoPath.isEmpty()) {
-        QMessageBox::information(this, tr("Info"), tr("Please select video file to edit"), QMessageBox::Ok);
-    }
-    else {
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
+    if (!baseVideoPath.isEmpty()) {
         EveProject::getInstance()->addVideo(new Video(0, baseVideoPath.toStdString()));
     }
 }
