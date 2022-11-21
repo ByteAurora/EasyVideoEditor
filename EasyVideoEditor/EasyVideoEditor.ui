@@ -3116,8 +3116,11 @@
       <string>현재 프레임 기준</string>
      </property>
      <property name="checked">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btngrp_transition_fade</string>
+     </attribute>
     </widget>
     <widget class="QLineEdit" name="edt_transition_zoomout_range">
      <property name="geometry">
@@ -3191,6 +3194,9 @@
      <property name="checked">
       <bool>false</bool>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btngrp_transition_fade</string>
+     </attribute>
     </widget>
     <widget class="QLineEdit" name="edt_transition_fadeout_range">
      <property name="geometry">
@@ -3228,6 +3234,9 @@
      <property name="checked">
       <bool>true</bool>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btngrp_transition_zoom</string>
+     </attribute>
     </widget>
     <widget class="QLabel" name="label_42">
      <property name="geometry">
@@ -3285,6 +3294,9 @@
      <property name="checked">
       <bool>false</bool>
      </property>
+     <attribute name="buttonGroup">
+      <string notr="true">btngrp_transition_zoom</string>
+     </attribute>
     </widget>
     <widget class="QLabel" name="label_43">
      <property name="geometry">
