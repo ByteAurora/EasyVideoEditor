@@ -342,6 +342,5 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
     QString addVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
 
     if (!addVideoPath.isEmpty()) {
-        Video* addVideo = new Video(0, addVideoPath.toStdString());
     }
 };
