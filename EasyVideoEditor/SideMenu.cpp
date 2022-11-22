@@ -1,6 +1,7 @@
 #include "SideMenu.h"
 
 std::vector<SideMenu*> SideMenu::sideMenuList;
+Command::CommandType SideMenu::selectedMenu = Command::COLOR_EMPHASIS;
 
 SideMenu::SideMenu() {
     sideMenuButton = NULL;
@@ -19,8 +20,16 @@ SideMenu::~SideMenu() {
 }
 
 void SideMenu::selectSideMenu(QPushButton* sideMenuButton) {
-    for (int loop = 0; loop < sideMenuList.size(); loop++)
+    for (int loop = 0; loop < sideMenuList.size(); loop++) {
+        if (sideMenuList[loop]->sideMenuButton == sideMenuButton) {
+            selectedMenu = Command::CommandType(loop);
+        }
         sideMenuList[loop]->select(sideMenuList[loop]->sideMenuButton == sideMenuButton);
+    }
+}
+
+Command::CommandType SideMenu::selectedSideMenu() {
+    return selectedMenu;
 }
 
 void SideMenu::select(bool selectState) {

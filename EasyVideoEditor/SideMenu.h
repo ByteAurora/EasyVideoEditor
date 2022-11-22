@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <iostream>
 #include <vector>
+#include "Command.h"
 
 /*
 * @version  v1.0.0
@@ -17,6 +18,8 @@ class SideMenu
 private:
     // A list containing all SideMenu created.
     static std::vector<SideMenu*> sideMenuList;
+
+    static Command::CommandType selectedMenu;
 
     // Button on side menu.
     QPushButton* sideMenuButton;
@@ -35,6 +38,8 @@ public:
 
     // Select side menu and change all side menus widgets state.
     static void selectSideMenu(QPushButton* sideMenuButton);
+
+    static Command::CommandType selectedSideMenu();
 
     // Change side menu widgets state.
     void select(bool selectState);

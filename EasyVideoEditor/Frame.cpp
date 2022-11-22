@@ -14,6 +14,12 @@ Frame::~Frame() {
 
 }
 
+void Frame::copyTo(Frame* frame) {
+    frame->sourceId = sourceId;
+    frame->sourceFrameIndex = sourceFrameIndex;
+    frame->commandList = commandList;
+}
+
 void Frame::setFrameInfo(int sourceId, int sourceFrameIndex) {
     this->sourceId = sourceId;
     this->sourceFrameIndex = sourceFrameIndex;
