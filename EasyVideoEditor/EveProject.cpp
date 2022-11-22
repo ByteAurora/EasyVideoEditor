@@ -179,6 +179,14 @@ std::vector<Frame*>* EveProject::getFrameList() {
     return &frameList;
 }
 
+std::vector<Video*>* EveProject::getVideoList() {
+    return &videoList;
+}
+
+std::vector<Image*>* EveProject::getImageList() {
+    return &imageList;
+}
+
 void EveProject::setCurrentFrameNumber(int frameNumber) {
     currentFrameNumber = frameNumber;
 }

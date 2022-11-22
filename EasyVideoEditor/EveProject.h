@@ -113,6 +113,12 @@ public:
     // Frame list getter.
     std::vector<Frame*>* getFrameList();
 
+    // Video list getter.
+    std::vector<Video*>* getVideoList();
+
+    // Image list getter.
+    std::vector<Image*>* getImageList();
+
     // Current frame number setter.
     void setCurrentFrameNumber(int frameNumber);
     // Current frame number getter.
