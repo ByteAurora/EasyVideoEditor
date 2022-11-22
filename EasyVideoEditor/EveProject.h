@@ -3,6 +3,8 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <QMainwindow>
+#include <QMessageBox>
 #include "Command.h"
 #include "Resource.h"
 #include "Image.h"
@@ -44,6 +46,8 @@ private:
 public:
     // Get instance of EveProject class.
     static EveProject* getInstance();
+
+    void clear(QMainWindow* window);
 
     // Add video resource into video list.
     void addVideo(Video* video);

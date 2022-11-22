@@ -18,6 +18,31 @@ EveProject* EveProject::getInstance() {
     return instance;
 }
 
+void EveProject::clear(QMainWindow* window) {
+    for (int loop = 0; loop < videoList.size(); loop++) {
+        videoList.at(loop)->releaseResource();
+        free(videoList.at(loop));
+    }
+    videoList.clear();
+
+    for (int loop = 0; loop < imageList.size(); loop++) {
+        free(imageList.at(loop));
+    }
+    imageList.clear();
+
+    for (int loop = 0; loop < Command::commandList.size(); loop++) {
+        free(Command::commandList.at(loop));
+    }
+    Command::commandList.clear();
+
+    for (int loop = 0; loop < frameList.size(); loop++) {
+        free(frameList.at(loop));
+    }
+    frameList.clear();
+
+    currentFrameNumber = -1;
+}
+
 void EveProject::addVideo(Video* video) {
     if (currentFrameNumber == -1) { currentFrameNumber = 0; }
     videoList.push_back(video);

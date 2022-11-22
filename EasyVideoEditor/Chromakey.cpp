@@ -1,17 +1,6 @@
 #include "Chromakey.h"
 
-Chromakey::Chromakey() {
-    hueMin = 0;
-    hueMax = 180;
-    saturationMin = 0;
-    saturationMax = 255;
-    valueMin = 0;
-    valueMax = 255;
-    reverse = false;
-    backgroundImageResourceId = 0;
-}
-
-Chromakey::Chromakey(int hueMin, int hueMax, int saturationMin, int saturationMax, int valueMin, int valueMax, bool reverse, int backgroundImageResourceId) {
+Chromakey::Chromakey(bool addToList, int hueMin, int hueMax, int saturationMin, int saturationMax, int valueMin, int valueMax, bool reverse, int backgroundImageResourceId) : Command(addToList){
     this->hueMin = hueMin;
     this->hueMax = hueMax;
     this->saturationMin = saturationMin;

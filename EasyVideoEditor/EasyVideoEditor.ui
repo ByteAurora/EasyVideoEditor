@@ -4427,17 +4427,19 @@
     <property name="title">
      <string>파일</string>
     </property>
-    <widget class="QMenu" name="menu">
+    <widget class="QMenu" name="menu_encoding">
      <property name="title">
       <string>인코딩</string>
      </property>
-     <addaction name="actionmp4"/>
-     <addaction name="actionavi"/>
+     <addaction name="menu_encodingto_mp4"/>
+     <addaction name="menu_encodingto_avi"/>
+     <addaction name="menu_encodingto_wmv"/>
+     <addaction name="menu_encodingto_mov"/>
     </widget>
-    <addaction name="actionNew_Project"/>
-    <addaction name="actionopen_video"/>
-    <addaction name="actionclose_Project"/>
-    <addaction name="menu"/>
+    <addaction name="menu_newproject"/>
+    <addaction name="menu_encoding"/>
+    <addaction name="separator"/>
+    <addaction name="menu_exit"/>
    </widget>
    <widget class="QMenu" name="menu_edit">
     <property name="title">
@@ -4452,14 +4454,9 @@
     <string>새 프로젝트</string>
    </property>
   </action>
-  <action name="actionopen_video">
+  <action name="menu_newproject">
    <property name="text">
-    <string>영상 불러오기</string>
-   </property>
-  </action>
-  <action name="actionclose_Project">
-   <property name="text">
-    <string>닫기</string>
+    <string>새 프로젝트</string>
    </property>
   </action>
   <action name="actionmp4">
@@ -4470,6 +4467,31 @@
   <action name="actionavi">
    <property name="text">
     <string>avi</string>
+   </property>
+  </action>
+  <action name="menu_exit">
+   <property name="text">
+    <string>종료</string>
+   </property>
+  </action>
+  <action name="menu_encodingto_mp4">
+   <property name="text">
+    <string>.mp4</string>
+   </property>
+  </action>
+  <action name="menu_encodingto_avi">
+   <property name="text">
+    <string>.avi</string>
+   </property>
+  </action>
+  <action name="menu_encodingto_wmv">
+   <property name="text">
+    <string>.wmv</string>
+   </property>
+  </action>
+  <action name="menu_encodingto_mov">
+   <property name="text">
+    <string>.mov</string>
    </property>
   </action>
  </widget>

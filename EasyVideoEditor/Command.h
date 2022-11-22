@@ -1,10 +1,14 @@
 #pragma once
 
 #include <opencv2/opencv.hpp>
+#include <iostream>
+#include <vector>
 
 class Command
 {
 public:
+    static std::vector<Command*> commandList;
+
     // An enumeration of the type of command.
     enum CommandType {
         COLOR_EMPHASIS, CHANGE_BRIGHTNESS, CHANGE_CONTRAST, FILTER_EFFECT, CHROMAKEY, TRANSITION
@@ -17,8 +21,11 @@ public:
     // Default constructor.
     Command();
 
+    // Custom constructor.
+    Command(bool addToList);
+
     // Default destructor.
-    ~Command();
+    virtual ~Command();
 
     // A pure virtual function overloaded with an operator that must be implemented in relation to a command in a class that inherits Command class.
     virtual void operator()() = 0;

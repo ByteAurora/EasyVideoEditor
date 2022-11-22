@@ -11,13 +11,10 @@ private:
     FilterType filterType;
     int clarity;
 public:
-    Filter();
-    Filter(int clarity);
-    Filter(Filter::FilterType filterType);
-    Filter(int clarity, Filter::FilterType filterType);
+    Filter(bool addToList, int clarity, Filter::FilterType filterType);
     ~Filter();
 
-    virtual void operator()();
-    virtual void operator()(cv::Mat* mat);
+    void operator()();
+    void operator()(cv::Mat* mat);
 };
 

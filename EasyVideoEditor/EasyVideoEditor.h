@@ -41,7 +41,11 @@ public:
     ~EasyVideoEditor();
 public:
     static QMutex mutex;
+
+    // Editor mode.
     static Mode mode;
+
+    // Size data used to show in qlabel.
     static cv::Size resizeData;
     static int top;
     static int down;
@@ -49,14 +53,35 @@ public:
     static int right;
 private:
     Ui::EasyVideoEditorClass ui;
+
+    // Window showed state.
     bool workAfterMainWindowShowedCalled = false;
+
+    // A Frame object to show real-time editing effects.
     Frame editingFrame;
 private:
-    void updateSampleFrame();
+    // A function called after a window displayed.
     void workAfterMainWindowShowed();
+    void updateSampleFrame();
+
+    // Clear project data and ui elements.
+    void clear();
+
+    // Load new video project.
+    void newProject();
+
     bool event(QEvent* e);
     void keyPressEvent(QKeyEvent* e);
 private slots:
+    // Menu slots.
+    void loadVideoMenuClicked();
+    void encodingToMp4MenuClicked();
+    void encodingToAviMenuClicked();
+    void encodingToWmvMenuClicked();
+    void encodingToMovMenuClicked();
+    void exitMenuClicked();
+
+    // Grouped slots.
     void setLineEditBySlider(int value);
     void setSliderByLineEdit(QString value);
     void sideMenuClicked();

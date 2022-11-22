@@ -65,6 +65,12 @@ void* Video::getResource() {
     return &video;
 }
 
+void Video::releaseResource() {
+    if (video.isOpened()) {
+        video.release();
+    }
+}
+
 void Video::setFps(int fps) {
     this->fps = fps;
 }

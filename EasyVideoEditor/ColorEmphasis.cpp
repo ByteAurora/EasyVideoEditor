@@ -1,12 +1,6 @@
 #include "ColorEmphasis.h"
 
-ColorEmphasis::ColorEmphasis() {
-    redChangeValue = 0;
-    greenChangeValue = 0;
-    blueChangeValue = 0;
-}
-
-ColorEmphasis::ColorEmphasis(int redChangeValue, int greenChangeValue, int blueChangeValue) {
+ColorEmphasis::ColorEmphasis(bool addToList, int redChangeValue, int greenChangeValue, int blueChangeValue) : Command(addToList){
     this->redChangeValue = redChangeValue;
     this->greenChangeValue = greenChangeValue;
     this->blueChangeValue = blueChangeValue;

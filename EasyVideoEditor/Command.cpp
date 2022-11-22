@@ -1,7 +1,12 @@
 #include "Command.h"
 
-Command::Command() {
+std::vector<Command*> Command::commandList;
 
+Command::Command() {
+}
+
+Command::Command(bool addToList) {
+    if (addToList) commandList.push_back(this);
 }
 
 Command::~Command() {
