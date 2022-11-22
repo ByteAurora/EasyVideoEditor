@@ -74,7 +74,7 @@ private:
     void keyPressEvent(QKeyEvent* e);
 private slots:
     // Menu slots.
-    void loadVideoMenuClicked();
+    void newProjectMenuClicked();
     void encodingToMp4MenuClicked();
     void encodingToAviMenuClicked();
     void encodingToWmvMenuClicked();

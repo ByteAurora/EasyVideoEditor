@@ -41,7 +41,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
 
     ////// Init signal, slot.
-    connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(loadVideoMenuClicked()));
+    connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
     connect(ui.btn_coloremphasis, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
@@ -93,7 +93,7 @@ EasyVideoEditor::~EasyVideoEditor()
 {}
 
 void EasyVideoEditor::workAfterMainWindowShowed() {
-    loadVideo();
+    newProject();
 }
 
 void EasyVideoEditor::updateSampleFrame() {
@@ -154,7 +154,7 @@ void EasyVideoEditor::clear() {
     mutex.unlock();
 }
 
-void EasyVideoEditor::loadVideo() {
+void EasyVideoEditor::newProject() {
     QString baseVideoPath = QFileDialog::getOpenFileName(this, "Select video file to edit", QDir::homePath(), tr("Video File (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
         clear();
@@ -232,11 +232,11 @@ void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
     }
 }
 
-void EasyVideoEditor::loadVideoMenuClicked(){
+void EasyVideoEditor::newProjectMenuClicked(){
     mutex.lock();
     if (mode == Mode::MODE_WATCH_PLAY) mode = Mode::MODE_WATCH_PAUSE;
     mutex.unlock();
-    loadVideo();
+    newProject();
 }
 
 void EasyVideoEditor::encodingToMp4MenuClicked(){
