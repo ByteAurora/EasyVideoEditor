@@ -62,11 +62,11 @@ void Frame::getRealFrameData(cv::Mat* mat, bool moveEvent) {
 
 void Frame::getCommandAppliedFrameData(cv::Mat* mat, bool moveEvent) {
     cv::VideoCapture* video = ((cv::VideoCapture*)(EveProject::getInstance()->getVideo(sourceId)->getResource()));
-    if (moveEvent) video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
-    (*video) >> (*mat);
+    if (moveEvent) video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex); // 현재프레임을, source FrameIndex가 가르키는 프레임으로 변경
+    (*video) >> (*mat); // set으로 설정된 frame을 mat에 로드
 
-    for (std::list<Command*>::iterator it = commandList.begin(); it != commandList.end(); it++) {
-        (*(*it))(mat);
+    for (std::list<Command*>::iterator it = commandList.begin(); it != commandList.end(); it++) { 
+        (*(*it))(mat); // 몇번째 command
     }
 }
 

@@ -7,8 +7,7 @@ private:
 	int end_frame;
 
 public:
-	CutVideo();
-	CutVideo(int start_frame, int end_frame);
+	CutVideo(bool addToList, int start_frame, int end_frame);
 	~CutVideo();
 };
 

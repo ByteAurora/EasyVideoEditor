@@ -1,10 +1,11 @@
 #pragma once
 #include "Command.h"
+#include "Image.h"
 
 class AddImage : public Command
 {
 private:
-	std::string imagePath;
+	Image* image;
 	int x;
 	int y;
 	int width;
@@ -13,11 +14,10 @@ private:
 	int end_frame;
 
 public:
-	AddImage();
-	AddImage(std::string imagePath, int x, int y, int width, int height, int start_frame, int end_frame);
+	AddImage(bool addToList, Image* image, int x, int y, int width, int height, int start_frame, int end_frame); // addToList 사용여부 frame list 를 조절하는지 여부, true로 무조건 넘겨주기 addimage, add subtitle
 	~AddImage();
 
-	virtual void operator()();
-	virtual void operator()(cv::Mat* mat);
+	void operator()();
+	void operator()(cv::Mat* mat);
 };
 

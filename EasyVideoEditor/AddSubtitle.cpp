@@ -1,18 +1,8 @@
 #include "AddSubtitle.h"
 
-AddSubtitle::AddSubtitle() {
-	subtitle = "";
-	font = 0;
-	option = 0;
-	size = 0;
-	r_color = 0;
-	g_color = 0;
-	b_color = 0;
-	start_frame = 0;
-	end_frame = 0;
-}
 
-AddSubtitle::AddSubtitle(std::string subtitle, int font, int option, int size, int r_color, int g_color, int b_color, int start_frame, int end_frame) {
+// addToList 사용여부 frame list 를 조절하는지 여부, true로 무조건 넘겨주기 addimage, add subtitle
+AddSubtitle::AddSubtitle(bool addToList, std::string subtitle, int font, int option, int size, int r_color, int g_color, int b_color, int start_frame, int end_frame) {
 	this->subtitle = subtitle;
 	this->font = font;
 	this->option = option;

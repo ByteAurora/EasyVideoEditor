@@ -1,6 +1,7 @@
 #include "EasyVideoEditor.h"
 
 
+
 int EasyVideoEditor::top = 0;
 int EasyVideoEditor::down = 0;
 int EasyVideoEditor::left = 0;
@@ -60,7 +61,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     connect(ui.btn_forward5seconds, SIGNAL(clicked()), this, SLOT(forward5SecondsButtonclicked()));
     connect(ui.btn_backward5seconds, SIGNAL(clicked()), this, SLOT(backward5SecondsButtonClicked()));
     connect(ui.btn_addimage_select_path, SIGNAL(clicked()), this, SLOT(addImageSelectButtonClicked()));
-    connect(ui.btn_addvideo_select_path, SIGNAL(clicked()), this, SLOT(addImageSelectButtonClicked()));
+    connect(ui.btn_addvideo_select_path, SIGNAL(clicked()), this, SLOT(addVideoSelectButtonClicked()));
 
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -357,7 +358,46 @@ void EasyVideoEditor::transitionApplyButtonClicked() {};
 
 void EasyVideoEditor::addImageApplyButtonClicked() {};
 
-void EasyVideoEditor::addVideoApplyButtonClicked() {};
+
+void EasyVideoEditor::addVideoApplyButtonClicked() {
+    QString addImagePath = ui.label_addimage_path->text();
+
+    if (addImagePath != "C:/...") {
+        Image* image = new Image(addImagePath);
+        EveProject::getInstance()->addImage(image);
+
+        QLineEdit* rangeStart = ui.edt_addimage_rangestart;
+        QLineEdit* rangeEnd = ui.edt_addimage_rangeend;
+        
+        Command* command = new AddImage(
+            image,
+            ui.edt_addimage_x->text().toInt(),
+            ui.edt_addimage_y->text().toInt(),
+            ui.edt_addimage_width->text().toInt(),
+            ui.edt_addimage_height->text().toInt(),
+            ui.edt_addimage_rangestart->text().toInt(),
+            ui.edt_addimage_rangeend->text().toInt()
+        );
+
+        if (ui.rbtn_addimage_currentframe->isChecked()) { // 현재프레임
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_addimage_allframe->isChecked()) { // 전체 프레임
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_addimage_rangeframe->isChecked()) { // 범위 프레임
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
+    }
+};
+
 
 void EasyVideoEditor::cutVideoApplyButtonClicked() {};
 
@@ -367,54 +407,12 @@ void EasyVideoEditor::changePlaySpeedButtonClicked() {};
 
 void EasyVideoEditor::addSubtitleButtonClicked() {};
 
-
-
 void EasyVideoEditor::addImageSelectButtonClicked() {
-    QString addImagePath = QFileDialog::getOpenFileName(this, "Select image files to edit", QDir::homePath(), tr("Video Files (*.png *.jpg *.bmp)"));  
-
-    if (!addImagePath.isEmpty()) {
-        Image* image = new Image(addImagePath.toStdString());
-
-        QLineEdit* x = ui.edt_addimage_x;
-        QLineEdit* y = ui.edt_addimage_y;
-        QLineEdit* width = ui.edt_addimage_width;
-        QLineEdit* height = ui.edt_addimage_height;
-        QLineEdit* rangeStart = ui.edt_addimage_rangestart;
-        QLineEdit* rangeEnd = ui.edt_addimage_rangeend;
-
-        Command* command = new AddImage(
-            addImagePath.toStdString(),
-            ui.edt_addimage_x->text().toInt(),
-            ui.edt_addimage_y->text().toInt(),
-            ui.edt_addimage_width->text().toInt(),
-            ui.edt_addimage_height->text().toInt(),
-            ui.edt_addimage_rangestart->text().toInt(),
-            ui.edt_addimage_rangeend->text().toInt()            
-        );
-
-        if (ui.rbtn_addimage_currentframe->isChecked()) {
-            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
-        }
-        else if (ui.rbtn_addimage_allframe->isChecked()) {
-            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
-            for (int loop = 0; loop < allFrames->size(); loop++) {
-                allFrames->at(loop)->addCommand(command);
-            }
-        }
-        else if (ui.rbtn_addimage_rangeframe->isChecked()) {
-            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
-            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
-                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
-            }
-        }
-    }
+    QString addImagePath = QFileDialog::getOpenFileName(this, "Select image files to edit", QDir::homePath(), tr("Video Files (*.png *.jpg *.bmp)"));
+    ui.label_addimage_path->setText(addImagePath);    
 };
     
 void EasyVideoEditor::addVideoSelectButtonClicked() {
     QString addVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
-
-    if (!addVideoPath.isEmpty()) {
-
-    }
+    ui.label_addvideo_path->setText(addVideoPath);
 };
