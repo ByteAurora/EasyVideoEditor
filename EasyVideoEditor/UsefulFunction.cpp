@@ -29,3 +29,13 @@ void UsefulFunction::showMatToLabel(QLabel* qlabel, cv::Mat* mat, cv::Size resiz
     cv::copyMakeBorder(*mat, *mat, top, down, left, right, cv::BORDER_CONSTANT, cv::Scalar(0, 0, 0));
     qlabel->setPixmap(QPixmap::fromImage(QImage(mat->data, mat->cols, mat->rows, mat->step, QImage::Format_RGB888)));
 }
+
+void UsefulFunction::writeLog(QString filePath, QString tag, QString message) {
+    QFile logFile(filePath);
+    logFile.open(QFile::WriteOnly | QFile::Append);
+    QString logMessage;
+    logMessage.asprintf("[%s]   [%s]: %s\n", QDateTime::currentDateTime().toString(), tag, message);
+    QTextStream textStream(&logFile);
+    textStream << logMessage;
+    logFile.close();
+}
