@@ -1,5 +1,6 @@
 #include "EasyVideoEditor.h"
 
+
 int EasyVideoEditor::top = 0;
 int EasyVideoEditor::down = 0;
 int EasyVideoEditor::left = 0;
@@ -58,6 +59,8 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     connect(ui.btn_reset, SIGNAL(clicked()), this, SLOT(resetButtonClicked()));
     connect(ui.btn_forward5seconds, SIGNAL(clicked()), this, SLOT(forward5SecondsButtonclicked()));
     connect(ui.btn_backward5seconds, SIGNAL(clicked()), this, SLOT(backward5SecondsButtonClicked()));
+    connect(ui.btn_addimage_select_path, SIGNAL(clicked()), this, SLOT(addImageSelectButtonClicked()));
+    connect(ui.btn_addvideo_select_path, SIGNAL(clicked()), this, SLOT(addImageSelectButtonClicked()));
 
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -323,3 +326,22 @@ void EasyVideoEditor::resizeApplyButtonClicked() {};
 void EasyVideoEditor::changePlaySpeedButtonClicked() {};
 
 void EasyVideoEditor::addSubtitleButtonClicked() {};
+
+
+
+// test func
+void EasyVideoEditor::addImageSelectButtonClicked() {
+    QString addImagePath = QFileDialog::getOpenFileName(this, "Select image files to edit", QDir::homePath(), tr("Video Files (*.png *.jpg *.bmp)"));  
+
+    if (!addImagePath.isEmpty()) {
+        
+    }
+};
+
+void EasyVideoEditor::addVideoSelectButtonClicked() {
+    QString addVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
+
+    if (!addVideoPath.isEmpty()) {
+        Video* addVideo = new Video(0, addVideoPath.toStdString());
+    }
+};

@@ -76,4 +76,8 @@ private slots:
     void resizeApplyButtonClicked();
     void changePlaySpeedButtonClicked();
     void addSubtitleButtonClicked();
+
+    // test
+    void addImageSelectButtonClicked();
+    void addVideoSelectButtonClicked();
 };
