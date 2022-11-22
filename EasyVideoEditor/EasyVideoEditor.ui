@@ -3377,7 +3377,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QTextEdit" name="edt_addimage_x">
+     <widget class="QLineEdit" name="edt_addimage_x">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -3387,7 +3387,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QTextEdit" name="edt_addiamge_y">
+     <widget class="QLineEdit" name="edt_addimage_y">
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -3397,21 +3397,21 @@
        </rect>
       </property>
      </widget>
-     <widget class="QTextEdit" name="edt_addimage_width">
+     <widget class="QLineEdit" name="edt_addimage_width">
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>230</y>
+        <y>240</y>
         <width>80</width>
         <height>30</height>
        </rect>
       </property>
      </widget>
-     <widget class="QTextEdit" name="edt_addimage_height">
+     <widget class="QLineEdit" name="edt_addimage_height">
       <property name="geometry">
        <rect>
         <x>350</x>
-        <y>230</y>
+        <y>240</y>
         <width>80</width>
         <height>30</height>
        </rect>
@@ -4388,6 +4388,18 @@
       </property>
      </widget>
     </widget>
+    <zorder>w_coloremphasis</zorder>
+    <zorder>w_resize</zorder>
+    <zorder>w_filter</zorder>
+    <zorder>w_cutvideo</zorder>
+    <zorder>w_addvideo</zorder>
+    <zorder>w_chromakey</zorder>
+    <zorder>w_transition</zorder>
+    <zorder>w_changecontrast</zorder>
+    <zorder>w_changeplayspeed</zorder>
+    <zorder>w_changebrightness</zorder>
+    <zorder>w_addsubtitle</zorder>
+    <zorder>w_addimage</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
@@ -4454,8 +4466,4 @@
   <include location="EasyVideoEditor.qrc"/>
  </resources>
  <connections/>
- <buttongroups>
-  <buttongroup name="btngrp_transition_fade"/>
-  <buttongroup name="btngrp_transition_zoom"/>
- </buttongroups>
 </ui>

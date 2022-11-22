@@ -211,6 +211,7 @@ void EasyVideoEditor::resetButtonClicked() {
     UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     mutex.unlock();
 }
+
 void EasyVideoEditor::forward5SecondsButtonclicked() {
     mutex.lock();
     EveProject::getInstance()->forward5Seconds();
@@ -342,18 +343,52 @@ void EasyVideoEditor::addSubtitleButtonClicked() {};
 
 
 
-// test func
 void EasyVideoEditor::addImageSelectButtonClicked() {
     QString addImagePath = QFileDialog::getOpenFileName(this, "Select image files to edit", QDir::homePath(), tr("Video Files (*.png *.jpg *.bmp)"));  
 
     if (!addImagePath.isEmpty()) {
-        
+        Image* image = new Image(addImagePath.toStdString());
+
+        QLineEdit* x = ui.edt_addimage_x;
+        QLineEdit* y = ui.edt_addimage_y;
+        QLineEdit* width = ui.edt_addimage_width;
+        QLineEdit* height = ui.edt_addimage_height;
+        QLineEdit* rangeStart = ui.edt_addimage_rangestart;
+        QLineEdit* rangeEnd = ui.edt_addimage_rangeend;
+
+        Command* command = new AddImage(
+            addImagePath.toStdString(),
+            ui.edt_addimage_x->text().toInt(),
+            ui.edt_addimage_y->text().toInt(),
+            ui.edt_addimage_width->text().toInt(),
+            ui.edt_addimage_height->text().toInt(),
+            ui.edt_addimage_rangestart->text().toInt(),
+            ui.edt_addimage_rangeend->text().toInt()            
+        );
+
+        if (ui.rbtn_addimage_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_addimage_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_addimage_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
     }
 };
-
+    
 void EasyVideoEditor::addVideoSelectButtonClicked() {
     QString addVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
 
     if (!addVideoPath.isEmpty()) {
+
     }
 };

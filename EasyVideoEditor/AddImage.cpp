@@ -1,6 +1,7 @@
 #include "AddImage.h"
 
 AddImage::AddImage() {
+	imagePath = "";
 	x = 0;
 	y = 0;
 	width = 0;
@@ -9,7 +10,8 @@ AddImage::AddImage() {
 	end_frame = 0;
 }
 
-AddImage::AddImage(int x, int y, int width, int height, int start_frame, int end_frame){
+AddImage::AddImage(std::string imagePath, int x, int y, int width, int height, int start_frame, int end_frame){
+	this->imagePath = imagePath;
 	this->x = x;
 	this->y = y;
 	this->width = width;
@@ -19,5 +21,12 @@ AddImage::AddImage(int x, int y, int width, int height, int start_frame, int end
 }
 
 AddImage::~AddImage() {
+}
+
+void AddImage::operator()() {
+
+}
+
+void AddImage::operator()(cv::Mat* mat) {
 }
 

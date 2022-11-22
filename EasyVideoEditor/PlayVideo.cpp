@@ -38,8 +38,8 @@ void PlayVideo::run() {
 
         sourceId = EveProject::getInstance()->getCurrentFrame()->getSourceId();
         frameIndex = EveProject::getInstance()->getCurrentFrameNumber();
-        lblCurrentPlayTime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(loop)));
-        sdVideoProgress->setValue(loop);
+        lblCurrentPlayTime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(frameIndex)));
+        sdVideoProgress->setValue(frameIndex);
 
         EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, sourceId != beforeSourceId || (frameIndex > beforeFrameIndex + 1) || (frameIndex < beforeFrameIndex));
         UsefulFunction::showMatToLabel(lblVideoFrame, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
@@ -55,7 +55,7 @@ void PlayVideo::run() {
         beforeFrameIndex = frameIndex;
     }
 
-    if (loop == endIndex) {
+    if (frameIndex == endIndex) {
         EasyVideoEditor::mutex.lock();
         btnPlay->setVisible(true);
         btnPause->setVisible(false);
