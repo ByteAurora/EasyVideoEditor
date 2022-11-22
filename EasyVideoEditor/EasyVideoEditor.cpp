@@ -8,9 +8,7 @@ EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
 QMutex EasyVideoEditor::mutex;
 cv::Size EasyVideoEditor::resizeData;
 
-EasyVideoEditor::EasyVideoEditor(QWidget* parent)
-    : QMainWindow(parent)
-{
+EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.setupUi(this);
     Widgets::getInstance()->initWidgets(this);
 
@@ -26,6 +24,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
+    ui.w_videocontrolarea->setEnabled(false);
     new SideMenu(ui.btn_coloremphasis, ui.w_coloremphasis);
     new SideMenu(ui.btn_changebrightness, ui.w_changebrightness);
     new SideMenu(ui.btn_changecontrast, ui.w_changecontrast);
@@ -130,14 +129,37 @@ void EasyVideoEditor::workAfterMainWindowShowed() {
     }
 }
 
-bool EasyVideoEditor::event(QEvent* event) {
-    const bool ret_val = QMainWindow::event(event);
-    if (!workAfterMainWindowShowedCalled && event->type() == QEvent::Paint) {
+bool EasyVideoEditor::event(QEvent* e) {
+    const bool ret_val = QMainWindow::event(e);
+    if (!workAfterMainWindowShowedCalled && e->type() == QEvent::Paint) {
         workAfterMainWindowShowedCalled = true;
         workAfterMainWindowShowed();
     }
 
     return ret_val;
+}
+
+void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
+    if ((e->key() == Qt::Key_E) && QApplication::keyboardModifiers() && Qt::ControlModifier) {
+        mutex.lock();
+        if (mode == Mode::MODE_EDIT) {
+            mode = Mode::MODE_WATCH_PAUSE;
+            ui.w_sidemenuarea->setEnabled(false);
+            ui.w_sidemenupagearea->setEnabled(false);
+            ui.w_videocontrolarea->setEnabled(true);
+        }
+        else {
+            if (mode == Mode::MODE_WATCH_PLAY) {
+                ui.btn_play->setVisible(true);
+                ui.btn_pause->setVisible(false);
+            }
+            mode = Mode::MODE_EDIT;
+            ui.w_sidemenuarea->setEnabled(true);
+            ui.w_sidemenupagearea->setEnabled(true);
+            ui.w_videocontrolarea->setEnabled(false);
+        }
+        mutex.unlock();
+    }
 }
 
 void EasyVideoEditor::sideMenuClicked() {

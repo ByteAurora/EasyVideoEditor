@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QMutex>
+#include <QEvent>
+#include <QKeyEvent>
 #include "SideMenu.h"
 #include "ui_EasyVideoEditor.h"
 #include "Widgets.h"
@@ -52,7 +54,8 @@ private:
 private:
     void updateSampleFrame();
     void workAfterMainWindowShowed();
-    bool event(QEvent* event);
+    bool event(QEvent* e);
+    void keyPressEvent(QKeyEvent* e);
 private slots:
     void setLineEditBySlider(int value);
     void setSliderByLineEdit(QString value);
