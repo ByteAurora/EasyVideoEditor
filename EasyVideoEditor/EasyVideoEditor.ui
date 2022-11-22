@@ -336,9 +336,9 @@
      <widget class="QSlider" name="sd_videoprogress">
       <property name="geometry">
        <rect>
-        <x>128</x>
+        <x>132</x>
         <y>14</y>
-        <width>704</width>
+        <width>696</width>
         <height>22</height>
        </rect>
       </property>
@@ -4454,8 +4454,4 @@
   <include location="EasyVideoEditor.qrc"/>
  </resources>
  <connections/>
- <buttongroups>
-  <buttongroup name="btngrp_transition_fade"/>
-  <buttongroup name="btngrp_transition_zoom"/>
- </buttongroups>
 </ui>
