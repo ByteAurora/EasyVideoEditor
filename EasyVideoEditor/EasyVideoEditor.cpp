@@ -156,7 +156,23 @@ void EasyVideoEditor::setLineEditBySlider(int value) {
     else if (senderObject == ui.sd_changecontrast_contrast) ui.edt_changecontrast_contrast->setText(QString::number(value));
     else if (senderObject == ui.sd_filter_clarity) ui.edt_filter_clarity->setText(QString::number(value));
 
-    if(SideMenu::selectedSideMenu() == Command::CommandType::COLOR_EMPHASIS) {
+    updateSampleFrame();
+}
+
+void EasyVideoEditor::setSliderByLineEdit(QString value) {
+    QObject* senderObject = sender();
+    if (senderObject == ui.edt_coloremphasis_red) ui.sd_coloremphasis_red->setValue(value.toInt());
+    else if (senderObject == ui.edt_coloremphasis_green) ui.sd_coloremphasis_green->setValue(value.toInt());
+    else if (senderObject == ui.edt_coloremphasis_blue) ui.sd_coloremphasis_blue->setValue(value.toInt());
+    else if (senderObject == ui.edt_changebrightness_brightness) ui.sd_changebrightness_brightness->setValue(value.toInt());
+    else if (senderObject == ui.edt_changecontrast_contrast) ui.sd_changecontrast_contrast->setValue(value.toInt());
+    else if (senderObject == ui.edt_filter_clarity) ui.sd_filter_clarity->setValue(value.toInt());
+
+    updateSampleFrame();
+}
+
+void EasyVideoEditor::updateSampleFrame() {
+    if (SideMenu::selectedSideMenu() == Command::CommandType::COLOR_EMPHASIS) {
         (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
         ColorEmphasis colorEmphasis(
             ui.edt_coloremphasis_red->text().toInt(),
@@ -168,16 +184,26 @@ void EasyVideoEditor::setLineEditBySlider(int value) {
         editingFrame.getCommandAppliedFrameData(&showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
-}
-
-void EasyVideoEditor::setSliderByLineEdit(QString value) {
-    QObject* senderObject = sender();
-    if (senderObject == ui.edt_coloremphasis_red) ui.sd_coloremphasis_red->setValue(value.toInt());
-    else if (senderObject == ui.edt_coloremphasis_green) ui.sd_coloremphasis_green->setValue(value.toInt());
-    else if (senderObject == ui.edt_coloremphasis_blue) ui.sd_coloremphasis_blue->setValue(value.toInt());
-    else if (senderObject == ui.edt_changebrightness_brightness) ui.sd_changebrightness_brightness->setValue(value.toInt());
-    else if (senderObject == ui.edt_changecontrast_contrast) ui.sd_changecontrast_contrast->setValue(value.toInt());
-    else if (senderObject == ui.edt_filter_clarity) ui.sd_filter_clarity->setValue(value.toInt());
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_BRIGHTNESS) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        ChangeBrightness changeBrightness(
+            ui.edt_changebrightness_brightness->text().toInt()
+        );
+        editingFrame.addCommand(&changeBrightness);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_CONTRAST) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        ChangeContrast changeContrast(
+            ui.edt_changecontrast_contrast->text().toInt()
+        );
+        editingFrame.addCommand(&changeContrast);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
 }
 
 void EasyVideoEditor::playButtonClicked() {

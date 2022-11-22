@@ -7,7 +7,7 @@ PlayVideo::PlayVideo(QObject* parent) : QThread(parent) {
 void PlayVideo::run() {
     EasyVideoEditor::mutex.lock();
     int startIndex = EveProject::getInstance()->getCurrentFrameNumber();
-    int endIndex = EveProject::getInstance()->getFrameList()->size();
+    int endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
     int delay = EveProject::getInstance()->getBaseDelay();
     QLabel* lblVideoFrame = Widgets::getInstance()->contentArea->findChild<QWidget*>("w_videoarea")->findChild<QLabel*>("lbl_videoframe");
     QLabel* lblCurrentPlayTime = Widgets::getInstance()->contentArea->findChild<QWidget*>("w_videoarea")->findChild<QWidget*>("w_videocontrolarea")->findChild<QLabel*>("lbl_currentplaytime");
@@ -17,32 +17,44 @@ void PlayVideo::run() {
     QPushButton* btnPause = Widgets::getInstance()->contentArea->findChild<QWidget*>("w_videoarea")->findChild<QWidget*>("w_videocontrolarea")->findChild<QPushButton*>("btn_pause");;
     
     lblMaxPlayTime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(endIndex)));
-    sdVideoProgress->setMaximum(endIndex - 1);
+    sdVideoProgress->setMinimum(0);
+    sdVideoProgress->setMaximum(endIndex);
     EasyVideoEditor::mutex.unlock();
 
     cv::TickMeter tickMeter;
     cv::Mat showFrame;
-    int sourceId = EveProject::getInstance()->getCurrentFrame()->getSourceId();
-    int beforeSourceId = sourceId;
     int frameIndex = startIndex;
-    int beforeFrameIndex = startIndex;
+    int beforeFrameIndex = frameIndex - 1;
+    Frame* currentFrame = EveProject::getInstance()->getCurrentFrame();
+    Frame* beforeFrame = currentFrame;
 
-    for (frameIndex = startIndex; frameIndex < endIndex; frameIndex++) {
+    while (frameIndex <= endIndex) {
         tickMeter.reset();
         EasyVideoEditor::mutex.lock();
         tickMeter.start();
-        if (EasyVideoEditor::mode != EasyVideoEditor::Mode::MODE_WATCH_PLAY) { 
+
+        frameIndex = EveProject::getInstance()->getCurrentFrameNumber();
+        if (EasyVideoEditor::mode != EasyVideoEditor::Mode::MODE_WATCH_PLAY || frameIndex > endIndex) {
             EasyVideoEditor::mutex.unlock();
-            break; 
+            break;
         }
 
-        sourceId = EveProject::getInstance()->getCurrentFrame()->getSourceId();
-        frameIndex = EveProject::getInstance()->getCurrentFrameNumber();
+        currentFrame = EveProject::getInstance()->getCurrentFrame();
         lblCurrentPlayTime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(frameIndex)));
         sdVideoProgress->setValue(frameIndex);
 
-        EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, sourceId != beforeSourceId || (frameIndex > beforeFrameIndex + 1) || (frameIndex < beforeFrameIndex));
+        if(frameIndex != startIndex)
+            EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, 
+                (frameIndex > beforeFrameIndex + 1) 
+                || (frameIndex < beforeFrameIndex) 
+                || (currentFrame->getSourceId() != beforeFrame->getSourceId()) 
+                || (currentFrame->getSourceId() == beforeFrame->getSourceId() && currentFrame->getSourceFrameIndex() < beforeFrame->getSourceFrameIndex()
+                || currentFrame->getSourceFrameIndex() > beforeFrame->getSourceFrameIndex() + 1));
+        else
+            EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, true);
+        
         UsefulFunction::showMatToLabel(lblVideoFrame, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+        
         tickMeter.stop();
         EasyVideoEditor::mutex.unlock();
 
@@ -50,16 +62,16 @@ void PlayVideo::run() {
         if (processingTime < delay) {
             msleep(delay - processingTime);
         }
-        
-        beforeSourceId = sourceId;
+
+        beforeFrame = currentFrame;
         beforeFrameIndex = frameIndex;
     }
 
-    if (frameIndex == endIndex) {
+    if (frameIndex > endIndex) {
         EasyVideoEditor::mutex.lock();
         btnPlay->setVisible(true);
         btnPause->setVisible(false);
-        EveProject::getInstance()->setCurrentFrameNumber(endIndex - 1);
+        EveProject::getInstance()->setCurrentFrameNumber(endIndex);
         EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_WATCH_PAUSE;
         EasyVideoEditor::mutex.unlock();
     }

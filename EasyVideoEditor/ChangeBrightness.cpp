@@ -8,6 +8,10 @@ ChangeBrightness::ChangeBrightness(int brightness) {
     this->brightness = brightness;
 }
 
+ChangeBrightness::~ChangeBrightness() {
+
+}
+
 void ChangeBrightness::operator()() {
 
 }

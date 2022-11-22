@@ -50,6 +50,7 @@ private:
     bool workAfterMainWindowShowedCalled = false;
     Frame editingFrame;
 private:
+    void updateSampleFrame();
     void workAfterMainWindowShowed();
     bool event(QEvent* event);
 private slots:

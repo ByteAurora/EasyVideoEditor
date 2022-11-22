@@ -1,4 +1,5 @@
 #pragma once
+
 #include <qthread.h>
 #include <opencv2/opencv.hpp>
 #include "EasyVideoEditor.h"
