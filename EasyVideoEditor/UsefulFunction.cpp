@@ -32,9 +32,15 @@ void UsefulFunction::showMatToLabel(QLabel* qlabel, cv::Mat* mat, cv::Size resiz
 
 void UsefulFunction::writeLog(QString filePath, QString tag, QString message) {
     QFile logFile(filePath);
-    logFile.open(QFile::WriteOnly | QFile::Append);
+    logFile.open(QFile::WriteOnly | QFile::Append | QFile::Text);
     QString logMessage;
-    logMessage.asprintf("[%s]   [%s]: %s\n", QDateTime::currentDateTime().toString(), tag, message);
+    logMessage.append("[");
+    logMessage.append(QDateTime::currentDateTime().toString());
+    logMessage.append("]    [");
+    logMessage.append(tag);
+    logMessage.append("]: ");
+    logMessage.append(message);
+    logMessage.append("\n");
     QTextStream textStream(&logFile);
     textStream << logMessage;
     logFile.close();
