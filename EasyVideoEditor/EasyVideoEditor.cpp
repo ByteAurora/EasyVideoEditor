@@ -152,6 +152,19 @@ void EasyVideoEditor::setLineEditBySlider(int value) {
     else if (senderObject == ui.sd_changebrightness_brightness) ui.edt_changebrightness_brightness->setText(QString::number(value));
     else if (senderObject == ui.sd_changecontrast_contrast) ui.edt_changecontrast_contrast->setText(QString::number(value));
     else if (senderObject == ui.sd_filter_clarity) ui.edt_filter_clarity->setText(QString::number(value));
+
+    if(SideMenu::selectedSideMenu() == Command::CommandType::COLOR_EMPHASIS) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        ColorEmphasis colorEmphasis(
+            ui.edt_coloremphasis_red->text().toInt(),
+            ui.edt_coloremphasis_green->text().toInt(),
+            ui.edt_coloremphasis_blue->text().toInt()
+        );
+        editingFrame.addCommand(&colorEmphasis);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
 }
 
 void EasyVideoEditor::setSliderByLineEdit(QString value) {

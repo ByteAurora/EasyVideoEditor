@@ -38,6 +38,9 @@ public:
     // Default destructor.
     ~Frame();
 
+    // Deep copy.
+    void copyTo(Frame* frame);
+
     // Set frame informations.
     void setFrameInfo(int sourceId, int sourceFrameIndex);
 

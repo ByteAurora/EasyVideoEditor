@@ -22,8 +22,9 @@ void PlayVideo::run() {
 
     cv::TickMeter tickMeter;
     cv::Mat showFrame;
-    int loop;
-    int loopTemp;
+    int loop = startIndex;
+    int loopTemp = startIndex;
+    int beforeResourceId = EveProject::getInstance()->getCurrentFrame()->getSourceId();
 
     for (loop = startIndex; loop < endIndex; loop++) {
         tickMeter.reset();
@@ -38,7 +39,7 @@ void PlayVideo::run() {
         lblCurrentPlayTime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(loop)));
         sdVideoProgress->setValue(loop);
 
-        EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, (loop > loopTemp + 1) || (loop < loopTemp));
+        EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, ( &&loop > loopTemp + 1) || (loop < loopTemp));
         UsefulFunction::showMatToLabel(lblVideoFrame, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         tickMeter.stop();
         EasyVideoEditor::mutex.unlock();
@@ -54,6 +55,7 @@ void PlayVideo::run() {
         EasyVideoEditor::mutex.lock();
         btnPlay->setVisible(true);
         btnPause->setVisible(false);
+        EveProject::getInstance()->setCurrentFrameNumber(endIndex - 1);
         EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_WATCH_PAUSE;
         EasyVideoEditor::mutex.unlock();
     }

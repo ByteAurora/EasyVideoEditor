@@ -48,6 +48,7 @@ public:
 private:
     Ui::EasyVideoEditorClass ui;
     bool workAfterMainWindowShowedCalled = false;
+    Frame editingFrame;
 private:
     void workAfterMainWindowShowed();
     bool event(QEvent* event);
