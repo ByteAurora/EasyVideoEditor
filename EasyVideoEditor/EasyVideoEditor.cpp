@@ -284,6 +284,8 @@ void EasyVideoEditor::sideMenuClicked() {
 
 void EasyVideoEditor::playButtonClicked() {
     mutex.lock();
+    if (EveProject::getInstance()->getCurrentFrameNumber() == EveProject::getInstance()->getFrameList()->size() - 1)
+        EveProject::getInstance()->setCurrentFrameNumber(0);
     mode = Mode::MODE_WATCH_PLAY;
     ui.btn_play->setVisible(false);
     ui.btn_pause->setVisible(true);
