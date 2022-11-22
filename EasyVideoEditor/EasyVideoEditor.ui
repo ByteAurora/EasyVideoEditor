@@ -336,11 +336,17 @@
      <widget class="QSlider" name="sd_videoprogress">
       <property name="geometry">
        <rect>
-        <x>132</x>
+        <x>128</x>
         <y>14</y>
-        <width>696</width>
+        <width>700</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="maximum">
+       <number>99</number>
+      </property>
+      <property name="value">
+       <number>0</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -548,8 +554,14 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-255</number>
+      </property>
       <property name="maximum">
        <number>255</number>
+      </property>
+      <property name="value">
+       <number>0</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -564,8 +576,14 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-255</number>
+      </property>
       <property name="maximum">
        <number>255</number>
+      </property>
+      <property name="value">
+       <number>0</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -580,8 +598,14 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>-255</number>
+      </property>
       <property name="maximum">
        <number>255</number>
+      </property>
+      <property name="value">
+       <number>0</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
