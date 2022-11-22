@@ -62,7 +62,8 @@ void Frame::getRealFrameData(cv::Mat* mat, bool moveEvent) {
 
 void Frame::getCommandAppliedFrameData(cv::Mat* mat, bool moveEvent) {
     cv::VideoCapture* video = ((cv::VideoCapture*)(EveProject::getInstance()->getVideo(sourceId)->getResource()));
-    if (moveEvent) video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+    if (moveEvent || sourceFrameIndex != video->get(cv::CAP_PROP_POS_FRAMES)) video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+    
     (*video) >> (*mat);
 
     for (std::list<Command*>::iterator it = commandList.begin(); it != commandList.end(); it++) {
