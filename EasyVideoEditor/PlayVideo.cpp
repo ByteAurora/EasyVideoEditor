@@ -22,7 +22,7 @@ void PlayVideo::run() {
     EasyVideoEditor::mutex.unlock();
 
     cv::TickMeter tickMeter;
-    cv::Mat showFrame; // 여기다가 실제 파일을 불러와서
+    cv::Mat showFrame;
     int frameIndex = startIndex;
     int beforeFrameIndex = frameIndex - 1;
     Frame* currentFrame = EveProject::getInstance()->getCurrentFrame();
@@ -46,7 +46,6 @@ void PlayVideo::run() {
         sdVideoProgress->setValue(frameIndex);
 
         if(frameIndex != startIndex)
-            // 현재 보고 있는 프레임을 반환해주고 를 1증가
             EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, 
                 (frameIndex > beforeFrameIndex + 1) 
                 || (frameIndex < beforeFrameIndex) 

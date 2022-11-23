@@ -4247,7 +4247,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="radiobtn_addsubtitle_top">
+        <widget class="QRadioButton" name="radioBtn_addsubtitle_top">
          <property name="text">
           <string>상단</string>
          </property>
@@ -4264,6 +4264,9 @@
         <widget class="QRadioButton" name="radioBtn_addsubtitle_low">
          <property name="text">
           <string>하단</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -4283,7 +4286,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="cmbox_addsubtitle_font"/>
+        <widget class="QComboBox" name="cmbox_addsubtitle_font">
+         <property name="currentText">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -4295,6 +4302,9 @@
         <width>50</width>
         <height>30</height>
        </rect>
+      </property>
+      <property name="value">
+       <number>1</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_addsubtitle_color">
@@ -4339,26 +4349,6 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QTextEdit" name="edt_addsubtitle_colorselect_red">
-      <property name="geometry">
-       <rect>
-        <x>146</x>
-        <y>280</y>
-        <width>50</width>
-        <height>30</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="edt_subtitle_colorselect_green">
-      <property name="geometry">
-       <rect>
-        <x>286</x>
-        <y>280</y>
-        <width>50</width>
-        <height>30</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_addsubtitle_color_green">
       <property name="geometry">
        <rect>
@@ -4401,7 +4391,27 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QTextEdit" name="edt_addsubtitle_colorselect_blue">
+     <widget class="QLineEdit" name="edt_addsubtitle_color_red">
+      <property name="geometry">
+       <rect>
+        <x>146</x>
+        <y>280</y>
+        <width>50</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="edt_addsubtitle_color_green">
+      <property name="geometry">
+       <rect>
+        <x>286</x>
+        <y>280</y>
+        <width>50</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="edt_addsubtitle_color_blue">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -4422,8 +4432,8 @@
     <zorder>w_changecontrast</zorder>
     <zorder>w_changeplayspeed</zorder>
     <zorder>w_changebrightness</zorder>
-    <zorder>w_addsubtitle</zorder>
     <zorder>w_addimage</zorder>
+    <zorder>w_addsubtitle</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">

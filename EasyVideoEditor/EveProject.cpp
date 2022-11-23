@@ -57,6 +57,7 @@ Video* EveProject::getVideo(int index) {
 void EveProject::addImage(Image* image) {
     imageList.push_back(image);
     image->setResourceId(imageList.size() - 1);
+    image->loadResource();
 }
 
 Image* EveProject::getImage(int index) {

@@ -67,7 +67,7 @@ void Frame::getCommandAppliedFrameData(cv::Mat* mat, bool moveEvent) {
     (*video) >> (*mat);
 
     for (std::list<Command*>::iterator it = commandList.begin(); it != commandList.end(); it++) { 
-        (*(*it))(mat); // ¸î¹øÂ° command
+        (*(*it))(mat);
     }
 }
 
