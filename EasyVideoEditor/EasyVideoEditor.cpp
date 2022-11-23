@@ -213,6 +213,10 @@ void EasyVideoEditor::newProject() {
     }
 }
 
+void EasyVideoEditor::saveVideo() {
+
+}
+
 void EasyVideoEditor::updateInformationArea() {
 
 }
