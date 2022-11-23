@@ -25,6 +25,14 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
+    ui.cmbox_addsubtitle_font->addItem("SIMPLEX"); // FONT_HERSHEY_SIMPLEX
+    ui.cmbox_addsubtitle_font->addItem("PLAIN"); // FONT_HERSHEY_PLAIN
+    ui.cmbox_addsubtitle_font->addItem("DUPLEX"); // FONT_HERSHEY_DUPLEX
+    ui.cmbox_addsubtitle_font->addItem("COMPLEX"); // FONT_HERSHEY_COMPLEX
+    ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
+    ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
+    ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
+    ui.cmbox_addsubtitle_font->addItem("ITALIC"); // FONT_ITALIC
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -437,20 +445,18 @@ void EasyVideoEditor::chromakeyApplyButtonClicked() {};
 
 void EasyVideoEditor::transitionApplyButtonClicked() {};
 
-void EasyVideoEditor::addImageApplyButtonClicked() {};
+void EasyVideoEditor::addImageApplyButtonClicked() {
+    std::string addImagePath = ui.label_addimage_path->text().toStdString();
 
-
-void EasyVideoEditor::addVideoApplyButtonClicked() {
-    QString addImagePath = ui.label_addimage_path->text();
-
-    if (addImagePath != "C:/...") {
+    if (addImagePath != "") {
         Image* image = new Image(addImagePath);
         EveProject::getInstance()->addImage(image);
 
         QLineEdit* rangeStart = ui.edt_addimage_rangestart;
         QLineEdit* rangeEnd = ui.edt_addimage_rangeend;
-        
+
         Command* command = new AddImage(
+            true,
             image,
             ui.edt_addimage_x->text().toInt(),
             ui.edt_addimage_y->text().toInt(),
@@ -480,17 +486,23 @@ void EasyVideoEditor::addVideoApplyButtonClicked() {
 };
 
 
+void EasyVideoEditor::addVideoApplyButtonClicked() {};
+
 void EasyVideoEditor::cutVideoApplyButtonClicked() {};
 
 void EasyVideoEditor::resizeApplyButtonClicked() {};
 
 void EasyVideoEditor::changePlaySpeedButtonClicked() {};
 
-void EasyVideoEditor::addSubtitleButtonClicked() {};
+void EasyVideoEditor::addSubtitleButtonClicked() {
+    QString subTitle = ui.edt_addsubtitle_subtitle->toPlainText();
+    QMessageBox::information(this, "title", subTitle, QMessageBox::Ok);
+};
 
 void EasyVideoEditor::addImageSelectButtonClicked() {
     QString addImagePath = QFileDialog::getOpenFileName(this, "Select image files to edit", QDir::homePath(), tr("Video Files (*.png *.jpg *.bmp)"));
-    ui.label_addimage_path->setText(addImagePath);    
+    ui.label_addimage_path->setText(addImagePath);
+
 };
     
 void EasyVideoEditor::addVideoSelectButtonClicked() {

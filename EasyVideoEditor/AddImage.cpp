@@ -1,5 +1,6 @@
 #include "AddImage.h"
 
+
 AddImage::AddImage(bool addToList, Image* image, int x, int y, int width, int height, int start_frame, int end_frame){
 	this->image = image;
 	this->x = x;
@@ -18,7 +19,9 @@ void AddImage::operator()() {
 }
 
 void AddImage::operator()(cv::Mat* mat) {
-	cv::Mat img = ((cv::Mat *)image->getResource())->clone();
-
+	cv::Mat cloneImg = ((cv::Mat *)image->getResource())->clone();
+	cv::resize(cloneImg, cloneImg, cv::Size(width,height));
+	(*mat)(cv::Rect(x, y, width, height)) = 0;
+	(*mat)(cv::Rect(x, y, width, height)) += cloneImg;	
 }
 
