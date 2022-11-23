@@ -50,6 +50,9 @@ public:
     // The return value is void*, and it is used after converting to Video* or Image* depending on the type of resource.
     virtual void* getResource();
 
+    // Close opened video.
+    void releaseResource();
+
     // Fps setter.
     void setFps(int fps);
     // Fps getter.

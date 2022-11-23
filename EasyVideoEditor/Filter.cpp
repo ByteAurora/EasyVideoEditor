@@ -1,22 +1,6 @@
 #include "Filter.h"
 
-Filter::Filter() {
-    clarity = 50;
-    filterType = FilterType::NONE;
-}
-
-Filter::Filter(int clarity) {
-    this->clarity = clarity;
-    filterType = FilterType::NONE;
-}
-
-Filter::Filter(Filter::FilterType filterType) {
-    clarity = 50;
-    this->filterType = filterType;
-}
-
-
-Filter::Filter(int contrast, Filter::FilterType filterType) {
+Filter::Filter(bool addToList, int contrast, Filter::FilterType filterType) : Command(addToList){
     this->clarity = contrast;
     this->filterType = filterType;
 }

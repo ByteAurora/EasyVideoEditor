@@ -6,11 +6,10 @@ class ChangeContrast : public Command
 private:
     int contrast;
 public:
-    ChangeContrast();
-    ChangeContrast(int contrast);
+    ChangeContrast(bool addToList, int contrast);
     ~ChangeContrast();
 
-    virtual void operator()();
-    virtual void operator()(cv::Mat* mat);
+    void operator()();
+    void operator()(cv::Mat* mat);
 };
 

@@ -1,10 +1,6 @@
 #include "ChangeBrightness.h"
 
-ChangeBrightness::ChangeBrightness() {
-    brightness = 50;
-}
-
-ChangeBrightness::ChangeBrightness(int brightness) {
+ChangeBrightness::ChangeBrightness(bool addToList, int brightness) : Command(addToList) {
     this->brightness = brightness;
 }
 

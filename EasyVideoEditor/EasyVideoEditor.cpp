@@ -10,13 +10,14 @@ EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
 QMutex EasyVideoEditor::mutex;
 cv::Size EasyVideoEditor::resizeData;
 
-EasyVideoEditor::EasyVideoEditor(QWidget* parent)
-    : QMainWindow(parent)
-{
+EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.setupUi(this);
     Widgets::getInstance()->initWidgets(this);
 
     ////// Init ui.
+    ui.btn_pause->setVisible(false);
+    ui.w_contentarea->setEnabled(false);
+    ui.w_videocontrolarea->setEnabled(false);
     ui.edt_coloremphasis_red->setValidator(new QIntValidator(0, 255, this));
     ui.edt_coloremphasis_green->setValidator(new QIntValidator(0, 255, this));
     ui.edt_coloremphasis_blue->setValidator(new QIntValidator(0, 255, this));
@@ -24,7 +25,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
-    ui.btn_pause->setVisible(false);
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -43,6 +43,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent)
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
 
     ////// Init signal, slot.
+    connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
     connect(ui.btn_coloremphasis, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
@@ -96,13 +97,81 @@ EasyVideoEditor::~EasyVideoEditor()
 {}
 
 void EasyVideoEditor::workAfterMainWindowShowed() {
-    QString baseVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
+    newProject();
+}
+
+void EasyVideoEditor::updateSampleFrame() {
+    if (SideMenu::selectedSideMenu() == Command::CommandType::COLOR_EMPHASIS) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        ColorEmphasis colorEmphasis(false,
+            ui.edt_coloremphasis_red->text().toInt(),
+            ui.edt_coloremphasis_green->text().toInt(),
+            ui.edt_coloremphasis_blue->text().toInt()
+        );
+        editingFrame.addCommand(&colorEmphasis);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_BRIGHTNESS) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        ChangeBrightness changeBrightness(false,
+            ui.edt_changebrightness_brightness->text().toInt()
+        );
+        editingFrame.addCommand(&changeBrightness);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_CONTRAST) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        ChangeContrast changeContrast(false,
+            ui.edt_changecontrast_contrast->text().toInt()
+        );
+        editingFrame.addCommand(&changeContrast);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
+}
+
+void EasyVideoEditor::clear() {
+    mutex.lock();
+    // Init Data.
+    mode = Mode::MODE_EDIT;
+    editingFrame.removeAllCommand();
+
+    // Init UI.
+    ui.lbl_currentplaytime->setText("00:00:00.000");
+    ui.lbl_maxplaytime->setText("00:00:00.000");
+    ui.sd_videoprogress->setValue(0);
+    ui.btn_play->setVisible(true);
+    ui.btn_pause->setVisible(false);
+    ui.w_contentarea->setEnabled(false);
+    ui.w_sidemenuarea->setEnabled(false);
+    ui.w_sidemenupagearea->setEnabled(false);
+    ui.w_videocontrolarea->setEnabled(false);
+    ui.w_videoarea->setStyleSheet("background-color:#000000;");
+
+    EveProject::getInstance()->clear(this);
+
+    mutex.unlock();
+}
+
+void EasyVideoEditor::newProject() {
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, "Select video file to edit", QDir::homePath(), tr("Video File (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
+        clear();
         Video* baseVideo = new Video(0, baseVideoPath.toStdString());
         EveProject::getInstance()->addVideo(baseVideo);
         for (int loop = 0; loop < baseVideo->getFrameCount(); loop++) {
             EveProject::getInstance()->addFrame(new Frame(0, loop));
         }
+
+        ui.w_contentarea->setEnabled(true);
+        ui.w_sidemenuarea->setEnabled(true);
+        ui.w_sidemenupagearea->setEnabled(true);
+        ui.w_videocontrolarea->setEnabled(false);
 
         int originalWidth = EveProject::getInstance()->getBaseWidth();
         int originalHeight = EveProject::getInstance()->getBaseHeight();
@@ -134,9 +203,9 @@ void EasyVideoEditor::workAfterMainWindowShowed() {
     }
 }
 
-bool EasyVideoEditor::event(QEvent* event) {
-    const bool ret_val = QMainWindow::event(event);
-    if (!workAfterMainWindowShowedCalled && event->type() == QEvent::Paint) {
+bool EasyVideoEditor::event(QEvent* e) {
+    const bool ret_val = QMainWindow::event(e);
+    if (!workAfterMainWindowShowedCalled && e->type() == QEvent::Paint) {
         workAfterMainWindowShowedCalled = true;
         workAfterMainWindowShowed();
     }
@@ -144,8 +213,49 @@ bool EasyVideoEditor::event(QEvent* event) {
     return ret_val;
 }
 
-void EasyVideoEditor::sideMenuClicked() {
-    SideMenu::selectSideMenu((QPushButton*)sender());
+void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
+    if ((e->key() == Qt::Key_E) && QApplication::keyboardModifiers() && Qt::ControlModifier) {
+        mutex.lock();
+        if (mode == Mode::MODE_EDIT) {
+            mode = Mode::MODE_WATCH_PAUSE;
+            ui.w_sidemenuarea->setEnabled(false);
+            ui.w_sidemenupagearea->setEnabled(false);
+            ui.w_videocontrolarea->setEnabled(true);
+        }
+        else {
+            if (mode == Mode::MODE_WATCH_PLAY) {
+                ui.btn_play->setVisible(true);
+                ui.btn_pause->setVisible(false);
+            }
+            mode = Mode::MODE_EDIT;
+            ui.w_sidemenuarea->setEnabled(true);
+            ui.w_sidemenupagearea->setEnabled(true);
+            ui.w_videocontrolarea->setEnabled(false);
+        }
+        mutex.unlock();
+    }
+}
+
+void EasyVideoEditor::newProjectMenuClicked(){
+    mutex.lock();
+    if (mode == Mode::MODE_WATCH_PLAY) mode = Mode::MODE_WATCH_PAUSE;
+    mutex.unlock();
+    newProject();
+}
+
+void EasyVideoEditor::encodingToMp4MenuClicked(){
+}
+
+void EasyVideoEditor::encodingToAviMenuClicked(){
+}
+
+void EasyVideoEditor::encodingToWmvMenuClicked(){
+}
+
+void EasyVideoEditor::encodingToMovMenuClicked(){
+}
+
+void EasyVideoEditor::exitMenuClicked(){
 }
 
 void EasyVideoEditor::setLineEditBySlider(int value) {
@@ -172,43 +282,14 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
     updateSampleFrame();
 }
 
-void EasyVideoEditor::updateSampleFrame() {
-    if (SideMenu::selectedSideMenu() == Command::CommandType::COLOR_EMPHASIS) {
-        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
-        ColorEmphasis colorEmphasis(
-            ui.edt_coloremphasis_red->text().toInt(),
-            ui.edt_coloremphasis_green->text().toInt(),
-            ui.edt_coloremphasis_blue->text().toInt()
-        );
-        editingFrame.addCommand(&colorEmphasis);
-        cv::Mat showFrame;
-        editingFrame.getCommandAppliedFrameData(&showFrame, true);
-        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
-    }
-    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_BRIGHTNESS) {
-        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
-        ChangeBrightness changeBrightness(
-            ui.edt_changebrightness_brightness->text().toInt()
-        );
-        editingFrame.addCommand(&changeBrightness);
-        cv::Mat showFrame;
-        editingFrame.getCommandAppliedFrameData(&showFrame, true);
-        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
-    }
-    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_CONTRAST) {
-        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
-        ChangeContrast changeContrast(
-            ui.edt_changecontrast_contrast->text().toInt()
-        );
-        editingFrame.addCommand(&changeContrast);
-        cv::Mat showFrame;
-        editingFrame.getCommandAppliedFrameData(&showFrame, true);
-        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
-    }
+void EasyVideoEditor::sideMenuClicked() {
+    SideMenu::selectSideMenu((QPushButton*)sender());
 }
 
 void EasyVideoEditor::playButtonClicked() {
     mutex.lock();
+    if (EveProject::getInstance()->getCurrentFrameNumber() == EveProject::getInstance()->getFrameList()->size() - 1)
+        EveProject::getInstance()->setCurrentFrameNumber(0);
     mode = Mode::MODE_WATCH_PLAY;
     ui.btn_play->setVisible(false);
     ui.btn_pause->setVisible(true);
@@ -271,7 +352,7 @@ void EasyVideoEditor::colorEmphasisApplyButtonClicked() {
     if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
         QLineEdit* rangeStart = ui.edt_coloremphasis_rangestart;
         QLineEdit* rangeEnd = ui.edt_coloremphasis_rangeend;
-        Command* command = new ColorEmphasis(
+        Command* command = new ColorEmphasis(true,
             ui.edt_coloremphasis_red->text().toInt(),
             ui.edt_coloremphasis_green->text().toInt(),
             ui.edt_coloremphasis_blue->text().toInt()
@@ -300,7 +381,7 @@ void EasyVideoEditor::changeBrightnessApplyButtonClicked() {
     if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
         QLineEdit* rangeStart = ui.edt_changebrightness_rangestart;
         QLineEdit* rangeEnd = ui.edt_changebrightness_rangeend;
-        Command* command = new ChangeBrightness(
+        Command* command = new ChangeBrightness(true,
             ui.edt_changebrightness_brightness->text().toInt()
         );
 
@@ -327,7 +408,7 @@ void EasyVideoEditor::changeContrastApplyButtonClicked() {
     if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
         QLineEdit* rangeStart = ui.edt_changecontrast_rangestart;
         QLineEdit* rangeEnd = ui.edt_changecontrast_rangeend;
-        Command* command = new ChangeBrightness(
+        Command* command = new ChangeBrightness(true,
             ui.edt_changecontrast_contrast->text().toInt()
         );
 

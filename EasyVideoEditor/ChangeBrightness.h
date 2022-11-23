@@ -5,11 +5,10 @@ class ChangeBrightness : public Command {
 private:
     int brightness;
 public:
-    ChangeBrightness();
-    ChangeBrightness(int brightness);
+    ChangeBrightness(bool addToList, int brightness);
     ~ChangeBrightness();
 
-    virtual void operator()();
-    virtual void operator()(cv::Mat* mat);
+    void operator()();
+    void operator()(cv::Mat* mat);
 };
 

@@ -1,10 +1,6 @@
 #include "ChangeContrast.h"
 
-ChangeContrast::ChangeContrast() {
-    contrast = 0;
-}
-
-ChangeContrast::ChangeContrast(int contrast) {
+ChangeContrast::ChangeContrast(bool addToList, int contrast) : Command(addToList){
     this->contrast = contrast;
 }
 
