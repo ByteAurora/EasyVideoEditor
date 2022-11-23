@@ -420,7 +420,7 @@ void EasyVideoEditor::changeContrastApplyButtonClicked() {
     if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
         QLineEdit* rangeStart = ui.edt_changecontrast_rangestart;
         QLineEdit* rangeEnd = ui.edt_changecontrast_rangeend;
-        Command* command = new ChangeBrightness(true,
+        Command* command = new ChangeContrast(true,
             ui.edt_changecontrast_contrast->text().toInt()
         );
 
