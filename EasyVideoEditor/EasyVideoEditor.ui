@@ -50,8 +50,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_addvideo_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_addvideo_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_addvideo_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_addvideo_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_addvideo_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>영상추가</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -66,8 +73,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_chromakey_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_chromakey_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_chromakey_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_chromakey_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_chromakey_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>크로마키</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -82,8 +96,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_addsubtitle_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_addsubtitle_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_addsubtitle_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_addsubtitle_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_addsubtitle_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>자막</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -98,8 +119,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_cutvideo_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_cutvideo_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_cutvideo_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_cutvideo_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_cutvideo_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>자르기</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -115,10 +143,14 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_coloremphasis_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_coloremphasis_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_coloremphasis_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_coloremphasis_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_coloremphasis_disabled.png); }</string>
      </property>
      <property name="text">
-      <string>강조</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -136,8 +168,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_addimage_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_addimage_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_addimage_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_addimage_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_addimage_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>사진추가</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -152,8 +191,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_changecontrast_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_changecontrast_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_changecontrast_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_changecontrast_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_changecontrast_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>대비</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -168,8 +214,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_transition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_transition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_transition_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_transition_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_transition_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>화면전환</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -184,8 +237,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_changebrightness_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_changebrightness_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_changebrightness_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_changebrightness_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_changebrightness_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>밝기</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -200,8 +260,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_changeplayspeed_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_changeplayspeed_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_changeplayspeed_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_changeplayspeed_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_changeplayspeed_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>속도</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -216,8 +283,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_filter_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_filter_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_filter_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_filter_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_filter_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>필터</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -232,8 +306,15 @@
        <height>64</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_resize_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_resize_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_resize_pressed.png); }
+QPushButton:checked{ border-image: url(:/EasyVideoEditor/resources/images/btn_resize_checked.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_resize_disabled.png); }</string>
+     </property>
      <property name="text">
-      <string>리사이즈</string>
+      <string/>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -4216,6 +4297,9 @@
         <width>541</width>
         <height>71</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton:unchecked{ border-image: url(&quot;C:/Users/sonki/Test Resource/img_btn_coloremphasis_normal.png&quot;); }</string>
       </property>
      </widget>
      <widget class="QWidget" name="horizontalLayoutWidget">
