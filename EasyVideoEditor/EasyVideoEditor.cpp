@@ -211,6 +211,10 @@ void EasyVideoEditor::newProject() {
     }
 }
 
+void EasyVideoEditor::updateInformationArea() {
+
+}
+
 bool EasyVideoEditor::event(QEvent* e) {
     const bool ret_val = QMainWindow::event(e);
     if (!workAfterMainWindowShowedCalled && e->type() == QEvent::Paint) {

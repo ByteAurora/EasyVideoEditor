@@ -70,6 +70,9 @@ private:
     // Load new video project.
     void newProject();
 
+    // Update information area.
+    void updateInformationArea();
+
     bool event(QEvent* e);
     void keyPressEvent(QKeyEvent* e);
 private slots:
