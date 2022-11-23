@@ -52,6 +52,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
 
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
+    connect(ui.menu_exit, SIGNAL(triggered()), this, SLOT(exitMenuClicked()));
     connect(ui.btn_coloremphasis, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
@@ -269,6 +270,7 @@ void EasyVideoEditor::encodingToMovMenuClicked(){
 }
 
 void EasyVideoEditor::exitMenuClicked(){
+    QApplication::exit();
 }
 
 void EasyVideoEditor::setLineEditBySlider(int value) {

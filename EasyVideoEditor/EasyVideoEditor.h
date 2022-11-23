@@ -70,6 +70,9 @@ private:
     // Load new video project.
     void newProject();
 
+    // Save edited video.
+    void saveVideo();
+
     // Update information area.
     void updateInformationArea();
 
