@@ -90,6 +90,7 @@ private slots:
     void sideMenuClicked();
 
     // Video control slots.
+    void videoProgressSliderMoved(int value);
     void playButtonClicked();
     void pauseButtonClicked();
     void resetButtonClicked();

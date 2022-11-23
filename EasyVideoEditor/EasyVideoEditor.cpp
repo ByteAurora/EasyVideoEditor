@@ -64,6 +64,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_resize, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.sd_videoprogress, SIGNAL(sliderMoved(int)), this, SLOT(videoProgressSliderMoved(int)));
     connect(ui.btn_play, SIGNAL(clicked()), this, SLOT(playButtonClicked()));
     connect(ui.btn_pause, SIGNAL(clicked()), this, SLOT(pauseButtonClicked()));
     connect(ui.btn_reset, SIGNAL(clicked()), this, SLOT(resetButtonClicked()));
@@ -296,6 +297,17 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
 
 void EasyVideoEditor::sideMenuClicked() {
     SideMenu::selectSideMenu((QPushButton*)sender());
+}
+
+void EasyVideoEditor::videoProgressSliderMoved(int value) {
+    mutex.lock();
+    EveProject::getInstance()->setCurrentFrameNumber(value);
+    if (mode == Mode::MODE_WATCH_PAUSE) {
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+    }
+    mutex.unlock();
 }
 
 void EasyVideoEditor::playButtonClicked() {
