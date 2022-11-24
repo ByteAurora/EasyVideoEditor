@@ -343,8 +343,10 @@ void EasyVideoEditor::videoProgressSliderMoved(int value) {
     mutex.lock();
     EveProject::getInstance()->setCurrentFrameNumber(value);
     if (mode == Mode::MODE_WATCH_PAUSE) {
+        ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(value)));
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
     mutex.unlock();
 }
