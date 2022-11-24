@@ -3,6 +3,7 @@
 #include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qlayout.h>
 #include <QtWidgets/qmainwindow.h>
+#include <QtWidgets/qmenubar.h>
 
 /*
 2022-11-11. Created by Sohn Young Jin
