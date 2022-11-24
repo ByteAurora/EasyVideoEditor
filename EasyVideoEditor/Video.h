@@ -18,7 +18,7 @@ private:
     cv::VideoCapture video;
 
     // Video's frames per seconds.
-    int fps;
+    double fps;
 
     // Delay between frames.
     int delay;
@@ -54,9 +54,9 @@ public:
     void releaseResource();
 
     // Fps setter.
-    void setFps(int fps);
+    void setFps(double fps);
     // Fps getter.
-    int getFps();
+    double getFps();
 
     // Delay setter.
     void setDelay(int delay);

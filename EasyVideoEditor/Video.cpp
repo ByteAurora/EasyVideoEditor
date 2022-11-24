@@ -71,11 +71,11 @@ void Video::releaseResource() {
     }
 }
 
-void Video::setFps(int fps) {
+void Video::setFps(double fps) {
     this->fps = fps;
 }
 
-int Video::getFps() {
+double Video::getFps() {
     return fps;
 }
 
