@@ -1,4 +1,5 @@
 #include "Frame.h"
+#include "UsefulFunction.h"
 
 Frame::Frame() {
     sourceId = 0;
@@ -72,6 +73,8 @@ Frame* Frame::getCommandAppliedFrameData(int beforeSourceId, int beforeSourceFra
     if (moveEvent && (beforeSourceId != sourceId || (beforeSourceId == sourceId && beforeSourceFrameIndex + 1 != sourceFrameIndex))) {
         video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
     }
+
+    UsefulFunction::writeLog("C:\\Users\\sonki\\Desktop\\log.txt", "Frame Info", QString::number(sourceFrameIndex) + "/" + QString::number(video->get(cv::CAP_PROP_POS_FRAMES)));
 
     (*video) >> (*mat);
 

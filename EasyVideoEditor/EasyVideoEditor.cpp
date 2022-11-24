@@ -187,7 +187,6 @@ void EasyVideoEditor::newProject() {
         outputVideoWidth = EveProject::getInstance()->getBaseWidth();
         outputVideoHeight = EveProject::getInstance()->getBaseHeight();
 
-
         ui.w_contentarea->setEnabled(true);
         ui.w_sidemenuarea->setEnabled(true);
         ui.w_sidemenupagearea->setEnabled(true);
@@ -216,6 +215,9 @@ void EasyVideoEditor::newProject() {
         right = (showWidth - resizeData.width + 1) / 2;
 
         ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
+        ui.lbl_currentplaytime->setText("00:00:00.000");
+        ui.sd_videoprogress->setMinimum(0);
+        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getBaseFrameCount() - 1);
 
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
@@ -343,7 +345,6 @@ void EasyVideoEditor::videoProgressSliderMoved(int value) {
     if (mode == Mode::MODE_WATCH_PAUSE) {
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
-        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
     }
     mutex.unlock();
 }
