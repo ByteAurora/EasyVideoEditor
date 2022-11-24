@@ -431,6 +431,19 @@
     <property name="styleSheet">
      <string notr="true">background-color: #b1b1b1;</string>
     </property>
+    <widget class="QLabel" name="label_28">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>48</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="w_sidemenupagearea" native="true">
     <property name="geometry">
