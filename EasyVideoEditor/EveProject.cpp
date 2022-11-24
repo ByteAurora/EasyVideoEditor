@@ -118,7 +118,7 @@ Frame* EveProject::getCurrentFrameAndUpdate() {
     return frameList.at(currentFrameNumber++);
 }
 
-int EveProject::getBaseFps() {
+double EveProject::getBaseFps() {
     return videoList.front()->getFps();
 }
 int EveProject::getBaseDelay() {

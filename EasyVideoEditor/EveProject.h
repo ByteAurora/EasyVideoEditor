@@ -89,7 +89,7 @@ public:
     Frame* getCurrentFrameAndUpdate();
 
     // Get fps from first resource in video list.
-    int getBaseFps();
+    double getBaseFps();
     // Get delay from first resource in video list.
     int getBaseDelay();
     // Get frame count from first resource in video list.
