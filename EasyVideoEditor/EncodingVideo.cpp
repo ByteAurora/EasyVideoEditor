@@ -3,14 +3,18 @@
 EncodingVideo::EncodingVideo(QObject* parent, QString encodingType, QString saveFilePath) : QThread(parent) {
     this->encodingType = encodingType;
     this->saveFilePath = saveFilePath;
-    QFile saveFile(saveFilePath);
-    this->saveFileName = saveFile.fileName();
+    this->saveFileName = saveFilePath;
+}
+
+void EncodingVideo::setData(QString encodingType, QString saveFilePath) {
+    this->encodingType = encodingType;
+    this->saveFilePath = saveFilePath;
+    this->saveFileName = saveFilePath;
 }
 
 void EncodingVideo::run() {
     QWidget* encodingPage = Widgets::getInstance()->contentArea->findChild<QWidget*>("w_encodingpage");
     QLabel* encodingFileName = encodingPage->findChild<QLabel*>("lbl_encoding_filename");
-    QProgressBar* encodingProgress = encodingPage->findChild<QProgressBar*>("pb_encoding_progress");
     QLabel* encodingLeftTime = encodingPage->findChild<QLabel*>("lbl_encoding_lefttime");
     QMenuBar* mbEveMenu = Widgets::getInstance()->menuBar;
 
@@ -45,10 +49,17 @@ void EncodingVideo::run() {
     bool processFramePerSecondSet = false;
     int processFramePerSecond = 0;
 
+    int beforeSourceId = -1;
+    int beforeSourceFrameIndex = -1;
+    Frame* currentFrame;
+
     tickMeter.reset();
     tickMeter.start();
     for (int loop = 0; loop < totalFrameCount; loop++) {
-        saveFrameList->at(loop)->getCommandAppliedFrameData(&frame, false);
+        currentFrame = saveFrameList->at(loop)->getCommandAppliedFrameData(beforeSourceId, beforeSourceFrameIndex, &frame, true);
+        beforeSourceId = currentFrame->getSourceId();
+        beforeSourceFrameIndex = currentFrame->getSourceFrameIndex();
+        
         outputVideo << frame;
         if (loop % progressIncreaseCount == 0) {
             emit updateProgress(loop / progressIncreaseCount);

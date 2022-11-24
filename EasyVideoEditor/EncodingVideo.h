@@ -14,6 +14,8 @@ class EncodingVideo : public QThread
     Q_OBJECT
 public:
     explicit EncodingVideo(QObject* parent, QString encodingType, QString saveFilePath);
+
+    void setData(QString encodingType, QString saveFilePath);
 private:
     QString encodingType;
     QString saveFilePath;

@@ -54,7 +54,6 @@ public:
     static int right;
     static int outputVideoWidth;
     static int outputVideoHeight;
-    static EncodingVideo* encodingVideoThread;
     static QMetaObject::Connection encodingVideoThreadConnection;
 private:
     Ui::EasyVideoEditorClass ui;
@@ -64,6 +63,8 @@ private:
 
     // A Frame object to show real-time editing effects.
     Frame editingFrame;
+
+    EncodingVideo* encodingVideoThread = NULL;
 private:
     // A function called after a window displayed.
     void workAfterMainWindowShowed();

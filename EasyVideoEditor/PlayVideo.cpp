@@ -24,9 +24,10 @@ void PlayVideo::run() {
     cv::TickMeter tickMeter;
     cv::Mat showFrame;
     int frameIndex = startIndex;
-    int beforeFrameIndex = frameIndex - 1;
     Frame* currentFrame = EveProject::getInstance()->getCurrentFrame();
-    Frame* beforeFrame = currentFrame;
+    Frame* beforeFrame;
+    int beforeSourceId = -1;
+    int beforeSourceFrameIndex = -1;
 
     while (frameIndex <= endIndex) {
         tickMeter.reset();
@@ -45,16 +46,10 @@ void PlayVideo::run() {
         lblCurrentPlayTime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(frameIndex)));
         sdVideoProgress->setValue(frameIndex);
 
-        if(frameIndex != startIndex)
-            EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, 
-                (frameIndex > beforeFrameIndex + 1) 
-                || (frameIndex < beforeFrameIndex) 
-                || (currentFrame->getSourceId() != beforeFrame->getSourceId()) 
-                || (currentFrame->getSourceId() == beforeFrame->getSourceId() && currentFrame->getSourceFrameIndex() < beforeFrame->getSourceFrameIndex()
-                || currentFrame->getSourceFrameIndex() > beforeFrame->getSourceFrameIndex() + 1));
-        else
-            EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(&showFrame, true);
-        
+        beforeFrame = EveProject::getInstance()->getCurrentFrameAndUpdate()->getCommandAppliedFrameData(beforeSourceId, beforeSourceFrameIndex, &showFrame, true);
+        beforeSourceId = beforeFrame->getSourceId();
+        beforeSourceFrameIndex = beforeFrame->getSourceFrameIndex();
+
         UsefulFunction::showMatToLabel(lblVideoFrame, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         
         tickMeter.stop();
@@ -64,9 +59,6 @@ void PlayVideo::run() {
         if (processingTime < delay) {
             msleep(delay - processingTime);
         }
-
-        beforeFrame = currentFrame;
-        beforeFrameIndex = frameIndex;
     }
 
     if (frameIndex > endIndex) {

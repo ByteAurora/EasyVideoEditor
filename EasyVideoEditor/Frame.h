@@ -63,10 +63,10 @@ public:
     void removeCommand(Command* command);
 
     // Get real frame data.
-    void getRealFrameData(cv::Mat* mat, bool moveEvent);
+    Frame* getRealFrameData(int beforeSourceId, int beforeSourceFrameIndex, cv::Mat* mat, bool moveEvent);
 
     // Get command applied frame data.
-    void getCommandAppliedFrameData(cv::Mat* mat, bool moveEvent);
+    Frame* getCommandAppliedFrameData(int beforeSourceId, int beforeSourceFrameIndex, cv::Mat* mat, bool moveEvent);
 public:
     // Source ID setter.
     void setSourceId(int sourceId);

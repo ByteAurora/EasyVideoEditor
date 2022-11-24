@@ -9,7 +9,6 @@ int EasyVideoEditor::outputVideoHeight = 0;
 EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
 QMutex EasyVideoEditor::mutex;
 cv::Size EasyVideoEditor::resizeData;
-EncodingVideo* EasyVideoEditor::encodingVideoThread = NULL;
 QMetaObject::Connection EasyVideoEditor::encodingVideoThreadConnection;
 
 EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
@@ -127,7 +126,7 @@ void EasyVideoEditor::updateSampleFrame() {
         );
         editingFrame.addCommand(&colorEmphasis);
         cv::Mat showFrame;
-        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
     else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_BRIGHTNESS) {
@@ -137,7 +136,7 @@ void EasyVideoEditor::updateSampleFrame() {
         );
         editingFrame.addCommand(&changeBrightness);
         cv::Mat showFrame;
-        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
     else if (SideMenu::selectedSideMenu() == Command::CommandType::CHANGE_CONTRAST) {
@@ -147,7 +146,7 @@ void EasyVideoEditor::updateSampleFrame() {
         );
         editingFrame.addCommand(&changeContrast);
         cv::Mat showFrame;
-        editingFrame.getCommandAppliedFrameData(&showFrame, true);
+        editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
 }
@@ -219,7 +218,7 @@ void EasyVideoEditor::newProject() {
         ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
 
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
 }
@@ -234,11 +233,13 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
     QString saveFilePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("편집한 동영상 저장"), QDir::homePath(), QString("*.").append(encodingType));
     
     if (!saveFilePath.isEmpty()) {
-        if (encodingVideoThread != NULL) {
-            free(encodingVideoThread);
-            QObject::disconnect(encodingVideoThreadConnection);
+        QObject::disconnect(encodingVideoThreadConnection);
+        if (encodingVideoThread == NULL) {
+            encodingVideoThread = new EncodingVideo(this, encodingType, saveFilePath);
         }
-        encodingVideoThread = new EncodingVideo(this, encodingType, saveFilePath);
+        else {
+            encodingVideoThread->setData(encodingType, saveFilePath);
+        }
         encodingVideoThreadConnection = connect(encodingVideoThread, SIGNAL(updateProgress(int)), this, SLOT(updateEncodingProgressBar(int)));
         encodingVideoThread->start();
     }
@@ -341,7 +342,7 @@ void EasyVideoEditor::videoProgressSliderMoved(int value) {
     EveProject::getInstance()->setCurrentFrameNumber(value);
     if (mode == Mode::MODE_WATCH_PAUSE) {
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
     }
     mutex.unlock();
@@ -376,7 +377,7 @@ void EasyVideoEditor::resetButtonClicked() {
     ui.sd_videoprogress->setValue(0);
     EveProject::getInstance()->setCurrentFrameNumber(0);
     cv::Mat showFrame;
-    EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+    EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
     UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     mutex.unlock();
 }
@@ -389,7 +390,7 @@ void EasyVideoEditor::forward5SecondsButtonclicked() {
         ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(currentFrameIndex)));
         ui.sd_videoprogress->setValue(currentFrameIndex);
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
     }
     mutex.unlock();
@@ -403,7 +404,7 @@ void EasyVideoEditor::backward5SecondsButtonClicked() {
         ui.lbl_currentplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(currentFrameIndex)));
         ui.sd_videoprogress->setValue(currentFrameIndex);
         cv::Mat showFrame;
-        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
     }
     mutex.unlock();
