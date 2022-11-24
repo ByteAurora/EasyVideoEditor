@@ -37,7 +37,7 @@ void EncodingVideo::run() {
     }
 
     cv::TickMeter tickMeter;
-    cv::VideoWriter outputVideo(saveFilePath.toLocal8Bit().toStdString(), fourcc, EveProject::getInstance()->getBaseFps(), cv::Size(EasyVideoEditor::outputVideoWidth, EasyVideoEditor::outputVideoHeight));
+    cv::VideoWriter outputVideo(saveFilePath.toStdString(), fourcc, EveProject::getInstance()->getBaseFps(), cv::Size(EasyVideoEditor::outputVideoWidth, EasyVideoEditor::outputVideoHeight));
     std::vector<Frame*>* saveFrameList = EveProject::getInstance()->getFrameList();
     cv::Mat frame;
     int totalFrameCount = saveFrameList->size();

@@ -176,7 +176,7 @@ void EasyVideoEditor::clear() {
 }
 
 void EasyVideoEditor::newProject() {
-    QString baseVideoPath = QFileDialog::getOpenFileName(this, "Select video file to edit", QDir::homePath(), tr("Video File (*.mp4 *.avi *.wmv *.mov)"));
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("편집할 동영상 파일 선택"), QDir::homePath(), QString::fromLocal8Bit("동영상 (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
         clear();
         Video* baseVideo = new Video(0, baseVideoPath.toStdString());
@@ -231,7 +231,7 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
     }
     mutex.unlock();
     
-    QString saveFilePath = QFileDialog::getSaveFileName(this, "Select directory to save", QDir::homePath(), QString("*.").append(encodingType));
+    QString saveFilePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("파일 저장"), QDir::homePath(), QString("*.").append(encodingType));
     
     if (!saveFilePath.isEmpty()) {
         if (encodingVideoThread != NULL) {
@@ -573,12 +573,12 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
 };
 
 void EasyVideoEditor::addImageSelectButtonClicked() {
-    QString addImagePath = QFileDialog::getOpenFileName(this, "Select image files to edit", QDir::homePath(), tr("Video Files (*.png *.jpg *.bmp)"));
+    QString addImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 이미지 선택"), QDir::homePath(), QString::fromLocal8Bit("이미지 (*.png * .jpg * .bmp)"));
     ui.label_addimage_path->setText(addImagePath);
 };
     
 void EasyVideoEditor::addVideoSelectButtonClicked() {
-    QString addVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
+    QString addVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 동영상 파일 선택"), QDir::homePath(), QString::fromLocal8Bit("동영상 (*.mp4 * .avi * .wmv * .mov)"));
     ui.label_addvideo_path->setText(addVideoPath);
 };
 
