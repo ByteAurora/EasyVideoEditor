@@ -23,5 +23,5 @@ Widgets* Widgets::getInstance() {
 void Widgets::initWidgets(QMainWindow *mainWindow) {
     window = mainWindow;
     contentArea = window->findChild<QWidget*>("w_contentarea");
-    menuBar = window->findChild<QObject*>("mb_evemenu");
+    menuBar = window->findChild<QMenuBar*>("mb_evemenu");
 }

@@ -24,7 +24,7 @@ public:
     QWidget* contentArea;
 
     // Window menu bar.
-    QObject* menuBar;
+    QMenuBar* menuBar;
 public:
     // Get instance of Widgets class.
     static Widgets* getInstance();
