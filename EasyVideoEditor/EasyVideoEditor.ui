@@ -4519,6 +4519,124 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
     <zorder>w_addimage</zorder>
     <zorder>w_addsubtitle</zorder>
    </widget>
+   <widget class="QWidget" name="w_encodingpage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1600</width>
+      <height>881</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 180);</string>
+    </property>
+    <widget class="QWidget" name="w_encodinginfo" native="true">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>330</y>
+       <width>360</width>
+       <height>240</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff; border-radius: 16px</string>
+     </property>
+     <widget class="QLabel" name="label_28">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>32</y>
+        <width>240</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Noto Sans KR</family>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>인코딩 진행 중</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_filename">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>120</y>
+        <width>336</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>video.mp4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="pb_encodingprogress">
+      <property name="geometry">
+       <rect>
+        <x>32</x>
+        <y>180</y>
+        <width>296</width>
+        <height>4</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="textVisible">
+       <bool>false</bool>
+      </property>
+      <property name="textDirection">
+       <enum>QProgressBar::TopToBottom</enum>
+      </property>
+      <property name="format">
+       <string>%p% 완료</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_lefttime">
+      <property name="geometry">
+       <rect>
+        <x>16</x>
+        <y>208</y>
+        <width>336</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Noto Sans KR</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>남은 시간 계산 중...</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
