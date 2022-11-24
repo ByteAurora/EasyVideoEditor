@@ -70,6 +70,12 @@ private:
     // Load new video project.
     void newProject();
 
+    // Save edited video.
+    void saveVideo();
+
+    // Update information area.
+    void updateInformationArea();
+
     bool event(QEvent* e);
     void keyPressEvent(QKeyEvent* e);
 private slots:
@@ -87,6 +93,7 @@ private slots:
     void sideMenuClicked();
 
     // Video control slots.
+    void videoProgressSliderMoved(int value);
     void playButtonClicked();
     void pauseButtonClicked();
     void resetButtonClicked();

@@ -52,6 +52,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
 
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
+    connect(ui.menu_exit, SIGNAL(triggered()), this, SLOT(exitMenuClicked()));
     connect(ui.btn_coloremphasis, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changecontrast, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
@@ -64,6 +65,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_resize, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
+    connect(ui.sd_videoprogress, SIGNAL(sliderMoved(int)), this, SLOT(videoProgressSliderMoved(int)));
     connect(ui.btn_play, SIGNAL(clicked()), this, SLOT(playButtonClicked()));
     connect(ui.btn_pause, SIGNAL(clicked()), this, SLOT(pauseButtonClicked()));
     connect(ui.btn_reset, SIGNAL(clicked()), this, SLOT(resetButtonClicked()));
@@ -211,6 +213,14 @@ void EasyVideoEditor::newProject() {
     }
 }
 
+void EasyVideoEditor::saveVideo() {
+
+}
+
+void EasyVideoEditor::updateInformationArea() {
+
+}
+
 bool EasyVideoEditor::event(QEvent* e) {
     const bool ret_val = QMainWindow::event(e);
     if (!workAfterMainWindowShowedCalled && e->type() == QEvent::Paint) {
@@ -264,6 +274,7 @@ void EasyVideoEditor::encodingToMovMenuClicked(){
 }
 
 void EasyVideoEditor::exitMenuClicked(){
+    QApplication::exit();
 }
 
 void EasyVideoEditor::setLineEditBySlider(int value) {
@@ -292,6 +303,17 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
 
 void EasyVideoEditor::sideMenuClicked() {
     SideMenu::selectSideMenu((QPushButton*)sender());
+}
+
+void EasyVideoEditor::videoProgressSliderMoved(int value) {
+    mutex.lock();
+    EveProject::getInstance()->setCurrentFrameNumber(value);
+    if (mode == Mode::MODE_WATCH_PAUSE) {
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(&showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+    }
+    mutex.unlock();
 }
 
 void EasyVideoEditor::playButtonClicked() {
@@ -416,7 +438,7 @@ void EasyVideoEditor::changeContrastApplyButtonClicked() {
     if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
         QLineEdit* rangeStart = ui.edt_changecontrast_rangestart;
         QLineEdit* rangeEnd = ui.edt_changecontrast_rangeend;
-        Command* command = new ChangeBrightness(true,
+        Command* command = new ChangeContrast(true,
             ui.edt_changecontrast_contrast->text().toInt()
         );
 
