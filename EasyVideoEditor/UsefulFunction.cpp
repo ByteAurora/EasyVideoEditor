@@ -1,4 +1,4 @@
-#include "UsefulFunction.h"
+﻿#include "UsefulFunction.h"
 
 int UsefulFunction::getMillisecondsFromString(QString timeString) {
     int hours = timeString.mid(0, 2).toInt() * 3600000;
@@ -17,6 +17,19 @@ QString UsefulFunction::getStringFromMilliseconds(int milliseconds) {
         .arg(milliseconds % 1000, 2, 10, QLatin1Char('0'));
 
     return strHours;
+}
+
+QString UsefulFunction::getDetailStringFromSeconds(int seconds) {
+    int hours = seconds / 3600;
+    int minutes = (seconds % 3600) / 60;
+    int leftSeconds = seconds % 60;
+
+    QString time("");
+    if (hours > 0) time.append(QString::number(hours) + "시간 ");
+    if (minutes > 0) time.append(QString::number(minutes) + "분 ");
+    time.append(QString::number(leftSeconds) + "초 ");
+
+    return time;
 }
 
 QString UsefulFunction::kor(std::string korString) {

@@ -4529,9 +4529,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0, 180);</string>
+     <string notr="true">background-color: rgba(0, 0, 0, 128);</string>
     </property>
-    <widget class="QWidget" name="w_encodinginfo" native="true">
+    <widget class="QWidget" name="w_encoding_info" native="true">
      <property name="geometry">
       <rect>
        <x>620</x>
@@ -4566,7 +4566,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_filename">
+     <widget class="QLabel" name="lbl_encoding_filename">
       <property name="geometry">
        <rect>
         <x>16</x>
@@ -4588,7 +4588,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QProgressBar" name="pb_encodingprogress">
+     <widget class="QProgressBar" name="pb_encoding_progress">
       <property name="geometry">
        <rect>
         <x>32</x>
@@ -4598,7 +4598,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        </rect>
       </property>
       <property name="value">
-       <number>24</number>
+       <number>50</number>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -4613,7 +4613,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        <string>%p% 완료</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_lefttime">
+     <widget class="QLabel" name="lbl_encoding_lefttime">
       <property name="geometry">
        <rect>
         <x>16</x>

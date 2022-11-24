@@ -14,6 +14,7 @@
 #include "EveProject.h"
 #include "UsefulFunction.h"
 #include "PlayVideo.h"
+#include "EncodingVideo.h"
 
 // Command class.
 #include "ColorEmphasis.h"
@@ -29,7 +30,7 @@
 #include "ChangePlaySpeed.h"
 #include "AddSubtitle.h"
 
-class PlayVideo;
+class EncodingVideo;
 
 class EasyVideoEditor : public QMainWindow
 {
@@ -51,6 +52,10 @@ public:
     static int down;
     static int left;
     static int right;
+    static int outputVideoWidth;
+    static int outputVideoHeight;
+    static EncodingVideo* encodingVideoThread;
+    static QMetaObject::Connection encodingVideoThreadConnection;
 private:
     Ui::EasyVideoEditorClass ui;
 
@@ -71,7 +76,7 @@ private:
     void newProject();
 
     // Save edited video.
-    void saveVideo();
+    void encodingVideo(QString encodingType);
 
     // Update information area.
     void updateInformationArea();
@@ -115,4 +120,6 @@ private slots:
     void addSubtitleButtonClicked();
     void addImageSelectButtonClicked();
     void addVideoSelectButtonClicked();
+
+    void updateEncodingProgressBar(int value);
 };

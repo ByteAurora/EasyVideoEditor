@@ -1,20 +1,23 @@
 #include "EasyVideoEditor.h"
 
-
-
 int EasyVideoEditor::top = 0;
 int EasyVideoEditor::down = 0;
 int EasyVideoEditor::left = 0;
 int EasyVideoEditor::right = 0;
+int EasyVideoEditor::outputVideoWidth = 0;
+int EasyVideoEditor::outputVideoHeight = 0;
 EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
 QMutex EasyVideoEditor::mutex;
 cv::Size EasyVideoEditor::resizeData;
+EncodingVideo* EasyVideoEditor::encodingVideoThread = NULL;
+QMetaObject::Connection EasyVideoEditor::encodingVideoThreadConnection;
 
 EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.setupUi(this);
     Widgets::getInstance()->initWidgets(this);
 
     ////// Init ui.
+    ui.w_encodingpage->setVisible(false);
     ui.btn_pause->setVisible(false);
     ui.w_contentarea->setEnabled(false);
     ui.w_videocontrolarea->setEnabled(false);
@@ -52,6 +55,10 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
 
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
+    connect(ui.menu_encodingto_avi, SIGNAL(triggered()), this, SLOT(encodingToAviMenuClicked()));
+    connect(ui.menu_encodingto_mp4, SIGNAL(triggered()), this, SLOT(encodingToMp4MenuClicked()));
+    connect(ui.menu_encodingto_wmv, SIGNAL(triggered()), this, SLOT(encodingToWmvMenuClicked()));
+    connect(ui.menu_encodingto_mov, SIGNAL(triggered()), this, SLOT(encodingToMovMenuClicked()));
     connect(ui.menu_exit, SIGNAL(triggered()), this, SLOT(exitMenuClicked()));
     connect(ui.btn_coloremphasis, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changebrightness, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
@@ -73,7 +80,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_backward5seconds, SIGNAL(clicked()), this, SLOT(backward5SecondsButtonClicked()));
     connect(ui.btn_addimage_select_path, SIGNAL(clicked()), this, SLOT(addImageSelectButtonClicked()));
     connect(ui.btn_addvideo_select_path, SIGNAL(clicked()), this, SLOT(addVideoSelectButtonClicked()));
-
+    
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
     connect(ui.btn_changebrightness_apply, SIGNAL(clicked()), this, SLOT(changeBrightnessApplyButtonClicked()));
@@ -178,6 +185,10 @@ void EasyVideoEditor::newProject() {
             EveProject::getInstance()->addFrame(new Frame(0, loop));
         }
 
+        outputVideoWidth = EveProject::getInstance()->getBaseWidth();
+        outputVideoHeight = EveProject::getInstance()->getBaseHeight();
+
+
         ui.w_contentarea->setEnabled(true);
         ui.w_sidemenuarea->setEnabled(true);
         ui.w_sidemenupagearea->setEnabled(true);
@@ -213,8 +224,24 @@ void EasyVideoEditor::newProject() {
     }
 }
 
-void EasyVideoEditor::saveVideo() {
-
+void EasyVideoEditor::encodingVideo(QString encodingType) {
+    mutex.lock();
+    if (mode == Mode::MODE_WATCH_PLAY) {
+        mode = Mode::MODE_WATCH_PAUSE;
+    }
+    mutex.unlock();
+    
+    QString saveFilePath = QFileDialog::getSaveFileName(this, "Select directory to save", QDir::homePath(), QString("*.").append(encodingType));
+    
+    if (!saveFilePath.isEmpty()) {
+        if (encodingVideoThread != NULL) {
+            free(encodingVideoThread);
+            QObject::disconnect(encodingVideoThreadConnection);
+        }
+        encodingVideoThread = new EncodingVideo(this, encodingType, saveFilePath);
+        encodingVideoThreadConnection = connect(encodingVideoThread, SIGNAL(updateProgress(int)), this, SLOT(updateEncodingProgressBar(int)));
+        encodingVideoThread->start();
+    }
 }
 
 void EasyVideoEditor::updateInformationArea() {
@@ -262,15 +289,19 @@ void EasyVideoEditor::newProjectMenuClicked(){
 }
 
 void EasyVideoEditor::encodingToMp4MenuClicked(){
+    encodingVideo("mp4");
 }
 
 void EasyVideoEditor::encodingToAviMenuClicked(){
+    encodingVideo("avi");
 }
 
 void EasyVideoEditor::encodingToWmvMenuClicked(){
+    encodingVideo("wmv");
 }
 
 void EasyVideoEditor::encodingToMovMenuClicked(){
+    encodingVideo("mov");
 }
 
 void EasyVideoEditor::exitMenuClicked(){
@@ -550,3 +581,7 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
     QString addVideoPath = QFileDialog::getOpenFileName(this, "Select video files to edit", QDir::homePath(), tr("Video Files (*.mp4 *.avi *.wmv *.mov)"));
     ui.label_addvideo_path->setText(addVideoPath);
 };
+
+void EasyVideoEditor::updateEncodingProgressBar(int value) {
+    ui.pb_encoding_progress->setValue(value);
+}

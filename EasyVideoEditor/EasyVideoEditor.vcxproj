@@ -100,6 +100,7 @@
     <ClCompile Include="AddVideo.cpp" />
     <ClCompile Include="EasyVideoEditor.cpp" />
     <ClCompile Include="PlayVideo.cpp" />
+    <ClCompile Include="EncodingVideo.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="ChangeBrightness.cpp" />
     <ClCompile Include="ChangeContrast.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="AddSubtitle.h" />
     <ClInclude Include="AddVideo.h" />
     <QtMoc Include="PlayVideo.h" />
+    <QtMoc Include="EncodingVideo.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="ChangeBrightness.h" />
     <ClInclude Include="ChangeContrast.h" />
