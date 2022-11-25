@@ -214,7 +214,7 @@ void EasyVideoEditor::newProject() {
         right = (showWidth - resizeData.width + 1) / 2;
 
         EveProject::getInstance()->setCurrentFrameNumber(0);
-        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
         ui.lbl_currentplaytime->setText("00:00:00.000");
         ui.sd_videoprogress->setMinimum(0);
         ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
