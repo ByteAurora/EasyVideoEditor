@@ -14,7 +14,7 @@ QString UsefulFunction::getStringFromMilliseconds(int milliseconds) {
         .arg(milliseconds / (3600000), 2, 10, QLatin1Char('0'))
         .arg((milliseconds % 3600000) / 60000, 2, 10, QLatin1Char('0'))
         .arg((milliseconds % 60000) / 1000, 2, 10, QLatin1Char('0'))
-        .arg(milliseconds % 1000, 2, 10, QLatin1Char('0'));
+        .arg(milliseconds % 1000, 3, 10, QLatin1Char('0'));
 
     return strHours;
 }
