@@ -34,6 +34,18 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
+    std::vector<QGraphicsDropShadowEffect*> buttonEffects;
+    for (int loop = 0; loop < 5; loop++) {
+        QGraphicsDropShadowEffect* videoControlEffect = new QGraphicsDropShadowEffect();
+        videoControlEffect->setBlurRadius(6);
+        videoControlEffect->setOffset(2, 2);
+        buttonEffects.push_back(videoControlEffect);
+    }
+    ui.btn_play->setGraphicsEffect(buttonEffects.at(0));
+    ui.btn_pause->setGraphicsEffect(buttonEffects.at(1));
+    ui.btn_reset->setGraphicsEffect(buttonEffects.at(2));
+    ui.btn_forward5seconds->setGraphicsEffect(buttonEffects.at(3));
+    ui.btn_backward5seconds->setGraphicsEffect(buttonEffects.at(4));
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -106,6 +118,13 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.edt_changecontrast_contrast, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
     connect(ui.sd_filter_clarity, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));;
     connect(ui.edt_filter_clarity, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
+
+    // Connect update smaple frame.
+    connect(ui.rbtn_filter_colorsense_none, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_filter_colorsense_gray, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_filter_colorsense_warm, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_filter_colorsense_cool, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_filter_colorsense_bright, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -147,7 +166,26 @@ void EasyVideoEditor::updateSampleFrame() {
         cv::Mat showFrame;
         editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
-    } 
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::FILTER) {
+        (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        Filter::FilterType filterType;
+        if (ui.rbtn_filter_colorsense_none->isChecked()) filterType = Filter::FilterType::NONE;
+        else if (ui.rbtn_filter_colorsense_gray->isChecked()) filterType = Filter::FilterType::GRAY;
+        else if (ui.rbtn_filter_colorsense_warm->isChecked()) filterType = Filter::FilterType::WARM;
+        else if (ui.rbtn_filter_colorsense_cool->isChecked()) filterType = Filter::FilterType::COOL;
+        else if (ui.rbtn_filter_colorsense_bright->isChecked()) filterType = Filter::FilterType::BRIGHT;
+
+        Filter filter(false,
+            ui.edt_filter_clarity->text().toInt(),
+            filterType
+        );
+
+        editingFrame.addCommand(&filter);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
 }
 
 void EasyVideoEditor::clear() {
@@ -214,7 +252,7 @@ void EasyVideoEditor::newProject() {
         right = (showWidth - resizeData.width + 1) / 2;
 
         EveProject::getInstance()->setCurrentFrameNumber(0);
-        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
         ui.lbl_currentplaytime->setText("00:00:00.000");
         ui.sd_videoprogress->setMinimum(0);
         ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
@@ -339,6 +377,7 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
 
 void EasyVideoEditor::sideMenuClicked() {
     SideMenu::selectSideMenu((QPushButton*)sender());
+    updateSampleFrame();
 }
 
 void EasyVideoEditor::videoProgressSliderMoved(int value) {
@@ -500,7 +539,40 @@ void EasyVideoEditor::changeContrastApplyButtonClicked() {
     }
 };
 
-void EasyVideoEditor::filterApplyButtonClicked() {};
+void EasyVideoEditor::filterApplyButtonClicked() {
+    if (EveProject::getInstance()->getCurrentFrameNumber() != -1) { // If there is more than one frame.
+        QLineEdit* rangeStart = ui.edt_filter_rangestart;
+        QLineEdit* rangeEnd = ui.edt_filter_rangeend;
+
+        Filter::FilterType filterType;
+        if (ui.rbtn_filter_colorsense_none->isChecked()) filterType = Filter::FilterType::NONE;
+        else if (ui.rbtn_filter_colorsense_gray->isChecked()) filterType = Filter::FilterType::GRAY;
+        else if (ui.rbtn_filter_colorsense_warm->isChecked()) filterType = Filter::FilterType::WARM;
+        else if (ui.rbtn_filter_colorsense_cool->isChecked()) filterType = Filter::FilterType::COOL;
+        else if (ui.rbtn_filter_colorsense_bright->isChecked()) filterType = Filter::FilterType::BRIGHT;
+
+        Command* command = new Filter(true,
+            ui.edt_filter_clarity->text().toInt(), filterType
+        );
+
+        if (ui.rbtn_filter_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_filter_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_filter_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
+    }
+};
 
 void EasyVideoEditor::chromakeyApplyButtonClicked() {};
 

@@ -71,7 +71,12 @@ Frame* Frame::getCommandAppliedFrameData(int beforeSourceId, int beforeSourceFra
     cv::VideoCapture* video = ((cv::VideoCapture*)(EveProject::getInstance()->getVideo(sourceId)->getResource()));
 
     if (moveEvent && (beforeSourceId != sourceId || (beforeSourceId == sourceId && beforeSourceFrameIndex + 1 != sourceFrameIndex))) {
-        video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+        if (sourceFrameIndex == 0) {
+            video->release();
+            EveProject::getInstance()->getVideo(sourceId)->loadResource();
+        } else {
+            video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+        }
         (*video) >> (*mat);
         // If use this codes, frame position error not occured but performance would be slow.
         /*if (video->get(cv::CAP_PROP_POS_FRAMES) != sourceFrameIndex || mat->cols <= 0) {

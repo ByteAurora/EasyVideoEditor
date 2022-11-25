@@ -8,6 +8,7 @@
 #include <QMutex>
 #include <QEvent>
 #include <QKeyEvent>
+#include <QGraphicsEffect>
 #include "SideMenu.h"
 #include "ui_EasyVideoEditor.h"
 #include "Widgets.h"
@@ -70,7 +71,6 @@ private:
 private:
     // A function called after a window displayed.
     void workAfterMainWindowShowed();
-    void updateSampleFrame();
 
     // Clear project data and ui elements.
     void clear();
@@ -125,4 +125,5 @@ private slots:
     void addVideoSelectButtonClicked();
 
     void updateEncodingProgressBar(int value);
+    void updateSampleFrame();
 };

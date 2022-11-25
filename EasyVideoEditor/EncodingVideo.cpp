@@ -46,6 +46,7 @@ void EncodingVideo::run() {
     cv::Mat frame;
     int totalFrameCount = saveFrameList->size();
     int progressIncreaseCount = totalFrameCount / 100;
+    if (progressIncreaseCount == 0) progressIncreaseCount = 1;
     bool processFramePerSecondSet = false;
     int processFramePerSecond = 0;
 

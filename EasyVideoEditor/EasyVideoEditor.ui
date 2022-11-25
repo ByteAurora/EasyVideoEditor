@@ -362,7 +362,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #ffffff</string>
+      <string notr="true">background-color: #ededed;</string>
      </property>
      <widget class="QLabel" name="lbl_maxplaytime">
       <property name="geometry">
@@ -380,7 +380,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: #ffffff;</string>
+       <string notr="true">background-color: #ededed;</string>
       </property>
       <property name="text">
        <string>00:00:00:000</string>
@@ -405,7 +405,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: #ffffff;</string>
+       <string notr="true">background-color: #ededed;</string>
       </property>
       <property name="text">
        <string>00:00:00:000</string>
@@ -422,6 +422,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <width>700</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string>background-color: #ededed;</string>
       </property>
       <property name="maximum">
        <number>99</number>
@@ -442,8 +445,14 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_reset_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_reset_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_reset_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_reset_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
-       <string>■</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_play">
@@ -455,8 +464,14 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_play_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_play_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_play_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_play_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
-       <string>▶</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_backward5seconds">
@@ -468,8 +483,14 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_backward5seconds_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_backward5seconds_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_backward5seconds_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_backward5seconds_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
-       <string>&gt;&gt;</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_forward5seconds">
@@ -481,8 +502,14 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_forward5seconds_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_forward5seconds_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_forward5seconds_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_forward5seconds_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
-       <string>&lt;&lt;</string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="btn_pause">
@@ -494,10 +521,24 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_pause_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_pause_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_pause_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_pause_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
        <string>||</string>
       </property>
      </widget>
+     <zorder>lbl_maxplaytime</zorder>
+     <zorder>lbl_currentplaytime</zorder>
+     <zorder>sd_videoprogress</zorder>
+     <zorder>btn_reset</zorder>
+     <zorder>btn_backward5seconds</zorder>
+     <zorder>btn_forward5seconds</zorder>
+     <zorder>btn_pause</zorder>
+     <zorder>btn_play</zorder>
     </widget>
    </widget>
    <widget class="QWidget" name="w_videoinfoarea" native="true">
@@ -1579,7 +1620,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <enum>QLayout::SetFixedSize</enum>
        </property>
        <item>
-        <widget class="QRadioButton" name="rbtn_filter_colorsene_none">
+        <widget class="QRadioButton" name="rbtn_filter_colorsense_none">
          <property name="text">
           <string>기본</string>
          </property>

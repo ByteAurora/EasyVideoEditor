@@ -36,6 +36,9 @@ void PlayVideo::run() {
 
         frameIndex = EveProject::getInstance()->getCurrentFrameNumber();
         if (EasyVideoEditor::mode != EasyVideoEditor::Mode::MODE_WATCH_PLAY || frameIndex > endIndex) {
+            if (EasyVideoEditor::mode != EasyVideoEditor::Mode::MODE_WATCH_PLAY && frameIndex != 0) {
+                EveProject::getInstance()->setCurrentFrameNumber(frameIndex - 1);
+            }
             btnPlay->setVisible(true);
             btnPause->setVisible(false);
             EasyVideoEditor::mutex.unlock();
