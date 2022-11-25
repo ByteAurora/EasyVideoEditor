@@ -4556,7 +4556,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
      <property name="styleSheet">
       <string notr="true">background-color: #ffffff; border-radius: 16px</string>
      </property>
-     <widget class="QLabel" name="label_28">
+     <widget class="QLabel" name="label_80">
       <property name="geometry">
        <rect>
         <x>60</x>
