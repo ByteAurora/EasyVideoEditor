@@ -73,7 +73,7 @@ void EveProject::addFrame(Frame* frame, int index) {
 }
 
 void EveProject::addFrames(std::vector<Frame*> frames, int index) {
-    frameList.insert(frameList.begin() + index, frames.begin(), frames.end());
+    frameList.insert(frameList.begin() + index + 1, frames.begin(), frames.end());
 }
 
 Frame* EveProject::getFrameByIndex(int index) {
