@@ -591,8 +591,8 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
     
     if (ui.edt_addsubtitle_subtitle->toPlainText() != "") {
         int option = 0;
-        QLineEdit* rangeStart = ui.edt_changecontrast_rangestart;
-        QLineEdit* rangeEnd = ui.edt_changecontrast_rangeend;
+        QLineEdit* rangeStart = ui.edt_addsubtitle_rangestart;
+        QLineEdit* rangeEnd = ui.edt_addsubtitle_rangeend;
 
         if (ui.radioBtn_addsubtitle_top->isChecked())
             option = 1; 
@@ -612,16 +612,16 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
             ui.edt_addsubtitle_color_blue->text().toInt()
         );
 
-        if (ui.rbtn_changecontrast_currentframe->isChecked()) {
+        if (ui.rbtn_addsubtitle_currentframe->isChecked()) {
             EveProject::getInstance()->getCurrentFrame()->addCommand(command);
         }
-        else if (ui.rbtn_changecontrast_allframe->isChecked()) {
+        else if (ui.rbtn_addsubtitle_allframe->isChecked()) {
             std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
             for (int loop = 0; loop < allFrames->size(); loop++) {
                 allFrames->at(loop)->addCommand(command);
             }
         }
-        else if (ui.rbtn_changecontrast_rangeframe->isChecked()) {
+        else if (ui.rbtn_addsubtitle_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
             for (int loop = startIndex; loop < endIndex; loop++) {

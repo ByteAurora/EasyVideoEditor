@@ -28,6 +28,5 @@ void AddSubtitle::operator()(cv::Mat* mat) {
 	else if (option == 3) // Bottom
 		org = cv::Point((sizeImg.width - sizeText.width) / 2, (sizeImg.height - sizeText.height));
 
-
 	cv::putText(*mat, subtitle, org, font, fontScale, cv::Scalar(b_color, g_color, r_color), 1);
 }
