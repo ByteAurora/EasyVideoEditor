@@ -63,7 +63,6 @@ void EncodingVideo::run() {
         
         if (frame.cols != EasyVideoEditor::outputVideoWidth || frame.rows != EasyVideoEditor::outputVideoHeight) {
             cv::resize(frame, frame, cv::Size(EasyVideoEditor::outputVideoWidth, EasyVideoEditor::outputVideoHeight));
-            UsefulFunction::writeLog("C:\\Users\\sonki\\Desktop\\log.txt", "Resizing", "Video Resource: " + QString::number(saveFrameList->at(loop)->getSourceId()));
         }
 
         outputVideo << frame;
