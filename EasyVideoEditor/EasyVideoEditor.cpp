@@ -626,6 +626,10 @@ void EasyVideoEditor::addVideoApplyButtonClicked() {
             frames.push_back(new Frame(EveProject::getInstance()->getVideoList()->size() - 1, loop));
         }
         EveProject::getInstance()->addFrames(frames, EveProject::getInstance()->getCurrentFrameNumber());
+
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+        ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
     }
 };
 
@@ -651,7 +655,7 @@ void EasyVideoEditor::cutVideoApplyButtonClicked() {
     }
 
     EveProject::getInstance()->setCurrentFrameNumber(0);
-    ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
+    ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
     ui.lbl_currentplaytime->setText("00:00:00.000");
     ui.sd_videoprogress->setMinimum(0);
     ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);

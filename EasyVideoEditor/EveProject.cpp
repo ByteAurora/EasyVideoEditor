@@ -107,7 +107,9 @@ void EveProject::removeFrame(int index) {
 }
 
 void EveProject::removeFrames(int index, int count) {
-    frameList.erase(frameList.begin() + index, frameList.begin() + index + count);
+    std::vector<Frame*>::iterator lastIndex = frameList.begin() + index + count;
+    if (frameList.begin() + index + count > frameList.end()) lastIndex = frameList.end();
+    frameList.erase(frameList.begin() + index, lastIndex);
 }
 
 Frame* EveProject::getCurrentFrame() {
