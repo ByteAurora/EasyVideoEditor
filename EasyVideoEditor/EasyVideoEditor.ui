@@ -512,6 +512,19 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
     <property name="styleSheet">
      <string notr="true">background-color: #b1b1b1;</string>
     </property>
+    <widget class="QLabel" name="label_28">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>48</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="w_sidemenupagearea" native="true">
     <property name="geometry">
@@ -1945,7 +1958,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
        </rect>
       </property>
       <property name="text">
-       <string>C:/...</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -4510,7 +4523,6 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
     <zorder>w_resize</zorder>
     <zorder>w_filter</zorder>
     <zorder>w_cutvideo</zorder>
-    <zorder>w_addvideo</zorder>
     <zorder>w_chromakey</zorder>
     <zorder>w_transition</zorder>
     <zorder>w_changecontrast</zorder>
@@ -4518,6 +4530,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
     <zorder>w_changebrightness</zorder>
     <zorder>w_addimage</zorder>
     <zorder>w_addsubtitle</zorder>
+    <zorder>w_addvideo</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">

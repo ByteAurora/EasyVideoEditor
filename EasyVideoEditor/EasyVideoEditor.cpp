@@ -34,7 +34,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
-    ui.cmbox_addsubtitle_font->addItem("ITALIC"); // FONT_ITALIC
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -543,9 +542,32 @@ void EasyVideoEditor::addImageApplyButtonClicked() {
     }
 };
 
-void EasyVideoEditor::addVideoApplyButtonClicked() {};
+void EasyVideoEditor::addVideoApplyButtonClicked() {
+    Video* video = new Video(ui.label_addvideo_path->text().toStdString());
+    EveProject::getInstance()->addVideo(video);
+};
 
-void EasyVideoEditor::cutVideoApplyButtonClicked() {};
+void EasyVideoEditor::cutVideoApplyButtonClicked() {
+    QLineEdit* rangeStart = ui.edt_cutvideo_rangestart;
+    QLineEdit* rangeEnd = ui.edt_cutvideo_rangeend;
+
+    if(ui.rbtn_cutvideo_currentframe->isChecked()){
+        Frame* temp =  EveProject::getInstance()->getCurrentFrame();
+        int start = EveProject::getInstance()->getFrameIndex(temp);
+        EveProject::getInstance()->removeFrame(start);
+    }
+    else if(ui.rbtn_cutvideo_allframe->isChecked()){
+        Frame* temp = EveProject::getInstance()->getCurrentFrame();
+        int start = EveProject::getInstance()->getFrameIndex(temp);
+        int end = ui.edt_cutvideo_framerange->text().toInt();
+        EveProject::getInstance()->removeFrames(start, end);
+    }
+    else if (ui.rbtn_cutvideo_rangeframe->isChecked()) {
+        int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+        int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+        EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
+    }
+};
 
 void EasyVideoEditor::resizeApplyButtonClicked() {};
 
@@ -555,8 +577,8 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
     
     if (ui.edt_addsubtitle_subtitle->toPlainText() != "") {
         int option = 0;
-        int rangeStart = ui.edt_addsubtitle_rangestart->text().toInt();
-        int rangeEnd = ui.edt_addsubtitle_rangeend->text().toInt();
+        QLineEdit* rangeStart = ui.edt_changecontrast_rangestart;
+        QLineEdit* rangeEnd = ui.edt_changecontrast_rangeend;
 
         if (ui.radioBtn_addsubtitle_top->isChecked())
             option = 1; 
@@ -575,6 +597,23 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
             ui.edt_addsubtitle_color_green->text().toInt(),
             ui.edt_addsubtitle_color_blue->text().toInt()
         );
+
+        if (ui.rbtn_changecontrast_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_changecontrast_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_changecontrast_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
     }
     
 };

@@ -83,4 +83,3 @@ public:
     // Command list getter.
     std::list<Command*>* getCommandList();
 };
-
