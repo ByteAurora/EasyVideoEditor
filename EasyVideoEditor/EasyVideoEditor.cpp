@@ -51,7 +51,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     new SideMenu(ui.btn_changeplayspeed, ui.w_changeplayspeed);
     new SideMenu(ui.btn_addsubtitle, ui.w_addsubtitle);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
-
+    
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
     connect(ui.menu_encodingto_avi, SIGNAL(triggered()), this, SLOT(encodingToAviMenuClicked()));
@@ -218,6 +218,7 @@ void EasyVideoEditor::newProject() {
         ui.lbl_currentplaytime->setText("00:00:00.000");
         ui.sd_videoprogress->setMinimum(0);
         ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getBaseFrameCount() - 1);
+        ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
 
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
@@ -359,8 +360,10 @@ void EasyVideoEditor::playButtonClicked() {
     ui.btn_play->setVisible(false);
     ui.btn_pause->setVisible(true);
     mutex.unlock();
-    PlayVideo* playVideo = new PlayVideo(this);
-    playVideo->start();
+    if (playVideoThread == NULL) {
+        playVideoThread = new PlayVideo(this);
+    }
+    playVideoThread->start();
 }
 
 void EasyVideoEditor::pauseButtonClicked() {

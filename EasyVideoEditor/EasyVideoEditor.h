@@ -31,6 +31,7 @@
 #include "AddSubtitle.h"
 
 class EncodingVideo;
+class PlayVideo;
 
 class EasyVideoEditor : public QMainWindow
 {
@@ -65,6 +66,7 @@ private:
     Frame editingFrame;
 
     EncodingVideo* encodingVideoThread = NULL;
+    PlayVideo* playVideoThread = NULL;
 private:
     // A function called after a window displayed.
     void workAfterMainWindowShowed();
