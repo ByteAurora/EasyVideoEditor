@@ -14,4 +14,16 @@ AddSubtitle::AddSubtitle(bool addToList, std::string subtitle, int font, int opt
 AddSubtitle::~AddSubtitle(){}
 
 void AddSubtitle::operator()() {}
-void AddSubtitle::operator()(cv::Mat* mat) {}
+void AddSubtitle::operator()(cv::Mat* mat) {
+	double fontScale = size * 0.1;
+	cv::Size sizeText = cv::getTextSize(subtitle, font, fontScale,1,0);
+	cv::Size sizeImg = (*mat).size();
+	cv::Point org;
+	if (option == 1)
+		org = cv::Point((sizeImg.width - sizeText.width) / 2, sizeImg.height - (sizeImg.height - sizeText.height));
+	else if (option == 2)
+		org = cv::Point((sizeImg.width - sizeText.width) / 2, (sizeImg.height - sizeText.height) / 2);
+	else if (option == 3)
+		org = cv::Point((sizeImg.width - sizeText.width) / 2, (sizeImg.height - sizeText.height));
+	cv::putText((*mat), subtitle, org, font, fontScale, cv::Scalar(b_color, g_color, r_color), 1);
+}
