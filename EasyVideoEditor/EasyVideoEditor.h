@@ -121,7 +121,13 @@ private slots:
     void resizeApplyButtonClicked();
     void changePlaySpeedButtonClicked();
     void addSubtitleButtonClicked();
+    void addSubtitleCurrentFrameButtonClicked();
+    void addSubtitleAllFrameButtonClicked();
+    void addSubtitleRangeFrameButtonClicked();
     void addImageSelectButtonClicked();
+    void addImageCurrentFrameButtonClicked();
+    void addImageAllFrameButtonClicked();
+    void addImageRangeFrameButtonClicked();
     void addVideoSelectButtonClicked();
 
     void updateEncodingProgressBar(int value);

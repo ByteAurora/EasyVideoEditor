@@ -89,7 +89,13 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_forward5seconds, SIGNAL(clicked()), this, SLOT(forward5SecondsButtonclicked()));
     connect(ui.btn_backward5seconds, SIGNAL(clicked()), this, SLOT(backward5SecondsButtonClicked()));
     connect(ui.btn_addimage_select_path, SIGNAL(clicked()), this, SLOT(addImageSelectButtonClicked()));
+    connect(ui.rbtn_addimage_currentframe, SIGNAL(clicked()), this, SLOT(addImageCurrentFrameButtonClicked()));
+    connect(ui.rbtn_addimage_allframe, SIGNAL(clicked()), this, SLOT(addImageAllFrameButtonClicked()));
+    connect(ui.rbtn_addimage_rangeframe, SIGNAL(clicked()), this, SLOT(addImageRangeFrameButtonClicked()));
     connect(ui.btn_addvideo_select_path, SIGNAL(clicked()), this, SLOT(addVideoSelectButtonClicked()));
+    connect(ui.rbtn_addsubtitle_currentframe, SIGNAL(clicked()), this, SLOT(addSubtitleCurrentFrameButtonClicked()));
+    connect(ui.rbtn_addsubtitle_allframe, SIGNAL(clicked()), this, SLOT(addSubtitleAllFrameButtonClicked()));
+    connect(ui.rbtn_addsubtitle_rangeframe, SIGNAL(clicked()), this, SLOT(addSubtitleRangeFrameButtonClicked()));
     
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -715,14 +721,82 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
     }
 };
 
+void EasyVideoEditor::addSubtitleCurrentFrameButtonClicked() {
+    ui.btn_addsubtitle_rangeendtocurrent->setEnabled(false);
+    ui.btn_addsubtitle_rangestarttocurrent->setEnabled(false);
+    ui.edt_addsubtitle_rangeend->setEnabled(false);
+    ui.edt_addsubtitle_rangestart->setEnabled(false);
+    ui.label_45->setEnabled(false);
+}
+
+void EasyVideoEditor::addSubtitleAllFrameButtonClicked() {
+    ui.btn_addsubtitle_rangeendtocurrent->setEnabled(false);
+    ui.btn_addsubtitle_rangestarttocurrent->setEnabled(false);
+    ui.edt_addsubtitle_rangeend->setEnabled(false);
+    ui.edt_addsubtitle_rangestart->setEnabled(false);
+    ui.label_45->setEnabled(false);
+}
+
+void EasyVideoEditor::addSubtitleRangeFrameButtonClicked() {
+    ui.btn_addsubtitle_rangeendtocurrent->setEnabled(true);
+    ui.btn_addsubtitle_rangestarttocurrent->setEnabled(true);
+    ui.edt_addsubtitle_rangeend->setEnabled(true);
+    ui.edt_addsubtitle_rangestart->setEnabled(true);
+    ui.label_45->setEnabled(true);
+}
+
 void EasyVideoEditor::addImageSelectButtonClicked() {
     QString addImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 이미지 선택"), QDir::homePath(), QString::fromLocal8Bit("이미지 (*.png *.jpg *.bmp)"));
     ui.label_addimage_path->setText(addImagePath);
+    if (!(ui.label_addimage_path->text()).isEmpty()) {
+        ui.edt_addimage_height->setEnabled(true);
+        ui.edt_addimage_width->setEnabled(true);
+        ui.edt_addimage_x->setEnabled(true);
+        ui.edt_addimage_y->setEnabled(true);
+        ui.label_24->setEnabled(true);
+        ui.label_addimage_height->setEnabled(true);
+        ui.label_addimage_size_location->setEnabled(true);
+        ui.label_addimage_width->setEnabled(true);
+        ui.label_addimage_x->setEnabled(true);
+        ui.label_addimage_y->setEnabled(true);
+        ui.rbtn_addimage_allframe->setEnabled(true);
+        ui.rbtn_addimage_currentframe->setEnabled(true);
+        ui.rbtn_addimage_rangeframe->setEnabled(true);
+        ui.btn_addimage_apply->setEnabled(true);
+    }
 };
-    
+
+void EasyVideoEditor::addImageCurrentFrameButtonClicked() {
+    ui.btn_addimage_rangestarttocurrent->setEnabled(false);
+    ui.btn_addimage_rangeendtocurrent->setEnabled(false);
+    ui.label_27->setEnabled(false);
+    ui.edt_addimage_rangeend->setEnabled(false);
+    ui.edt_addimage_rangestart->setEnabled(false);
+}
+
+void EasyVideoEditor::addImageAllFrameButtonClicked() {
+    ui.btn_addimage_rangestarttocurrent->setEnabled(false);
+    ui.btn_addimage_rangeendtocurrent->setEnabled(false);
+    ui.label_27->setEnabled(false);
+    ui.edt_addimage_rangeend->setEnabled(false);
+    ui.edt_addimage_rangestart->setEnabled(false);
+}
+
+void EasyVideoEditor::addImageRangeFrameButtonClicked() {
+    ui.btn_addimage_rangestarttocurrent->setEnabled(true);
+    ui.btn_addimage_rangeendtocurrent->setEnabled(true);
+    ui.label_27->setEnabled(true);
+    ui.edt_addimage_rangeend->setEnabled(true);
+    ui.edt_addimage_rangestart->setEnabled(true);
+}
+
 void EasyVideoEditor::addVideoSelectButtonClicked() {
     QString addVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 동영상 파일 선택"), QDir::homePath(), QString::fromLocal8Bit("동영상 (*.mp4 *.avi *.wmv *.mov)"));
     ui.label_addvideo_path->setText(addVideoPath);
+
+    if (!(ui.label_addvideo_path->text()).isEmpty()) {
+
+    }
 };
 
 void EasyVideoEditor::updateEncodingProgressBar(int value) {
