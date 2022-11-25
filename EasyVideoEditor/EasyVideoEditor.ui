@@ -2039,26 +2039,6 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_addvideo_src_2">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>100</y>
-        <width>161</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans KR</family>
-        <pointsize>14</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>추가될 영상 범위</string>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="w_chromakey" native="true">
      <property name="geometry">
@@ -3163,6 +3143,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_24">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>16</x>
@@ -3183,6 +3166,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_addimage_apply">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>16</x>
@@ -3197,7 +3183,16 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="text">
        <string>추가</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
       <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
        <bool>false</bool>
       </property>
       <property name="flat">
@@ -3205,6 +3200,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_rangestart">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>32</x>
@@ -3221,6 +3219,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_addimage_rangestarttocurrent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>136</x>
@@ -3240,6 +3241,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_addimage_rangeendtocurrent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>368</x>
@@ -3259,6 +3263,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_rangeend">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>264</x>
@@ -3275,6 +3282,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_27">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>216</x>
@@ -3298,6 +3308,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_addimage_size_location">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>16</x>
@@ -3329,6 +3342,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
         <widget class="QRadioButton" name="rbtn_addimage_currentframe">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -3344,6 +3360,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </item>
        <item>
         <widget class="QRadioButton" name="rbtn_addimage_allframe">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -3356,6 +3375,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </item>
        <item>
         <widget class="QRadioButton" name="rbtn_addimage_rangeframe">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -3369,6 +3391,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </layout>
      </widget>
      <widget class="QLabel" name="label_addimage_path">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>16</x>
@@ -3398,6 +3423,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_addimage_x">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -3419,6 +3447,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_addimage_y">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3440,6 +3471,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_addimage_width">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -3461,6 +3495,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_addimage_height">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3482,6 +3519,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_x">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -3498,6 +3538,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_y">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -3514,6 +3557,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_width">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -3530,6 +3576,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_height">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -4128,6 +4177,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addsubtitle_rangestart">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>32</x>
@@ -4144,6 +4196,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_addsubtitle_rangestarttocurrent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>136</x>
@@ -4163,6 +4218,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_addsubtitle_rangeendtocurrent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>368</x>
@@ -4182,6 +4240,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addsubtitle_rangeend">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>264</x>
@@ -4198,6 +4259,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_45">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>216</x>
@@ -4558,10 +4622,10 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <zorder>w_changecontrast</zorder>
     <zorder>w_changeplayspeed</zorder>
     <zorder>w_changebrightness</zorder>
-    <zorder>w_addimage</zorder>
-    <zorder>w_addsubtitle</zorder>
-    <zorder>w_addvideo</zorder>
     <zorder>w_cutvideo</zorder>
+    <zorder>w_addimage</zorder>
+    <zorder>w_addvideo</zorder>
+    <zorder>w_addsubtitle</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">
