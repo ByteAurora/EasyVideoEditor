@@ -504,9 +504,32 @@ void EasyVideoEditor::addImageApplyButtonClicked() {
     }
 };
 
-void EasyVideoEditor::addVideoApplyButtonClicked() {};
+void EasyVideoEditor::addVideoApplyButtonClicked() {
+    Video* video = new Video(ui.label_addvideo_path->text().toStdString());
+    EveProject::getInstance()->addVideo(video);
+};
 
-void EasyVideoEditor::cutVideoApplyButtonClicked() {};
+void EasyVideoEditor::cutVideoApplyButtonClicked() {
+    QLineEdit* rangeStart = ui.edt_cutvideo_rangestart;
+    QLineEdit* rangeEnd = ui.edt_cutvideo_rangeend;
+
+    if(ui.rbtn_cutvideo_currentframe->isChecked()){
+        Frame* temp =  EveProject::getInstance()->getCurrentFrame();
+        int start = EveProject::getInstance()->getFrameIndex(temp);
+        EveProject::getInstance()->removeFrame(start);
+    }
+    else if(ui.rbtn_cutvideo_allframe->isChecked()){
+        Frame* temp = EveProject::getInstance()->getCurrentFrame();
+        int start = EveProject::getInstance()->getFrameIndex(temp);
+        int end = ui.edt_cutvideo_framerange->text().toInt();
+        EveProject::getInstance()->removeFrames(start, end);
+    }
+    else if (ui.rbtn_cutvideo_rangeframe->isChecked()) {
+        int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+        int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+        EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
+    }
+};
 
 void EasyVideoEditor::resizeApplyButtonClicked() {};
 
