@@ -96,6 +96,9 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.rbtn_addsubtitle_currentframe, SIGNAL(clicked()), this, SLOT(addSubtitleCurrentFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_allframe, SIGNAL(clicked()), this, SLOT(addSubtitleAllFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_rangeframe, SIGNAL(clicked()), this, SLOT(addSubtitleRangeFrameButtonClicked()));
+    connect(ui.rbtn_cutvideo_currentframe, SIGNAL(clicked()), this, SLOT(cutVideoCurrentFrameButtonClicked()));
+    connect(ui.rbtn_cutvideo_allframe, SIGNAL(clicked()), this, SLOT(cutVideoCurrentFrameToWantFrameButtonClicked()));
+    connect(ui.rbtn_cutvideo_rangeframe, SIGNAL(clicked()), this, SLOT(cutVideoRangeFrameButtonClicked()));
     
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -797,4 +800,31 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
 
 void EasyVideoEditor::updateEncodingProgressBar(int value) {
     ui.pb_encoding_progress->setValue(value);
+}
+
+void EasyVideoEditor::cutVideoCurrentFrameButtonClicked() {
+    ui.btn_cutvideo_rangeendtocurrent->setEnabled(false);
+    ui.btn_cutvideo_rangestarttocurrent->setEnabled(false);
+    ui.edt_cutvideo_framerange->setEnabled(false);
+    ui.edt_cutvideo_rangeend->setEnabled(false);
+    ui.edt_cutvideo_rangestart->setEnabled(false);
+    ui.label_23->setEnabled(false);
+}
+
+void EasyVideoEditor::cutVideoCurrentFrameToWantFrameButtonClicked() {
+    ui.btn_cutvideo_rangeendtocurrent->setEnabled(false);
+    ui.btn_cutvideo_rangestarttocurrent->setEnabled(false);
+    ui.edt_cutvideo_framerange->setEnabled(true);
+    ui.edt_cutvideo_rangeend->setEnabled(false);
+    ui.edt_cutvideo_rangestart->setEnabled(false);
+    ui.label_23->setEnabled(false);
+}
+
+void EasyVideoEditor::cutVideoRangeFrameButtonClicked() {
+    ui.btn_cutvideo_rangeendtocurrent->setEnabled(true);
+    ui.btn_cutvideo_rangestarttocurrent->setEnabled(true);
+    ui.edt_cutvideo_framerange->setEnabled(false);
+    ui.edt_cutvideo_rangeend->setEnabled(true);
+    ui.edt_cutvideo_rangestart->setEnabled(true);
+    ui.label_23->setEnabled(true);
 }

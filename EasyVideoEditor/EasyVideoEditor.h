@@ -129,6 +129,9 @@ private slots:
     void addImageAllFrameButtonClicked();
     void addImageRangeFrameButtonClicked();
     void addVideoSelectButtonClicked();
+    void cutVideoCurrentFrameButtonClicked();
+    void cutVideoCurrentFrameToWantFrameButtonClicked();
+    void cutVideoRangeFrameButtonClicked();
 
     void updateEncodingProgressBar(int value);
     void updateSampleFrame();

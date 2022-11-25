@@ -1766,6 +1766,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_cutvideo_rangestart">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>32</x>
@@ -1782,6 +1785,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_cutvideo_rangestarttocurrent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>136</x>
@@ -1801,6 +1807,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QPushButton" name="btn_cutvideo_rangeendtocurrent">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>368</x>
@@ -1820,6 +1829,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_cutvideo_rangeend">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>264</x>
@@ -1836,6 +1848,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLabel" name="label_23">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>216</x>
@@ -1916,6 +1931,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_cutvideo_framerange">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>200</x>
@@ -4622,10 +4640,10 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <zorder>w_changecontrast</zorder>
     <zorder>w_changeplayspeed</zorder>
     <zorder>w_changebrightness</zorder>
-    <zorder>w_cutvideo</zorder>
     <zorder>w_addimage</zorder>
     <zorder>w_addvideo</zorder>
     <zorder>w_addsubtitle</zorder>
+    <zorder>w_cutvideo</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">
