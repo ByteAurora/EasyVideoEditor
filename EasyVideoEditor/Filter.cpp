@@ -30,7 +30,9 @@ void Filter::operator()(cv::Mat* mat) {
         cv::Mat hsvSplit[3];
         split(hsv, hsvSplit);
         if (filterType == FilterType::GRAY) {
-            hsvSplit[0] -= 255;
+            cv::cvtColor(*mat, *mat, cv::COLOR_BGR2GRAY);
+            cv::cvtColor(*mat, *mat, cv::COLOR_GRAY2BGR);
+            return;
         }
         else if (filterType == FilterType::WARM) {
             hsvSplit[0] -= 10;

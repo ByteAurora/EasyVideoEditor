@@ -71,7 +71,6 @@ private:
 private:
     // A function called after a window displayed.
     void workAfterMainWindowShowed();
-    void updateSampleFrame();
 
     // Clear project data and ui elements.
     void clear();
@@ -126,4 +125,5 @@ private slots:
     void addVideoSelectButtonClicked();
 
     void updateEncodingProgressBar(int value);
+    void updateSampleFrame();
 };
