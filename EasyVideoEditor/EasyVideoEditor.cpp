@@ -545,8 +545,16 @@ void EasyVideoEditor::addImageApplyButtonClicked() {
 };
 
 void EasyVideoEditor::addVideoApplyButtonClicked() {
-    Video* video = new Video(ui.label_addvideo_path->text().toStdString());
-    EveProject::getInstance()->addVideo(video);
+    QString addVideoPath = ui.label_addvideo_path->text();
+    if(!addVideoPath.isEmpty()){
+        Video* addVideo = new Video(0, addVideoPath.toStdString());
+        EveProject::getInstance()->addVideo(addVideo);
+        std::vector<Frame*> frames;
+        for (int loop = 0; loop < addVideo->getFrameCount(); loop++) {
+            frames.push_back(new Frame(EveProject::getInstance()->getVideoList()->size() - 1, loop));
+        }
+        EveProject::getInstance()->addFrames(frames, EveProject::getInstance()->getCurrentFrameNumber());
+    }
 };
 
 void EasyVideoEditor::cutVideoApplyButtonClicked() {
