@@ -106,6 +106,8 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.edt_changecontrast_contrast, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
     connect(ui.sd_filter_clarity, SIGNAL(valueChanged(int)), this, SLOT(setLineEditBySlider(int)));;
     connect(ui.edt_filter_clarity, SIGNAL(textChanged(QString)), this, SLOT(setSliderByLineEdit(QString)));
+
+    // Connect update smaple frame.
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -339,6 +341,7 @@ void EasyVideoEditor::setSliderByLineEdit(QString value) {
 
 void EasyVideoEditor::sideMenuClicked() {
     SideMenu::selectSideMenu((QPushButton*)sender());
+    updateSampleFrame();
 }
 
 void EasyVideoEditor::videoProgressSliderMoved(int value) {
