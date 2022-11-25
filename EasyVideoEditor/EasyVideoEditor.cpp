@@ -147,7 +147,7 @@ void EasyVideoEditor::updateSampleFrame() {
         cv::Mat showFrame;
         editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
-    }
+    } 
 }
 
 void EasyVideoEditor::clear() {
@@ -213,11 +213,13 @@ void EasyVideoEditor::newProject() {
         left = (showWidth - resizeData.width) / 2;
         right = (showWidth - resizeData.width + 1) / 2;
 
+        EveProject::getInstance()->setCurrentFrameNumber(0);
         ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
         ui.lbl_currentplaytime->setText("00:00:00.000");
         ui.sd_videoprogress->setMinimum(0);
-        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getBaseFrameCount() - 1);
+        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
         ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+        ui.sd_videoprogress->setValue(0);
 
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
@@ -567,6 +569,18 @@ void EasyVideoEditor::cutVideoApplyButtonClicked() {
         int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
         EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
     }
+
+    EveProject::getInstance()->setCurrentFrameNumber(0);
+    ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
+    ui.lbl_currentplaytime->setText("00:00:00.000");
+    ui.sd_videoprogress->setMinimum(0);
+    ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+    ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+    ui.sd_videoprogress->setValue(0);
+
+    cv::Mat showFrame;
+    EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+    UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
 };
 
 void EasyVideoEditor::resizeApplyButtonClicked() {};
@@ -615,7 +629,6 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
             }
         }
     }
-    
 };
 
 void EasyVideoEditor::addImageSelectButtonClicked() {
