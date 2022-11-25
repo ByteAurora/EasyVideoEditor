@@ -1,4 +1,5 @@
 #include "Frame.h"
+#include "UsefulFunction.h"
 
 Frame::Frame() {
     sourceId = 0;
@@ -71,9 +72,19 @@ Frame* Frame::getCommandAppliedFrameData(int beforeSourceId, int beforeSourceFra
 
     if (moveEvent && (beforeSourceId != sourceId || (beforeSourceId == sourceId && beforeSourceFrameIndex + 1 != sourceFrameIndex))) {
         video->set(cv::CAP_PROP_POS_FRAMES, sourceFrameIndex);
+        (*video) >> (*mat);
+        // If use this codes, frame position error not occured but performance would be slow.
+        /*if (video->get(cv::CAP_PROP_POS_FRAMES) != sourceFrameIndex || mat->cols <= 0) {
+            video->set(cv::CAP_PROP_POS_FRAMES, 0);
+            for (int loop = 0; loop < sourceFrameIndex; loop++) {
+                video->grab();
+            }
+            (*video) >> (*mat);
+        }*/
     }
-
-    (*video) >> (*mat);
+    else {
+        (*video) >> (*mat);
+    }
 
     for (std::list<Command*>::iterator it = commandList.begin(); it != commandList.end(); it++) { 
         (*(*it))(mat);
