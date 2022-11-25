@@ -8,6 +8,7 @@
 #include <QMutex>
 #include <QEvent>
 #include <QKeyEvent>
+#include <QGraphicsEffect>
 #include "SideMenu.h"
 #include "ui_EasyVideoEditor.h"
 #include "Widgets.h"

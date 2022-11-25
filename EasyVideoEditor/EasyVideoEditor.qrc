@@ -15,6 +15,10 @@
     <file>resources/images/btn_addvideo_hover.png</file>
     <file>resources/images/btn_addvideo_normal.png</file>
     <file>resources/images/btn_addvideo_pressed.png</file>
+    <file>resources/images/btn_backward5seconds_disabled.png</file>
+    <file>resources/images/btn_backward5seconds_hover.png</file>
+    <file>resources/images/btn_backward5seconds_normal.png</file>
+    <file>resources/images/btn_backward5seconds_pressed.png</file>
     <file>resources/images/btn_changebrightness_checked.png</file>
     <file>resources/images/btn_changebrightness_disabled.png</file>
     <file>resources/images/btn_changebrightness_hover.png</file>
@@ -50,6 +54,22 @@
     <file>resources/images/btn_filter_hover.png</file>
     <file>resources/images/btn_filter_normal.png</file>
     <file>resources/images/btn_filter_pressed.png</file>
+    <file>resources/images/btn_forward5seconds_disabled.png</file>
+    <file>resources/images/btn_forward5seconds_hover.png</file>
+    <file>resources/images/btn_forward5seconds_normal.png</file>
+    <file>resources/images/btn_forward5seconds_pressed.png</file>
+    <file>resources/images/btn_pause_disabled.png</file>
+    <file>resources/images/btn_pause_hover.png</file>
+    <file>resources/images/btn_pause_normal.png</file>
+    <file>resources/images/btn_pause_pressed.png</file>
+    <file>resources/images/btn_play_disabled.png</file>
+    <file>resources/images/btn_play_hover.png</file>
+    <file>resources/images/btn_play_normal.png</file>
+    <file>resources/images/btn_play_pressed.png</file>
+    <file>resources/images/btn_reset_disabled.png</file>
+    <file>resources/images/btn_reset_hover.png</file>
+    <file>resources/images/btn_reset_normal.png</file>
+    <file>resources/images/btn_reset_pressed.png</file>
     <file>resources/images/btn_resize_checked.png</file>
     <file>resources/images/btn_resize_disabled.png</file>
     <file>resources/images/btn_resize_hover.png</file>

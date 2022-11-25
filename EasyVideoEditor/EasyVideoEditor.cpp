@@ -34,6 +34,18 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
+    std::vector<QGraphicsDropShadowEffect*> buttonEffects;
+    for (int loop = 0; loop < 5; loop++) {
+        QGraphicsDropShadowEffect* videoControlEffect = new QGraphicsDropShadowEffect();
+        videoControlEffect->setBlurRadius(6);
+        videoControlEffect->setOffset(2, 2);
+        buttonEffects.push_back(videoControlEffect);
+    }
+    ui.btn_play->setGraphicsEffect(buttonEffects.at(0));
+    ui.btn_pause->setGraphicsEffect(buttonEffects.at(1));
+    ui.btn_reset->setGraphicsEffect(buttonEffects.at(2));
+    ui.btn_forward5seconds->setGraphicsEffect(buttonEffects.at(3));
+    ui.btn_backward5seconds->setGraphicsEffect(buttonEffects.at(4));
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -149,7 +161,7 @@ void EasyVideoEditor::updateSampleFrame() {
         cv::Mat showFrame;
         editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
-    } 
+    }
 }
 
 void EasyVideoEditor::clear() {
