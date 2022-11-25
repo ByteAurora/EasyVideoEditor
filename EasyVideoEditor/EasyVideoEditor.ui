@@ -3449,6 +3449,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>30</height>
        </rect>
       </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_y">
       <property name="geometry">
@@ -3458,6 +3464,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <width>80</width>
         <height>30</height>
        </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_width">
@@ -3469,6 +3481,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>30</height>
        </rect>
       </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLineEdit" name="edt_addimage_height">
       <property name="geometry">
@@ -3478,6 +3496,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <width>80</width>
         <height>30</height>
        </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
@@ -4345,6 +4369,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>30</height>
        </rect>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
       <property name="value">
        <number>1</number>
       </property>
@@ -4442,6 +4469,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>30</height>
        </rect>
       </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLineEdit" name="edt_addsubtitle_color_green">
       <property name="geometry">
@@ -4451,6 +4484,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <width>50</width>
         <height>30</height>
        </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="edt_addsubtitle_color_blue">
@@ -4462,12 +4501,17 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
         <height>30</height>
        </rect>
       </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
     </widget>
     <zorder>w_coloremphasis</zorder>
     <zorder>w_resize</zorder>
     <zorder>w_filter</zorder>
-    <zorder>w_cutvideo</zorder>
     <zorder>w_chromakey</zorder>
     <zorder>w_transition</zorder>
     <zorder>w_changecontrast</zorder>
@@ -4476,6 +4520,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_r
     <zorder>w_addimage</zorder>
     <zorder>w_addsubtitle</zorder>
     <zorder>w_addvideo</zorder>
+    <zorder>w_cutvideo</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">
