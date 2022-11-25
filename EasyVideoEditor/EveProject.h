@@ -79,9 +79,9 @@ public:
     int getFrameTime(int index);
 
     // Remove frame from frame list.
-    void removeFrame(int index);
+    int removeFrame(int index);
     // Remove frames from frame list.
-    void removeFrames(int index, int count);
+    int removeFrames(int index, int count);
 
     // Get current frame pointer.
     Frame* getCurrentFrame();

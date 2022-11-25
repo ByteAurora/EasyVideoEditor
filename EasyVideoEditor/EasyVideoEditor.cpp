@@ -46,6 +46,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.btn_reset->setGraphicsEffect(buttonEffects.at(2));
     ui.btn_forward5seconds->setGraphicsEffect(buttonEffects.at(3));
     ui.btn_backward5seconds->setGraphicsEffect(buttonEffects.at(4));
+    ui.menu_encoding->setEnabled(false);
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -211,6 +212,9 @@ void EasyVideoEditor::clear() {
     ui.w_sidemenupagearea->setEnabled(false);
     ui.w_videocontrolarea->setEnabled(false);
     ui.w_videoarea->setStyleSheet("background-color:#000000;");
+    QPixmap pixmap(ui.lbl_videoframe->size());
+    pixmap.fill(QColor(0, 0, 0));
+    ui.lbl_videoframe->setPixmap(pixmap);
 
     EveProject::getInstance()->clear(this);
 
@@ -221,6 +225,7 @@ void EasyVideoEditor::newProject() {
     QString baseVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("편집할 동영상 파일 선택"), QDir::homePath(), QString::fromLocal8Bit("동영상 (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
         clear();
+        ui.menu_encoding->setEnabled(true);
         Video* baseVideo = new Video(0, baseVideoPath.toStdString());
         EveProject::getInstance()->addVideo(baseVideo);
         for (int loop = 0; loop < baseVideo->getFrameCount(); loop++) {
@@ -643,34 +648,40 @@ void EasyVideoEditor::cutVideoApplyButtonClicked() {
     QLineEdit* rangeStart = ui.edt_cutvideo_rangestart;
     QLineEdit* rangeEnd = ui.edt_cutvideo_rangeend;
 
+    int leftFrame = 0;
     if(ui.rbtn_cutvideo_currentframe->isChecked()){
         Frame* temp =  EveProject::getInstance()->getCurrentFrame();
         int start = EveProject::getInstance()->getFrameIndex(temp);
-        EveProject::getInstance()->removeFrame(start);
+        leftFrame = EveProject::getInstance()->removeFrame(start);
     }
     else if(ui.rbtn_cutvideo_allframe->isChecked()){
         Frame* temp = EveProject::getInstance()->getCurrentFrame();
         int start = EveProject::getInstance()->getFrameIndex(temp);
         int end = ui.edt_cutvideo_framerange->text().toInt();
-        EveProject::getInstance()->removeFrames(start, end);
+        leftFrame = EveProject::getInstance()->removeFrames(start, end);
     }
     else if (ui.rbtn_cutvideo_rangeframe->isChecked()) {
         int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
         int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-        EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
+        leftFrame = EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
     }
 
-    EveProject::getInstance()->setCurrentFrameNumber(0);
-    ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
-    ui.lbl_currentplaytime->setText("00:00:00.000");
-    ui.sd_videoprogress->setMinimum(0);
-    ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
-    ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
-    ui.sd_videoprogress->setValue(0);
+    if (leftFrame == 0) {
+        clear();
+    }
+    else {
+        EveProject::getInstance()->setCurrentFrameNumber(0);
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+        ui.lbl_currentplaytime->setText("00:00:00.000");
+        ui.sd_videoprogress->setMinimum(0);
+        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+        ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+        ui.sd_videoprogress->setValue(0);
 
-    cv::Mat showFrame;
-    EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
-    UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
 };
 
 void EasyVideoEditor::resizeApplyButtonClicked() {};

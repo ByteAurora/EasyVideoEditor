@@ -102,14 +102,16 @@ int EveProject::getFrameTime(int index) {
     return index * getBaseDelay();
 }
 
-void EveProject::removeFrame(int index) {
+int EveProject::removeFrame(int index) {
     frameList.erase(frameList.begin() + index);
+    return frameList.size();
 }
 
-void EveProject::removeFrames(int index, int count) {
+int EveProject::removeFrames(int index, int count) {
     std::vector<Frame*>::iterator lastIndex = frameList.begin() + index + count;
     if (frameList.begin() + index + count > frameList.end()) lastIndex = frameList.end();
     frameList.erase(frameList.begin() + index, lastIndex);
+    return frameList.size();
 }
 
 Frame* EveProject::getCurrentFrame() {
