@@ -22,3 +22,8 @@ void AddImage::operator()(cv::Mat* mat) {
 	cloneImg.copyTo((*mat)(cv::Rect(x, y, width, height)));	
 }
 
+void AddImage::operator()(cv::Mat* mat, Image* image) {
+	cv::Mat cloneImg = ((cv::Mat*)image->getResource())->clone();
+	cv::resize(cloneImg, cloneImg, cv::Size(width, height));
+	cloneImg.copyTo((*mat)(cv::Rect(x, y, width, height)));
+}

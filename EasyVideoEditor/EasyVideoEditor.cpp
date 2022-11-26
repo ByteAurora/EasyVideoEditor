@@ -145,6 +145,10 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.edt_chromakey_valend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addimage_x, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addimage_y, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addimage_width, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addimage_height, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -248,6 +252,28 @@ void EasyVideoEditor::updateSampleFrame() {
             UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
 
             free(chromakey);
+        }
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::ADD_IMAGE) {
+        if (!ui.label_addimage_path->text().isEmpty() && ui.edt_addimage_width->text().toInt() != 0 && ui.edt_addimage_height->text().toInt() != 0) {
+            (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+
+            Image image(ui.label_addimage_path->text().toStdString());
+            image.loadResource();
+
+            AddImage addImage(
+                false,
+                &image,
+                ui.edt_addimage_x->text().toInt(),
+                ui.edt_addimage_y->text().toInt(),
+                ui.edt_addimage_width->text().toInt(),
+                ui.edt_addimage_height->text().toInt()
+            );
+
+            cv::Mat showFrame;
+            editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            addImage(&showFrame, &image);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
         }
     }
 }
@@ -889,6 +915,7 @@ void EasyVideoEditor::addImageSelectButtonClicked() {
         ui.rbtn_addimage_currentframe->setEnabled(true);
         ui.rbtn_addimage_rangeframe->setEnabled(true);
         ui.btn_addimage_apply->setEnabled(true);
+        updateSampleFrame();
     }
 };
 
