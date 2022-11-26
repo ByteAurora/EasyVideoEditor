@@ -127,6 +127,7 @@ private slots:
     void addVideoSelectButtonClicked();
     void chromakeyFilePickerButtonClicked();
 
+    void getCurrentFrameTime();
     void updateEncodingProgressBar(int value);
     void updateSampleFrame();
 };

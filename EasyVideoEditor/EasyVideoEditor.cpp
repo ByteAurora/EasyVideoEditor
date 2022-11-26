@@ -95,6 +95,24 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.rbtn_addsubtitle_allframe, SIGNAL(clicked()), this, SLOT(addSubtitleAllFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_rangeframe, SIGNAL(clicked()), this, SLOT(addSubtitleRangeFrameButtonClicked()));
     connect(ui.btn_chromakey_filepicker, SIGNAL(clicked()), this, SLOT(chromakeyFilePickerButtonClicked()));
+    connect(ui.btn_coloremphasis_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_coloremphasis_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changebrightness_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changebrightness_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changecontrast_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changecontrast_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_filter_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_filter_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_chromakey_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_chromakey_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addimage_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addimage_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_cutvideo_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_cutvideo_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changeplayspeed_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changeplayspeed_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addsubtitle_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addsubtitle_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
 
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -1042,4 +1060,98 @@ void EasyVideoEditor::chromakeyFilePickerButtonClicked() {
 
 void EasyVideoEditor::updateEncodingProgressBar(int value) {
     ui.pb_encoding_progress->setValue(value);
+}
+
+void EasyVideoEditor::getCurrentFrameTime() {
+    QObject* senderObject = sender();
+    if (senderObject == ui.btn_coloremphasis_rangestarttocurrent)
+        ui.edt_coloremphasis_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_coloremphasis_rangeendtocurrent)
+        ui.edt_coloremphasis_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changebrightness_rangestarttocurrent)
+        ui.edt_changebrightness_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changebrightness_rangeendtocurrent)
+        ui.edt_changebrightness_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changecontrast_rangestarttocurrent)
+        ui.edt_changecontrast_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changecontrast_rangeendtocurrent)
+        ui.edt_changecontrast_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_filter_rangestarttocurrent)
+        ui.edt_filter_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_filter_rangeendtocurrent)
+        ui.edt_filter_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_chromakey_rangestarttocurrent)
+        ui.edt_chromakey_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_chromakey_rangeendtocurrent)
+        ui.edt_chromakey_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addimage_rangestarttocurrent)
+        ui.edt_addimage_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addimage_rangeendtocurrent)
+        ui.edt_addimage_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_cutvideo_rangestarttocurrent)
+        ui.edt_cutvideo_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_cutvideo_rangeendtocurrent)
+        ui.edt_cutvideo_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changeplayspeed_rangestarttocurrent)
+        ui.edt_changeplayspeed_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changeplayspeed_rangeendtocurrent)
+        ui.edt_changeplayspeed_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addsubtitle_rangestarttocurrent)
+        ui.edt_addsubtitle_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addsubtitle_rangeendtocurrent)
+        ui.edt_addsubtitle_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber()))); 
 }
