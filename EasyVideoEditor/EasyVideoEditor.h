@@ -27,7 +27,6 @@
 #include "AddImage.h"
 #include "AddVideo.h"
 #include "CutVideo.h"
-#include "Resize.h"
 #include "ChangePlaySpeed.h"
 #include "AddSubtitle.h"
 
@@ -116,7 +115,6 @@ private slots:
     void addImageApplyButtonClicked();
     void addVideoApplyButtonClicked();
     void cutVideoApplyButtonClicked();
-    void resizeApplyButtonClicked();
     void changePlaySpeedButtonClicked();
     void addSubtitleButtonClicked();
     void addSubtitleCurrentFrameButtonClicked();

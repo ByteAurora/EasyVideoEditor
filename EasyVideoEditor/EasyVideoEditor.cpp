@@ -57,7 +57,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     new SideMenu(ui.btn_addimage, ui.w_addimage);
     new SideMenu(ui.btn_addvideo, ui.w_addvideo);
     new SideMenu(ui.btn_cutvideo, ui.w_cutvideo);
-    new SideMenu(ui.btn_resize, ui.w_resize);
     new SideMenu(ui.btn_changeplayspeed, ui.w_changeplayspeed);
     new SideMenu(ui.btn_addsubtitle, ui.w_addsubtitle);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
@@ -78,7 +77,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_addimage, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_cutvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
-    connect(ui.btn_resize, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.sd_videoprogress, SIGNAL(sliderMoved(int)), this, SLOT(videoProgressSliderMoved(int)));
@@ -107,7 +105,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_addimage_apply, SIGNAL(clicked()), this, SLOT(addImageApplyButtonClicked()));
     connect(ui.btn_addvideo_apply, SIGNAL(clicked()), this, SLOT(addVideoApplyButtonClicked()));
     connect(ui.btn_cutvideo_apply, SIGNAL(clicked()), this, SLOT(cutVideoApplyButtonClicked()));
-    connect(ui.btn_resize_apply, SIGNAL(clicked()), this, SLOT(resizeApplyButtonClicked()));
     connect(ui.btn_changeplayspeed_apply, SIGNAL(clicked()), this, SLOT(changePlaySpeedButtonClicked()));
     connect(ui.btn_addsubtitle_apply, SIGNAL(clicked()), this, SLOT(addSubtitleButtonClicked()));
 
@@ -830,8 +827,6 @@ void EasyVideoEditor::cutVideoApplyButtonClicked() {
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
 };
-
-void EasyVideoEditor::resizeApplyButtonClicked() {};
 
 void EasyVideoEditor::changePlaySpeedButtonClicked() {
     QLineEdit* rangeStart = ui.edt_changeplayspeed_rangestart;

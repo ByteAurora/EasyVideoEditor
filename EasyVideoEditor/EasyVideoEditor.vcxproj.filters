@@ -109,9 +109,6 @@
     <ClCompile Include="Filter.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
-    <ClCompile Include="Resize.cpp">
-      <Filter>Code\Model\Command</Filter>
-    </ClCompile>
     <ClCompile Include="EasyVideoEditor.cpp">
       <Filter>Code\Source Files</Filter>
     </ClCompile>
@@ -180,13 +177,13 @@
     <ClInclude Include="CutVideo.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="Resize.h">
-      <Filter>Code\Model\Command</Filter>
-    </ClInclude>
     <ClInclude Include="Filter.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
     <ClInclude Include="UsefulFunction.h">
+      <Filter>Code\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
       <Filter>Code\Header Files</Filter>
     </ClInclude>
   </ItemGroup>

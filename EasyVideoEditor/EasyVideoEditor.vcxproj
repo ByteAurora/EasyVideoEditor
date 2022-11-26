@@ -113,7 +113,6 @@
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Image.cpp" />
-    <ClCompile Include="Resize.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="SideMenu.cpp" />
     <ClCompile Include="UsefulFunction.cpp" />
@@ -130,6 +129,7 @@
     <ClInclude Include="AddVideo.h" />
     <QtMoc Include="PlayVideo.h" />
     <QtMoc Include="EncodingVideo.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="ChangeBrightness.h" />
     <ClInclude Include="ChangeContrast.h" />
@@ -142,7 +142,6 @@
     <ClInclude Include="Filter.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="Resize.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SideMenu.h" />
     <ClInclude Include="UsefulFunction.h" />
