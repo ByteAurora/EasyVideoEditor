@@ -844,6 +844,10 @@ void EasyVideoEditor::transitionApplyButtonClicked() {
                 Transition* transition = new Transition(true, changeWeight * loop);
                 EveProject::getInstance()->getFrameByIndex(startIndex + loop)->addCommand(transition);
             }
+
+            cv::Mat showFrame;
+            EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
     }
     else if (ui.rbtn_transition_fadeout->isChecked()) {
@@ -865,6 +869,10 @@ void EasyVideoEditor::transitionApplyButtonClicked() {
                 Transition* transition = new Transition(true, 1 - changeWeight * loop);
                 EveProject::getInstance()->getFrameByIndex(startIndex + loop)->addCommand(transition);
             }
+
+            cv::Mat showFrame;
+            EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
     }
 };
@@ -923,7 +931,6 @@ void EasyVideoEditor::addVideoApplyButtonClicked() {
         ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
 
         updateInformationArea();
-
     }
 };
 
