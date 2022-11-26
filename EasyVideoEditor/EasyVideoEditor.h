@@ -16,6 +16,7 @@
 #include "UsefulFunction.h"
 #include "PlayVideo.h"
 #include "EncodingVideo.h"
+#include "VideoProgressEventFilter.h"
 
 // Command class.
 #include "ColorEmphasis.h"

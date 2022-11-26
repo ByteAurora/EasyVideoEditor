@@ -42,7 +42,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
     ui.cmbox_addsubtitle_font->addItem("SIMPLEX"); // FONT_HERSHEY_SIMPLEX
-    ui.cmbox_addsubtitle_font->addItem("PLAIN"); // FONT_HERSHEY_PLAIN
+    ui.cmbox_addsubtitle_font->addItem("PLAIN"); // FONT_HERSHEY_PLAIN 
     ui.cmbox_addsubtitle_font->addItem("DUPLEX"); // FONT_HERSHEY_DUPLEX
     ui.cmbox_addsubtitle_font->addItem("COMPLEX"); // FONT_HERSHEY_COMPLEX
     ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
@@ -117,6 +117,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.edt_addimage_y->setValidator(addImageYValidator);
     ui.edt_addimage_width->setValidator(addImageWidthValidator);
     ui.edt_addimage_height->setValidator(addImageHeightValidator);
+    ui.sd_videoprogress->installEventFilter(new VideoProgressEventFilter(ui.lbl_videoframe, ui.sd_videoprogress, ui.lbl_currentplaytime, this));
     
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));

@@ -115,11 +115,14 @@
     <ClCompile Include="UsefulFunction.cpp">
       <Filter>Code\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EncodingVideo.cpp">
-      <Filter>Code\Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlayVideo.cpp">
-      <Filter>Code\Header Files</Filter>
+      <Filter>Code\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EncodingVideo.cpp">
+      <Filter>Code\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoProgressEventFilter.cpp">
+      <Filter>Code\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +198,9 @@
       <Filter>Code\Header Files</Filter>
     </QtMoc>
     <QtMoc Include="EncodingVideo.h">
+      <Filter>Code\Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="VideoProgressEventFilter.h">
       <Filter>Code\Header Files</Filter>
     </QtMoc>
   </ItemGroup>

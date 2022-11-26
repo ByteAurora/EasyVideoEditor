@@ -117,6 +117,7 @@
     <ClCompile Include="SideMenu.cpp" />
     <ClCompile Include="UsefulFunction.cpp" />
     <ClCompile Include="Video.cpp" />
+    <ClCompile Include="VideoProgressEventFilter.cpp" />
     <ClCompile Include="Widgets.cpp" />
     <QtRcc Include="EasyVideoEditor.qrc" />
     <QtUic Include="EasyVideoEditor.ui" />
@@ -146,6 +147,7 @@
     <ClInclude Include="SideMenu.h" />
     <ClInclude Include="UsefulFunction.h" />
     <ClInclude Include="Video.h" />
+    <QtMoc Include="VideoProgressEventFilter.h" />
     <ClInclude Include="Widgets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
