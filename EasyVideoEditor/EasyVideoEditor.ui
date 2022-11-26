@@ -2548,7 +2548,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
         </rect>
        </property>
        <property name="text">
-        <string>255</string>
+        <string>180</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -4644,13 +4644,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <zorder>w_filter</zorder>
     <zorder>w_transition</zorder>
     <zorder>w_changecontrast</zorder>
-    <zorder>w_changeplayspeed</zorder>
     <zorder>w_changebrightness</zorder>
     <zorder>w_cutvideo</zorder>
     <zorder>w_addimage</zorder>
     <zorder>w_addsubtitle</zorder>
     <zorder>w_addvideo</zorder>
     <zorder>w_chromakey</zorder>
+    <zorder>w_changeplayspeed</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">

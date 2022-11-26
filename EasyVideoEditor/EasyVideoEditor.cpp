@@ -4,8 +4,6 @@ int EasyVideoEditor::top = 0;
 int EasyVideoEditor::down = 0;
 int EasyVideoEditor::left = 0;
 int EasyVideoEditor::right = 0;
-int EasyVideoEditor::outputVideoWidth = 0;
-int EasyVideoEditor::outputVideoHeight = 0;
 EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
 QMutex EasyVideoEditor::mutex;
 cv::Size EasyVideoEditor::resizeData;
@@ -223,27 +221,27 @@ void EasyVideoEditor::updateSampleFrame() {
                     , ui.edt_chromakey_huestart->text().toInt(), ui.edt_chromakey_hueend->text().toInt()
                     , ui.edt_chromakey_satstart->text().toInt(), ui.edt_chromakey_satend->text().toInt()
                     , ui.edt_chromakey_valstart->text().toInt(), ui.edt_chromakey_valend->text().toInt()
-                    , ui.cb_chromakey_reverse->isChecked(), -1);
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
             }
             else if (ui.rbtn_chromakey_white->isChecked()) {
                 chromakey = new Chromakey(false
-                    , 0, 180, 0, 14, 236, 255
+                    , 0, 180, 0, 255, 200, 255
                     , !ui.cb_chromakey_reverse->isChecked(), -1);
             }
             else if (ui.rbtn_chromakey_black->isChecked()) {
                 chromakey = new Chromakey(false
-                    , 0, 180, 0, 255, 28, 255
-                    , ui.cb_chromakey_reverse->isChecked(), -1);
+                    , 0, 180, 0, 255, 0, 30
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
             }
             else if (ui.rbtn_chromakey_green->isChecked()) {
                 chromakey = new Chromakey(false
-                    , 0, 180, 0, 206, 0, 255
-                    , ui.cb_chromakey_reverse->isChecked(), -1);
+                    , 50, 80, 150, 255, 0, 255
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
             }
             else if (ui.rbtn_chromakey_blue->isChecked()) {
                 chromakey = new Chromakey(false
-                    , 0, 104, 0, 255, 0, 255
-                    , ui.cb_chromakey_reverse->isChecked(), -1);
+                    , 100, 140, 150, 255, 0, 255
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
             }
 
             cv::Mat showFrame;
@@ -325,9 +323,6 @@ void EasyVideoEditor::newProject() {
         for (int loop = 0; loop < baseVideo->getFrameCount(); loop++) {
             EveProject::getInstance()->addFrame(new Frame(0, loop));
         }
-
-        outputVideoWidth = EveProject::getInstance()->getBaseWidth();
-        outputVideoHeight = EveProject::getInstance()->getBaseHeight();
 
         ui.w_contentarea->setEnabled(true);
         ui.w_sidemenuarea->setEnabled(true);
@@ -700,23 +695,23 @@ void EasyVideoEditor::chromakeyApplyButtonClicked() {
                 , ui.edt_chromakey_huestart->text().toInt(), ui.edt_chromakey_hueend->text().toInt()
                 , ui.edt_chromakey_satstart->text().toInt(), ui.edt_chromakey_satend->text().toInt()
                 , ui.edt_chromakey_valstart->text().toInt(), ui.edt_chromakey_valend->text().toInt()
-                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
         } else if (ui.rbtn_chromakey_white->isChecked()) {
             command = new Chromakey(true
-                , 0, 180, 0, 14, 236, 255
+                , 0, 180, 0, 255, 200, 255
                 , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
         } else if (ui.rbtn_chromakey_black->isChecked()) {
             command = new Chromakey(true
-                , 0, 180, 0, 255, 28, 255
-                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+                , 0, 180, 0, 255, 0, 30
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
         } else if (ui.rbtn_chromakey_green->isChecked()) {
             command = new Chromakey(true
-                , 0, 180, 0, 206, 0, 255
-                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+                , 50, 80, 150, 255, 0, 255
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
         } else if (ui.rbtn_chromakey_blue->isChecked()) {
             command = new Chromakey(true
-                , 0, 104, 0, 255, 0, 255
-                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+                , 100, 140, 150, 255, 0, 255
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
         }
 
         if (ui.rbtn_chromakey_currentframe->isChecked()) {
@@ -838,7 +833,60 @@ void EasyVideoEditor::cutVideoApplyButtonClicked() {
 
 void EasyVideoEditor::resizeApplyButtonClicked() {};
 
-void EasyVideoEditor::changePlaySpeedButtonClicked() {};
+void EasyVideoEditor::changePlaySpeedButtonClicked() {
+    QLineEdit* rangeStart = ui.edt_changeplayspeed_rangestart;
+    QLineEdit* rangeEnd = ui.edt_changeplayspeed_rangeend;
+
+    double speed = ui.edt_changeplayspeed_speed->text().toDouble();
+
+    if (0 < speed) {
+        if (ui.rbtn_changeplayspeed_allframe->isChecked()) {
+            EveProject::getInstance()->setBaseFps(EveProject::getInstance()->getBaseFps() * speed);
+            EveProject::getInstance()->setBaseDelay(EveProject::getInstance()->getBaseDelay() * (1 / speed));
+            EveProject::getInstance()->setCurrentFrameNumber(0);
+            ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+            ui.lbl_currentplaytime->setText("00:00:00.000");
+            ui.sd_videoprogress->setValue(0);
+        }
+        else if (ui.rbtn_changeplayspeed_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+
+            if (speed < 1) {
+                std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+                int frameGap = 1 / speed;
+                for (int loop1 = 0; loop1 < endIndex - startIndex + 1; loop1++) {
+                    std::vector<Frame*> addFrames;
+                    for (int loop2 = 0; loop2 < frameGap - 1; loop2++) {
+                        Frame* frame = new Frame();
+                        allFrames->at(startIndex + loop1 * frameGap)->copyTo(frame);
+                        addFrames.push_back(frame);
+                    }
+                    EveProject::getInstance()->addFrames(addFrames, startIndex + frameGap * loop1);
+                }
+            }
+            else {
+                int originalSize = EveProject::getInstance()->getFrameList()->size();
+                int frameGap = (int)speed;
+                int deleteCount = 0;
+                for (int loop = 0; loop < originalSize; loop++) {
+                    if (loop % frameGap == 0 && loop != 0) {
+                        EveProject::getInstance()->removeFrame(loop - deleteCount);
+                        deleteCount++;
+                    }
+                }
+            }
+            EveProject::getInstance()->setCurrentFrameNumber(0);
+            ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+            ui.lbl_currentplaytime->setText("00:00:00.000");
+            ui.sd_videoprogress->setMinimum(0);
+            ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+            ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+            ui.sd_videoprogress->setValue(0);
+        }
+    }
+};
 
 void EasyVideoEditor::addSubtitleButtonClicked() {
     

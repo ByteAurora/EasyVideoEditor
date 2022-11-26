@@ -54,8 +54,6 @@ public:
     static int down;
     static int left;
     static int right;
-    static int outputVideoWidth;
-    static int outputVideoHeight;
     static QMetaObject::Connection encodingVideoThreadConnection;
 private:
     Ui::EasyVideoEditorClass ui;

@@ -44,10 +44,16 @@ void EveProject::clear(QMainWindow* window) {
 }
 
 void EveProject::addVideo(Video* video) {
-    if (currentFrameNumber == -1) { currentFrameNumber = 0; }
     videoList.push_back(video);
     video->setResourceId(videoList.size() - 1);
     video->loadResource();
+    if (currentFrameNumber == -1) {
+        currentFrameNumber = 0;
+        baseFps = video->getFps();
+        baseDelay = video->getDelay();
+        baseWidth = video->getWidth();
+        baseHeight = video->getHeight();
+    }
 }
 
 Video* EveProject::getVideo(int index) {
@@ -103,6 +109,7 @@ int EveProject::getFrameTime(int index) {
 }
 
 int EveProject::removeFrame(int index) {
+    free(frameList.at(index));
     frameList.erase(frameList.begin() + index);
     return frameList.size();
 }
@@ -110,6 +117,9 @@ int EveProject::removeFrame(int index) {
 int EveProject::removeFrames(int index, int count) {
     std::vector<Frame*>::iterator lastIndex = frameList.begin() + index + count;
     if (frameList.begin() + index + count > frameList.end()) lastIndex = frameList.end();
+    for (int loop = index; loop < index + count; loop++) {
+        free(frameList.at(loop));
+    }
     frameList.erase(frameList.begin() + index, lastIndex);
     return frameList.size();
 }
@@ -123,19 +133,28 @@ Frame* EveProject::getCurrentFrameAndUpdate() {
 }
 
 double EveProject::getBaseFps() {
-    return videoList.front()->getFps();
+    return baseFps;
 }
 int EveProject::getBaseDelay() {
-    return videoList.front()->getDelay();
-}
-int EveProject::getBaseFrameCount() {
-    return videoList.front()->getFrameCount();
+    return baseDelay;
 }
 int EveProject::getBaseWidth() {
-    return videoList.front()->getWidth();
+    return baseWidth;
 }
 int EveProject::getBaseHeight() {
-    return videoList.front()->getHeight();
+    return baseHeight;
+}
+void EveProject::setBaseFps(double baseFps) {
+    this->baseFps = baseFps;
+}
+void EveProject::setBaseDelay(int baseDelay) {
+    this->baseDelay = baseDelay;
+}
+void EveProject::setBaseWidth(int baseWidth) {
+    this->baseWidth = baseWidth;
+}
+void EveProject::setBaseHeight(int baseHeight) {
+    this->baseHeight = baseHeight;
 }
 
 bool EveProject::forward1Frame() {
