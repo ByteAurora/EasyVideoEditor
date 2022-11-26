@@ -521,6 +521,130 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      <zorder>btn_pause</zorder>
      <zorder>btn_play</zorder>
     </widget>
+    <widget class="QWidget" name="w_encodingpage" native="true">
+     <property name="geometry">
+      <rect>
+       <x>-570</x>
+       <y>30</y>
+       <width>1600</width>
+       <height>881</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(0, 0, 0, 128);</string>
+     </property>
+     <widget class="QWidget" name="w_encoding_info" native="true">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>330</y>
+        <width>360</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: #ffffff; border-radius: 16px</string>
+      </property>
+      <widget class="QLabel" name="label_80">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>32</y>
+         <width>240</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Noto Sans KR</family>
+         <pointsize>18</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>인코딩 진행 중</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_encoding_filename">
+       <property name="geometry">
+        <rect>
+         <x>16</x>
+         <y>120</y>
+         <width>336</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>video.mp4</string>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QProgressBar" name="pb_encoding_progress">
+       <property name="geometry">
+        <rect>
+         <x>32</x>
+         <y>180</y>
+         <width>296</width>
+         <height>4</height>
+        </rect>
+       </property>
+       <property name="value">
+        <number>50</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="textVisible">
+        <bool>false</bool>
+       </property>
+       <property name="textDirection">
+        <enum>QProgressBar::TopToBottom</enum>
+       </property>
+       <property name="format">
+        <string>%p% 완료</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_encoding_lefttime">
+       <property name="geometry">
+        <rect>
+         <x>16</x>
+         <y>208</y>
+         <width>336</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Noto Sans KR</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>남은 시간 계산 중...</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="w_videoinfoarea" native="true">
     <property name="geometry">
@@ -534,17 +658,244 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <property name="styleSheet">
      <string notr="true">background-color: #b1b1b1;</string>
     </property>
-    <widget class="QLabel" name="label_28">
+    <widget class="QLabel" name="label_allframe">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>48</width>
-       <height>16</height>
+       <x>10</x>
+       <y>10</y>
+       <width>135</width>
+       <height>61</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string>전체 프레임 수</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_fps">
+     <property name="geometry">
+      <rect>
+       <x>1034</x>
+       <y>170</y>
+       <width>135</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>FPS</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_height">
+     <property name="geometry">
+      <rect>
+       <x>522</x>
+       <y>170</y>
+       <width>135</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Height</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_videolist">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>135</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Video List</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_width">
+     <property name="geometry">
+      <rect>
+       <x>522</x>
+       <y>10</y>
+       <width>135</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Width</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_delay">
+     <property name="geometry">
+      <rect>
+       <x>1034</x>
+       <y>10</y>
+       <width>135</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Delay</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tbr_allframe">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>470</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tbr_width">
+     <property name="geometry">
+      <rect>
+       <x>522</x>
+       <y>60</y>
+       <width>470</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tbr_height">
+     <property name="geometry">
+      <rect>
+       <x>522</x>
+       <y>220</y>
+       <width>470</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tbr_videolist">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>470</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tbr_fps">
+     <property name="geometry">
+      <rect>
+       <x>1034</x>
+       <y>220</y>
+       <width>470</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="tbr_delay">
+     <property name="geometry">
+      <rect>
+       <x>1034</x>
+       <y>60</y>
+       <width>470</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff;</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -2210,7 +2561,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
         </rect>
        </property>
        <property name="text">
-        <string>180</string>
+        <string>255</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -4305,137 +4656,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <zorder>w_filter</zorder>
     <zorder>w_transition</zorder>
     <zorder>w_changecontrast</zorder>
+    <zorder>w_changeplayspeed</zorder>
     <zorder>w_changebrightness</zorder>
     <zorder>w_cutvideo</zorder>
     <zorder>w_addimage</zorder>
     <zorder>w_addsubtitle</zorder>
     <zorder>w_addvideo</zorder>
     <zorder>w_chromakey</zorder>
-    <zorder>w_changeplayspeed</zorder>
-   </widget>
-   <widget class="QWidget" name="w_encodingpage" native="true">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1600</width>
-      <height>881</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0, 128);</string>
-    </property>
-    <widget class="QWidget" name="w_encoding_info" native="true">
-     <property name="geometry">
-      <rect>
-       <x>620</x>
-       <y>330</y>
-       <width>360</width>
-       <height>240</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #ffffff; border-radius: 16px</string>
-     </property>
-     <widget class="QLabel" name="label_80">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>32</y>
-        <width>240</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans KR</family>
-        <pointsize>18</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>인코딩 진행 중</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_encoding_filename">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>120</y>
-        <width>336</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>video.mp4</string>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="pb_encoding_progress">
-      <property name="geometry">
-       <rect>
-        <x>32</x>
-        <y>180</y>
-        <width>296</width>
-        <height>4</height>
-       </rect>
-      </property>
-      <property name="value">
-       <number>50</number>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="textVisible">
-       <bool>false</bool>
-      </property>
-      <property name="textDirection">
-       <enum>QProgressBar::TopToBottom</enum>
-      </property>
-      <property name="format">
-       <string>%p% 완료</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lbl_encoding_lefttime">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>208</y>
-        <width>336</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Noto Sans KR</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>남은 시간 계산 중...</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
