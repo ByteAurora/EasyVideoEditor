@@ -43,7 +43,8 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(37, 37, 37);</string>
+     <string notr="true">QWidget{ background-color: rgb(37, 37, 37);  }
+ QWidget:disabled{ background-color: rgb(155, 155, 155); }</string>
     </property>
     <widget class="QPushButton" name="btn_addvideo">
      <property name="geometry">
