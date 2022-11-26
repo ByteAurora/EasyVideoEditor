@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="EasyVideoEditor">
+    <file>resources/images/icon_evelogo.ico</file>
     <file>resources/images/btn_addimage_checked.png</file>
     <file>resources/images/btn_addimage_disabled.png</file>
     <file>resources/images/btn_addimage_hover.png</file>

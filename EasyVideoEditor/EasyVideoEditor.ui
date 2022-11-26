@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>EasyVideoEditor</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="EasyVideoEditor.qrc">
+    <normaloff>:/EasyVideoEditor/resources/images/icon_evelogo.ico</normaloff>:/EasyVideoEditor/resources/images/icon_evelogo.ico</iconset>
+  </property>
   <widget class="QWidget" name="w_contentarea">
    <widget class="QWidget" name="w_sidemenuarea" native="true">
     <property name="geometry">
