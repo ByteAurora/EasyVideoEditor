@@ -252,6 +252,11 @@ void EasyVideoEditor::updateSampleFrame() {
             UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
 
             free(chromakey);
+        } else {
+            cv::Mat showFrame;
+            Frame* frame = EveProject::getInstance()->getCurrentFrame();
+            frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
     }
     else if (SideMenu::selectedSideMenu() == Command::CommandType::ADD_IMAGE) {
@@ -274,6 +279,12 @@ void EasyVideoEditor::updateSampleFrame() {
             editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
             addImage(&showFrame, &image);
             UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+        }
+        else {
+            cv::Mat showFrame;
+            Frame* frame = EveProject::getInstance()->getCurrentFrame();
+            frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
     }
 }
@@ -396,7 +407,7 @@ bool EasyVideoEditor::event(QEvent* e) {
 }
 
 void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
-    if ((e->key() == Qt::Key_E) && QApplication::keyboardModifiers() && Qt::ControlModifier) {
+    if ((e->key() == Qt::Key_E) && QApplication::keyboardModifiers() && Qt::ControlModifier && EveProject::getInstance()->getFrameList()->size() > 0) {
         mutex.lock();
         if (mode == Mode::MODE_EDIT) {
             mode = Mode::MODE_WATCH_PAUSE;
