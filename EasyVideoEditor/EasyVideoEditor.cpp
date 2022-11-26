@@ -47,6 +47,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.btn_forward5seconds->setGraphicsEffect(buttonEffects.at(3));
     ui.btn_backward5seconds->setGraphicsEffect(buttonEffects.at(4));
     ui.menu_encoding->setEnabled(false);
+   
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -382,7 +383,8 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
 }
 
 void EasyVideoEditor::updateInformationArea() {
-
+    int size = EveProject::getInstance()->getFrameList()->size();
+    ui.tbr_allframe->setText(QString::number(size));
 }
 
 bool EasyVideoEditor::event(QEvent* e) {
