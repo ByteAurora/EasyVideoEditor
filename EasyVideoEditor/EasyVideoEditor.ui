@@ -539,7 +539,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>135</width>
+       <width>471</width>
        <height>61</height>
       </rect>
      </property>
@@ -558,7 +558,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <rect>
        <x>1034</x>
        <y>170</y>
-       <width>135</width>
+       <width>471</width>
        <height>61</height>
       </rect>
      </property>
@@ -577,7 +577,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <rect>
        <x>522</x>
        <y>170</y>
-       <width>135</width>
+       <width>471</width>
        <height>61</height>
       </rect>
      </property>
@@ -596,7 +596,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <rect>
        <x>10</x>
        <y>170</y>
-       <width>135</width>
+       <width>471</width>
        <height>61</height>
       </rect>
      </property>
@@ -615,7 +615,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <rect>
        <x>522</x>
        <y>10</y>
-       <width>135</width>
+       <width>461</width>
        <height>61</height>
       </rect>
      </property>
@@ -634,7 +634,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <rect>
        <x>1034</x>
        <y>10</y>
-       <width>135</width>
+       <width>461</width>
        <height>61</height>
       </rect>
      </property>
@@ -804,7 +804,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -824,7 +824,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>64</y>
-        <width>48</width>
+        <width>541</width>
         <height>16</height>
        </rect>
       </property>
@@ -847,7 +847,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>136</y>
-        <width>48</width>
+        <width>541</width>
         <height>16</height>
        </rect>
       </property>
@@ -870,7 +870,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>208</y>
-        <width>48</width>
+        <width>541</width>
         <height>16</height>
        </rect>
       </property>
@@ -1007,7 +1007,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -1206,7 +1206,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -1267,7 +1267,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -1460,7 +1460,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>176</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -1480,7 +1480,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>64</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -1617,7 +1617,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>111</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -1658,7 +1658,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>32</x>
-        <y>270</y>
+        <y>260</y>
         <width>96</width>
         <height>32</height>
        </rect>
@@ -1674,7 +1674,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>136</x>
-        <y>270</y>
+        <y>260</y>
         <width>64</width>
         <height>32</height>
        </rect>
@@ -1693,7 +1693,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>368</x>
-        <y>270</y>
+        <y>260</y>
         <width>64</width>
         <height>32</height>
        </rect>
@@ -1712,7 +1712,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>264</x>
-        <y>270</y>
+        <y>260</y>
         <width>96</width>
         <height>32</height>
        </rect>
@@ -1728,7 +1728,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>216</x>
-        <y>270</y>
+        <y>260</y>
         <width>32</width>
         <height>32</height>
        </rect>
@@ -1790,7 +1790,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>16</x>
-        <y>210</y>
+        <y>200</y>
         <width>109</width>
         <height>26</height>
        </rect>
@@ -1808,7 +1808,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <property name="geometry">
        <rect>
         <x>200</x>
-        <y>140</y>
+        <y>137</y>
         <width>96</width>
         <height>32</height>
        </rect>
@@ -1821,6 +1821,26 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_34">
+      <property name="geometry">
+       <rect>
+        <x>312</x>
+        <y>137</y>
+        <width>48</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Noto Sans KR</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>초</string>
       </property>
      </widget>
     </widget>
@@ -1841,7 +1861,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>111</width>
+        <width>531</width>
         <height>32</height>
        </rect>
       </property>
@@ -1946,7 +1966,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -1966,7 +1986,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -2101,7 +2121,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>245</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -2121,7 +2141,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>64</y>
-        <width>101</width>
+        <width>551</width>
         <height>32</height>
        </rect>
       </property>
@@ -2283,7 +2303,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
         <rect>
          <x>0</x>
          <y>66</y>
-         <width>48</width>
+         <width>81</width>
          <height>18</height>
         </rect>
        </property>
@@ -2306,7 +2326,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
         <rect>
          <x>0</x>
          <y>34</y>
-         <width>48</width>
+         <width>81</width>
          <height>18</height>
         </rect>
        </property>
@@ -2409,7 +2429,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
         <rect>
          <x>0</x>
          <y>3</y>
-         <width>48</width>
+         <width>81</width>
          <height>18</height>
         </rect>
        </property>
@@ -2480,6 +2500,22 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <string>반전</string>
       </property>
      </widget>
+     <zorder>label_20</zorder>
+     <zorder>label_21</zorder>
+     <zorder>btn_chromakey_apply</zorder>
+     <zorder>edt_chromakey_rangestart</zorder>
+     <zorder>btn_chromakey_rangestarttocurrent</zorder>
+     <zorder>btn_chromakey_rangeendtocurrent</zorder>
+     <zorder>edt_chromakey_rangeend</zorder>
+     <zorder>label_22</zorder>
+     <zorder>label_25</zorder>
+     <zorder>label_26</zorder>
+     <zorder>layoutWidget_5</zorder>
+     <zorder>layoutWidget_6</zorder>
+     <zorder>btn_chromakey_filepicker</zorder>
+     <zorder>lbl_chromakey_backgroundfilepath</zorder>
+     <zorder>cb_chromakey_reverse</zorder>
+     <zorder>w_chromakey_customarea</zorder>
     </widget>
     <widget class="QWidget" name="w_transition" native="true">
      <property name="geometry">
@@ -2498,7 +2534,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -2518,7 +2554,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>64</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -2597,7 +2633,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>154</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -2707,7 +2743,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -2768,7 +2804,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -2967,7 +3003,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>111</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -2990,7 +3026,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -3155,7 +3191,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>130</y>
-        <width>111</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -3452,7 +3488,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>121</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -3473,9 +3509,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
       <property name="geometry">
        <rect>
-        <x>115</x>
+        <x>132</x>
         <y>56</y>
-        <width>64</width>
+        <width>48</width>
         <height>32</height>
        </rect>
       </property>
@@ -3491,7 +3527,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -3681,6 +3717,41 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="label_35">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>56</y>
+        <width>31</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Noto Sans KR</family>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>X</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <zorder>label_46</zorder>
+     <zorder>label_49</zorder>
+     <zorder>btn_changeplayspeed_apply</zorder>
+     <zorder>edt_changeplayspeed_rangestart</zorder>
+     <zorder>btn_changeplayspeed_rangestarttocurrent</zorder>
+     <zorder>btn_changeplayspeed_rangeendtocurrent</zorder>
+     <zorder>edt_changeplayspeed_rangeend</zorder>
+     <zorder>label_50</zorder>
+     <zorder>layoutWidget_7</zorder>
+     <zorder>label_51</zorder>
+     <zorder>label_35</zorder>
+     <zorder>edt_changeplayspeed_speed</zorder>
     </widget>
     <widget class="QWidget" name="w_changebrightness" native="true">
      <property name="geometry">
@@ -3699,7 +3770,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>91</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -3760,7 +3831,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -3959,7 +4030,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>16</y>
-        <width>111</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -3979,7 +4050,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>322</y>
-        <width>91</width>
+        <width>541</width>
         <height>31</height>
        </rect>
       </property>
@@ -4129,7 +4200,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>130</y>
-        <width>111</width>
+        <width>541</width>
         <height>32</height>
        </rect>
       </property>
@@ -4454,17 +4525,17 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
     </widget>
-    <zorder>w_filter</zorder>
-    <zorder>w_changecontrast</zorder>
-    <zorder>w_changeplayspeed</zorder>
-    <zorder>w_changebrightness</zorder>
-    <zorder>w_addvideo</zorder>
-    <zorder>w_chromakey</zorder>
     <zorder>w_addimage</zorder>
-    <zorder>w_coloremphasis</zorder>
-    <zorder>w_transition</zorder>
-    <zorder>w_cutvideo</zorder>
     <zorder>w_addsubtitle</zorder>
+    <zorder>w_addvideo</zorder>
+    <zorder>w_changebrightness</zorder>
+    <zorder>w_changecontrast</zorder>
+    <zorder>w_transition</zorder>
+    <zorder>w_filter</zorder>
+    <zorder>w_cutvideo</zorder>
+    <zorder>w_coloremphasis</zorder>
+    <zorder>w_chromakey</zorder>
+    <zorder>w_changeplayspeed</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">
@@ -4590,6 +4661,11 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      </widget>
     </widget>
    </widget>
+   <zorder>w_sidemenuarea</zorder>
+   <zorder>w_sidemenupagearea</zorder>
+   <zorder>w_videoarea</zorder>
+   <zorder>w_videoinfoarea</zorder>
+   <zorder>w_encodingpage</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
@@ -4600,9 +4676,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu_file">
+   <widget class="QMenu" name="menu_project">
     <property name="title">
-     <string>파일</string>
+     <string>프로젝트</string>
     </property>
     <widget class="QMenu" name="menu_encoding">
      <property name="title">
@@ -4618,13 +4694,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <addaction name="separator"/>
     <addaction name="menu_exit"/>
    </widget>
-   <widget class="QMenu" name="menu_edit">
-    <property name="title">
-     <string>편집</string>
-    </property>
-   </widget>
-   <addaction name="menu_file"/>
-   <addaction name="menu_edit"/>
+   <addaction name="menu_project"/>
   </widget>
   <action name="actionNew_Project">
    <property name="text">
