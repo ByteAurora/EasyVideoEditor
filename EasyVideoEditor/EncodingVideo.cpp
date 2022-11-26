@@ -41,7 +41,7 @@ void EncodingVideo::run() {
     }
 
     cv::TickMeter tickMeter;
-    cv::VideoWriter outputVideo(saveFilePath.toStdString(), fourcc, EveProject::getInstance()->getBaseFps(), cv::Size(EasyVideoEditor::outputVideoWidth, EasyVideoEditor::outputVideoHeight));
+    cv::VideoWriter outputVideo(saveFilePath.toStdString(), fourcc, EveProject::getInstance()->getBaseFps(), cv::Size(EveProject::getInstance()->getBaseWidth(), EveProject::getInstance()->getBaseHeight()));
     std::vector<Frame*>* saveFrameList = EveProject::getInstance()->getFrameList();
     cv::Mat frame;
     int totalFrameCount = saveFrameList->size();
@@ -61,8 +61,8 @@ void EncodingVideo::run() {
         beforeSourceId = currentFrame->getSourceId();
         beforeSourceFrameIndex = currentFrame->getSourceFrameIndex();
         
-        if (frame.cols != EasyVideoEditor::outputVideoWidth || frame.rows != EasyVideoEditor::outputVideoHeight) {
-            cv::resize(frame, frame, cv::Size(EasyVideoEditor::outputVideoWidth, EasyVideoEditor::outputVideoHeight));
+        if (frame.cols != EveProject::getInstance()->getBaseWidth() || frame.rows != EveProject::getInstance()->getBaseHeight()) {
+            cv::resize(frame, frame, cv::Size(EveProject::getInstance()->getBaseWidth(), EveProject::getInstance()->getBaseHeight()));
         }
 
         outputVideo << frame;
