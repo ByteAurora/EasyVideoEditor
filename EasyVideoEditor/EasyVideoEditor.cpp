@@ -49,7 +49,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
     ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
     std::vector<QGraphicsDropShadowEffect*> buttonEffects;
-    for (int loop = 0; loop < 5; loop++) {
+    for (int loop = 0; loop <37; loop++) {
         QGraphicsDropShadowEffect* videoControlEffect = new QGraphicsDropShadowEffect();
         videoControlEffect->setBlurRadius(6);
         videoControlEffect->setOffset(2, 2);
@@ -60,6 +60,38 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.btn_reset->setGraphicsEffect(buttonEffects.at(2));
     ui.btn_forward5seconds->setGraphicsEffect(buttonEffects.at(3));
     ui.btn_backward5seconds->setGraphicsEffect(buttonEffects.at(4));
+    ui.btn_chromakey_filepicker->setGraphicsEffect(buttonEffects.at(5));
+    ui.btn_addimage_apply->setGraphicsEffect(buttonEffects.at(6));
+    ui.btn_addsubtitle_apply->setGraphicsEffect(buttonEffects.at(7));
+    ui.btn_addvideo_apply->setGraphicsEffect(buttonEffects.at(8));
+    ui.btn_changebrightness_apply->setGraphicsEffect(buttonEffects.at(9));
+    ui.btn_changecontrast_apply->setGraphicsEffect(buttonEffects.at(10));
+    ui.btn_changeplayspeed_apply->setGraphicsEffect(buttonEffects.at(11));
+    ui.btn_chromakey_apply->setGraphicsEffect(buttonEffects.at(12));
+    ui.btn_coloremphasis_apply->setGraphicsEffect(buttonEffects.at(13));
+    ui.btn_cutvideo_apply->setGraphicsEffect(buttonEffects.at(14));
+    ui.btn_filter_apply->setGraphicsEffect(buttonEffects.at(15));
+    ui.btn_transition_apply->setGraphicsEffect(buttonEffects.at(16));
+    ui.btn_filter_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(17));
+    ui.btn_cutvideo_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(18));
+    ui.btn_coloremphasis_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(19));
+    ui.btn_chromakey_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(20));
+    ui.btn_changeplayspeed_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(21));
+    ui.btn_changebrightness_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(22));
+    ui.btn_addsubtitle_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(23));
+    ui.btn_addimage_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(24));
+    ui.btn_filter_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(25));
+    ui.btn_cutvideo_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(26));
+    ui.btn_coloremphasis_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(27));
+    ui.btn_chromakey_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(28));
+    ui.btn_changeplayspeed_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(29));
+    ui.btn_changebrightness_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(30));
+    ui.btn_addsubtitle_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(31));
+    ui.btn_addimage_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(32));
+    ui.btn_addimage_select_path->setGraphicsEffect(buttonEffects.at(33));
+    ui.btn_addvideo_select_path->setGraphicsEffect(buttonEffects.at(34));
+    ui.btn_changecontrast_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(35));
+    ui.btn_changecontrast_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(36));
     ui.menu_encoding->setEnabled(false);
    
 

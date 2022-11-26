@@ -1,5 +1,25 @@
 <RCC>
   <qresource prefix="EasyVideoEditor">
+    <file>resources/images/btn_add_disabled.png</file>
+    <file>resources/images/btn_add_hover.png</file>
+    <file>resources/images/btn_add_normal.png</file>
+    <file>resources/images/btn_add_pressed.png</file>
+    <file>resources/images/btn_apply_disabled.png</file>
+    <file>resources/images/btn_apply_hover.png</file>
+    <file>resources/images/btn_apply_normal.png</file>
+    <file>resources/images/btn_apply_pressed.png</file>
+    <file>resources/images/btn_currentposition_disabled.png</file>
+    <file>resources/images/btn_currentposition_hover.png</file>
+    <file>resources/images/btn_currentposition_normal.png</file>
+    <file>resources/images/btn_currentposition_pressed.png</file>
+    <file>resources/images/btn_cut_disabled.png</file>
+    <file>resources/images/btn_cut_hover.png</file>
+    <file>resources/images/btn_cut_normal.png</file>
+    <file>resources/images/btn_cut_pressed.png</file>
+    <file>resources/images/btn_filepicker_disabled.png</file>
+    <file>resources/images/btn_filepicker_hover.png</file>
+    <file>resources/images/btn_filepicker_normal.png</file>
+    <file>resources/images/btn_filepicker_pressed.png</file>
     <file>resources/images/icon_evelogo.ico</file>
     <file>resources/images/btn_addimage_checked.png</file>
     <file>resources/images/btn_addimage_disabled.png</file>

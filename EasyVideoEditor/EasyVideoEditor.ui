@@ -1032,10 +1032,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1067,10 +1070,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1086,10 +1092,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1292,10 +1301,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -1330,10 +1342,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1349,10 +1364,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1642,10 +1660,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_cut_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_cut_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_cut_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_cut_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>자르기</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -1680,10 +1701,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1699,10 +1723,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -1886,10 +1913,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>추가</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -1903,9 +1933,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>60</y>
-        <width>441</width>
-        <height>31</height>
+        <width>506</width>
+        <height>32</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #c2c2c2; border-radius: 4px</string>
       </property>
       <property name="text">
        <string/>
@@ -1917,14 +1950,20 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      <widget class="QPushButton" name="btn_addvideo_select_path">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>530</x>
         <y>60</y>
-        <width>75</width>
-        <height>31</height>
+        <width>32</width>
+        <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
-       <string>경로 선택</string>
+       <string/>
       </property>
      </widget>
      <widget class="QRadioButton" name="rbtn_addvideo_currentframe">
@@ -2011,10 +2050,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -2049,10 +2091,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -2068,10 +2113,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -2257,26 +2305,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="btn_chromakey_filepicker">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>285</y>
-        <width>30</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>...</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="lbl_chromakey_backgroundfilepath">
       <property name="geometry">
        <rect>
         <x>16</x>
         <y>285</y>
         <width>506</width>
-        <height>22</height>
+        <height>32</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -2500,6 +2535,25 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <string>반전</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="btn_chromakey_filepicker">
+      <property name="geometry">
+       <rect>
+        <x>530</x>
+        <y>285</y>
+        <width>32</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
      <zorder>label_20</zorder>
      <zorder>label_21</zorder>
      <zorder>btn_chromakey_apply</zorder>
@@ -2512,10 +2566,10 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      <zorder>label_26</zorder>
      <zorder>layoutWidget_5</zorder>
      <zorder>layoutWidget_6</zorder>
-     <zorder>btn_chromakey_filepicker</zorder>
      <zorder>lbl_chromakey_backgroundfilepath</zorder>
      <zorder>cb_chromakey_reverse</zorder>
      <zorder>w_chromakey_customarea</zorder>
+     <zorder>btn_chromakey_filepicker</zorder>
     </widget>
     <widget class="QWidget" name="w_transition" native="true">
      <property name="geometry">
@@ -2579,10 +2633,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -2829,10 +2886,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -2867,10 +2927,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -2886,10 +2949,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -3054,10 +3120,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>추가</string>
+       <string/>
       </property>
       <property name="checkable">
        <bool>false</bool>
@@ -3107,10 +3176,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -3129,10 +3201,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -3274,9 +3349,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <rect>
         <x>16</x>
         <y>60</y>
-        <width>441</width>
-        <height>31</height>
+        <width>506</width>
+        <height>32</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid #c2c2c2; border-radius: 4px</string>
       </property>
       <property name="text">
        <string/>
@@ -3288,14 +3366,20 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      <widget class="QPushButton" name="btn_addimage_select_path">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>530</x>
         <y>60</y>
-        <width>75</width>
-        <height>31</height>
+        <width>32</width>
+        <height>32</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_filepicker_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
+      </property>
       <property name="text">
-       <string>경로 선택</string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="label_addimage_x">
@@ -3552,10 +3636,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -3590,10 +3677,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -3609,10 +3699,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -3856,10 +3949,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_apply_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>적용</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -3894,10 +3990,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -3913,10 +4012,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -4075,10 +4177,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_add_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>추가</string>
+       <string/>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -4119,10 +4224,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -4141,10 +4249,13 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">b</string>
+       <string notr="true">QPushButton{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_normal.png); }
+QPushButton:hover{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_hover.png); }
+QPushButton:pressed{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_pressed.png); }
+QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_currentposition_disabled.png); } QPushButton{ border-radius: 8px; border-width: 4px; }</string>
       </property>
       <property name="text">
-       <string>현재위치</string>
+       <string/>
       </property>
       <property name="flat">
        <bool>false</bool>
@@ -4525,17 +4636,17 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
     </widget>
-    <zorder>w_addimage</zorder>
-    <zorder>w_addsubtitle</zorder>
-    <zorder>w_addvideo</zorder>
     <zorder>w_changebrightness</zorder>
     <zorder>w_changecontrast</zorder>
     <zorder>w_transition</zorder>
     <zorder>w_filter</zorder>
     <zorder>w_cutvideo</zorder>
     <zorder>w_coloremphasis</zorder>
-    <zorder>w_chromakey</zorder>
     <zorder>w_changeplayspeed</zorder>
+    <zorder>w_chromakey</zorder>
+    <zorder>w_addimage</zorder>
+    <zorder>w_addvideo</zorder>
+    <zorder>w_addsubtitle</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">
@@ -4545,6 +4656,11 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <width>1600</width>
       <height>881</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(0, 0, 0, 128);</string>
@@ -4661,11 +4777,11 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
      </widget>
     </widget>
    </widget>
+   <zorder>w_encodingpage</zorder>
    <zorder>w_sidemenuarea</zorder>
    <zorder>w_sidemenupagearea</zorder>
    <zorder>w_videoarea</zorder>
    <zorder>w_videoinfoarea</zorder>
-   <zorder>w_encodingpage</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
