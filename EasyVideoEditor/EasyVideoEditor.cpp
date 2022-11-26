@@ -97,7 +97,8 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.rbtn_addsubtitle_currentframe, SIGNAL(clicked()), this, SLOT(addSubtitleCurrentFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_allframe, SIGNAL(clicked()), this, SLOT(addSubtitleAllFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_rangeframe, SIGNAL(clicked()), this, SLOT(addSubtitleRangeFrameButtonClicked()));
-    
+    connect(ui.btn_chromakey_filepicker, SIGNAL(clicked()), this, SLOT(chromakeyFilePickerButtonClicked()));
+
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
     connect(ui.btn_changebrightness_apply, SIGNAL(clicked()), this, SLOT(changeBrightnessApplyButtonClicked()));
@@ -132,6 +133,18 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.rbtn_filter_colorsense_warm, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
     connect(ui.rbtn_filter_colorsense_cool, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
     connect(ui.rbtn_filter_colorsense_bright, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_custom, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_white, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_black, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_green, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_blue, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.cb_chromakey_reverse, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_huestart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_hueend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_valstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_valend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_satstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_satend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -192,6 +205,50 @@ void EasyVideoEditor::updateSampleFrame() {
         cv::Mat showFrame;
         editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHROMAKEY) {
+        if (!ui.lbl_chromakey_backgroundfilepath->text().isEmpty()) {
+            (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+
+            Image image(ui.lbl_chromakey_backgroundfilepath->text().toStdString());
+            image.loadResource();
+
+            Chromakey* chromakey;
+            if (ui.rbtn_chromakey_custom->isChecked()) {
+                chromakey = new Chromakey(false
+                    , ui.edt_chromakey_huestart->text().toInt(), ui.edt_chromakey_hueend->text().toInt()
+                    , ui.edt_chromakey_satstart->text().toInt(), ui.edt_chromakey_satend->text().toInt()
+                    , ui.edt_chromakey_valstart->text().toInt(), ui.edt_chromakey_valend->text().toInt()
+                    , ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_white->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 0, 180, 0, 14, 236, 255
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_black->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 0, 180, 0, 255, 28, 255
+                    , ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_green->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 0, 180, 0, 206, 0, 255
+                    , ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_blue->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 0, 104, 0, 255, 0, 255
+                    , ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+
+            cv::Mat showFrame;
+            editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            (*chromakey)(&showFrame, &image);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+
+            free(chromakey);
+        }
     }
 }
 
@@ -320,6 +377,11 @@ void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
             ui.w_sidemenuarea->setEnabled(false);
             ui.w_sidemenupagearea->setEnabled(false);
             ui.w_videocontrolarea->setEnabled(true);
+
+            cv::Mat showFrame;
+            Frame* frame = EveProject::getInstance()->getCurrentFrame();
+            frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
         else {
             if (mode == Mode::MODE_WATCH_PLAY) {
@@ -330,6 +392,7 @@ void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
             ui.w_sidemenuarea->setEnabled(true);
             ui.w_sidemenupagearea->setEnabled(true);
             ui.w_videocontrolarea->setEnabled(false);
+            updateSampleFrame();
         }
         mutex.unlock();
     }
@@ -585,7 +648,59 @@ void EasyVideoEditor::filterApplyButtonClicked() {
     }
 };
 
-void EasyVideoEditor::chromakeyApplyButtonClicked() {};
+void EasyVideoEditor::chromakeyApplyButtonClicked() {
+    QString backgroundImagePath = ui.lbl_chromakey_backgroundfilepath->text();
+
+    if (!backgroundImagePath.isEmpty()) {
+        Image* image = new Image(backgroundImagePath.toStdString());
+        EveProject::getInstance()->addImage(image);
+        QLineEdit* rangeStart = ui.edt_chromakey_rangestart;
+        QLineEdit* rangeEnd = ui.edt_chromakey_rangeend;
+
+        Command* command;
+        if (ui.rbtn_chromakey_custom->isChecked()) {
+            command = new Chromakey(true
+                , ui.edt_chromakey_huestart->text().toInt(), ui.edt_chromakey_hueend->text().toInt()
+                , ui.edt_chromakey_satstart->text().toInt(), ui.edt_chromakey_satend->text().toInt()
+                , ui.edt_chromakey_valstart->text().toInt(), ui.edt_chromakey_valend->text().toInt()
+                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_white->isChecked()) {
+            command = new Chromakey(true
+                , 0, 180, 0, 14, 236, 255
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_black->isChecked()) {
+            command = new Chromakey(true
+                , 0, 180, 0, 255, 28, 255
+                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_green->isChecked()) {
+            command = new Chromakey(true
+                , 0, 180, 0, 206, 0, 255
+                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_blue->isChecked()) {
+            command = new Chromakey(true
+                , 0, 104, 0, 255, 0, 255
+                , ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        }
+
+        if (ui.rbtn_chromakey_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_chromakey_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_chromakey_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
+    }
+
+};
 
 void EasyVideoEditor::transitionApplyButtonClicked() {};
 
@@ -809,6 +924,14 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
 
     }
 };
+
+void EasyVideoEditor::chromakeyFilePickerButtonClicked() {
+    QString backgroundImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 이미지 선택"), QDir::homePath(), QString::fromLocal8Bit("이미지 (*.png *.jpg *.bmp)"));
+    if (!backgroundImagePath.isEmpty()) {
+        ui.lbl_chromakey_backgroundfilepath->setText(backgroundImagePath);
+        updateSampleFrame();
+    }
+}
 
 void EasyVideoEditor::updateEncodingProgressBar(int value) {
     ui.pb_encoding_progress->setValue(value);

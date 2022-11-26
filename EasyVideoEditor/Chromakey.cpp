@@ -30,4 +30,19 @@ void Chromakey::operator()(cv::Mat* mat) {
     cv::resize(background, background, cv::Size(mat->cols, mat->rows));
 
     copyTo(*mat, background, mask);
+    background.copyTo(*mat);
+}
+
+void Chromakey::operator()(cv::Mat* mat, Image* image) {
+    cv::Mat hsv;
+    cvtColor(*mat, hsv, cv::COLOR_BGR2HSV);
+    cv::Mat mask;
+    cv::inRange(hsv, cv::Scalar(hueMin, saturationMin, valueMin), cv::Scalar(hueMax, saturationMax, valueMax), mask);
+    if (reverse) mask = ~mask;
+
+    cv::Mat background = ((cv::Mat*)image->getResource())->clone();
+    cv::resize(background, background, cv::Size(mat->cols, mat->rows));
+
+    copyTo(*mat, background, mask);
+    background.copyTo(*mat);
 }

@@ -16,6 +16,7 @@ public:
 
     void operator()();
     void operator()(cv::Mat* mat);
+    void operator()(cv::Mat* mat, Image* image);
 };
 
 
