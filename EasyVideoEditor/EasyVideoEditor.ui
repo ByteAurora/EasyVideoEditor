@@ -2573,10 +2573,10 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <string>현재 프레임 기준</string>
       </property>
       <property name="checked">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_transition_zoomout_range">
+     <widget class="QLineEdit" name="edt_transition_fadein_range">
       <property name="geometry">
        <rect>
         <x>184</x>
@@ -2586,7 +2586,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="text">
-       <string>0초</string>
+       <string>0</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -2612,7 +2612,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <string>Fade-Out</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_transition_zoomin_range">
+     <widget class="QLineEdit" name="edt_transition_fadeout_range">
       <property name="geometry">
        <rect>
         <x>184</x>
@@ -2622,7 +2622,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        </rect>
       </property>
       <property name="text">
-       <string>0초</string>
+       <string>0</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -2649,118 +2649,44 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_transition_fadeout_range">
+     <widget class="QLabel" name="label_28">
       <property name="geometry">
        <rect>
-        <x>184</x>
-        <y>284</y>
-        <width>96</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>0초</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="rbtn_transition_zoomin">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>284</y>
-        <width>152</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>현재 프레임 기준</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_42">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>244</y>
-        <width>91</width>
+        <x>296</x>
+        <y>104</y>
+        <width>48</width>
         <height>32</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Noto Sans KR</family>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>Zoom-In</string>
+       <string>초</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_transition_fadein_range">
+     <widget class="QLabel" name="label_29">
       <property name="geometry">
        <rect>
-        <x>184</x>
-        <y>374</y>
-        <width>96</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>0초</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="rbtn_transition_zoomout">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>374</y>
-        <width>152</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>현재 프레임 기준</string>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_43">
-      <property name="geometry">
-       <rect>
-        <x>16</x>
-        <y>334</y>
-        <width>101</width>
+        <x>296</x>
+        <y>190</y>
+        <width>48</width>
         <height>32</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Noto Sans KR</family>
-        <pointsize>14</pointsize>
+        <pointsize>12</pointsize>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
-       <string>Zoom-Out</string>
+       <string>초</string>
       </property>
      </widget>
     </widget>
@@ -4392,7 +4318,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
        <set>Qt::AlignCenter</set>
       </property>
       <property name="value">
-       <number>1</number>
+       <number>12</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_addsubtitle_color">
@@ -4528,17 +4454,17 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </property>
      </widget>
     </widget>
-    <zorder>w_coloremphasis</zorder>
     <zorder>w_filter</zorder>
-    <zorder>w_transition</zorder>
     <zorder>w_changecontrast</zorder>
     <zorder>w_changeplayspeed</zorder>
     <zorder>w_changebrightness</zorder>
-    <zorder>w_cutvideo</zorder>
-    <zorder>w_addimage</zorder>
-    <zorder>w_addsubtitle</zorder>
     <zorder>w_addvideo</zorder>
     <zorder>w_chromakey</zorder>
+    <zorder>w_addimage</zorder>
+    <zorder>w_coloremphasis</zorder>
+    <zorder>w_transition</zorder>
+    <zorder>w_cutvideo</zorder>
+    <zorder>w_addsubtitle</zorder>
    </widget>
    <widget class="QWidget" name="w_encodingpage" native="true">
     <property name="geometry">

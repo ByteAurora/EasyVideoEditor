@@ -65,6 +65,10 @@ private:
 
     EncodingVideo* encodingVideoThread = NULL;
     PlayVideo* playVideoThread = NULL;
+    QIntValidator* addImageXValidator;
+    QIntValidator* addImageYValidator;
+    QIntValidator* addImageWidthValidator;
+    QIntValidator* addImageHeightValidator;
 private:
     // A function called after a window displayed.
     void workAfterMainWindowShowed();
@@ -130,4 +134,8 @@ private slots:
     void getCurrentFrameTime();
     void updateEncodingProgressBar(int value);
     void updateSampleFrame();
+    void addImageXUpdated(QString value);
+    void addImageYUpdated(QString value);
+    void addImageWidthUpdated(QString value);
+    void addImageHeightUpdated(QString value);
 };

@@ -18,9 +18,25 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.btn_pause->setVisible(false);
     ui.w_contentarea->setEnabled(false);
     ui.w_videocontrolarea->setEnabled(false);
-    ui.edt_coloremphasis_red->setValidator(new QIntValidator(0, 255, this));
-    ui.edt_coloremphasis_green->setValidator(new QIntValidator(0, 255, this));
-    ui.edt_coloremphasis_blue->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_coloremphasis_red->setValidator(new QIntValidator(-255, 255, this));
+    ui.edt_coloremphasis_green->setValidator(new QIntValidator(-255, 255, this));
+    ui.edt_coloremphasis_blue->setValidator(new QIntValidator(-255, 255, this));
+    ui.edt_changebrightness_brightness->setValidator(new QIntValidator(0, 100, this));
+    ui.edt_changecontrast_contrast->setValidator(new QIntValidator(0, 100, this));
+    ui.edt_filter_clarity->setValidator(new QIntValidator(0, 100, this));
+    ui.edt_chromakey_huestart->setValidator(new QIntValidator(0, 180, this));
+    ui.edt_chromakey_hueend->setValidator(new QIntValidator(0, 180, this));
+    ui.edt_chromakey_valstart->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_chromakey_valend->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_chromakey_satstart->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_chromakey_satend->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_transition_fadein_range->setValidator(new QIntValidator(0, 36000, this));
+    ui.edt_transition_fadeout_range->setValidator(new QIntValidator(0, 36000, this));
+    ui.edt_cutvideo_framerange->setValidator(new QIntValidator(0, 36000, this));
+    ui.edt_changeplayspeed_speed->setValidator(new QDoubleValidator(0.f, 100.f, 10, this));
+    ui.edt_addsubtitle_color_red->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_addsubtitle_color_blue->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_addsubtitle_color_green->setValidator(new QIntValidator(0, 255, this));
     ui.sd_coloremphasis_red->setStyleSheet("QSlider::handle:horizontal {background: red;} ");
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
@@ -61,6 +77,14 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     new SideMenu(ui.btn_changeplayspeed, ui.w_changeplayspeed);
     new SideMenu(ui.btn_addsubtitle, ui.w_addsubtitle);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
+    addImageXValidator = new QIntValidator(0, 0, this);
+    addImageYValidator = new QIntValidator(0, 0, this);
+    addImageWidthValidator = new QIntValidator(0, 0, this);
+    addImageHeightValidator = new QIntValidator(0, 0, this);
+    ui.edt_addimage_x->setValidator(addImageXValidator);
+    ui.edt_addimage_y->setValidator(addImageYValidator);
+    ui.edt_addimage_width->setValidator(addImageWidthValidator);
+    ui.edt_addimage_height->setValidator(addImageHeightValidator);
     
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
@@ -113,6 +137,10 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_changeplayspeed_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
     connect(ui.btn_addsubtitle_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
     connect(ui.btn_addsubtitle_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.edt_addimage_x, SIGNAL(textChanged(QString)), this, SLOT(addImageXUpdated(QString)));
+    connect(ui.edt_addimage_y, SIGNAL(textChanged(QString)), this, SLOT(addImageYUpdated(QString)));
+    connect(ui.edt_addimage_width, SIGNAL(textChanged(QString)), this, SLOT(addImageWidthUpdated(QString)));
+    connect(ui.edt_addimage_height, SIGNAL(textChanged(QString)), this, SLOT(addImageHeightUpdated(QString)));
 
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
@@ -159,10 +187,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.edt_chromakey_valend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
-    connect(ui.edt_addimage_x, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
-    connect(ui.edt_addimage_y, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
-    connect(ui.edt_addimage_width, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
-    connect(ui.edt_addimage_height, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -375,6 +399,11 @@ void EasyVideoEditor::newProject() {
         ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
         ui.sd_videoprogress->setValue(0);
 
+        addImageXValidator->setRange(0, EveProject::getInstance()->getBaseWidth());
+        addImageYValidator->setRange(0, EveProject::getInstance()->getBaseHeight());
+        addImageWidthValidator->setRange(0, EveProject::getInstance()->getBaseWidth());
+        addImageHeightValidator->setRange(0, EveProject::getInstance()->getBaseHeight());
+
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
@@ -407,7 +436,6 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
 }
 
 void EasyVideoEditor::updateInformationArea() {
-
     int size = EveProject::getInstance()->getFrameList()->size();
     int width = EveProject::getInstance()->getBaseWidth();
     int height = EveProject::getInstance()->getBaseHeight();
@@ -419,7 +447,6 @@ void EasyVideoEditor::updateInformationArea() {
 ;   ui.tbr_height->setText(QString::number(height));
     ui.tbr_delay->setText(QString::number(delay));
     ui.tbr_fps->setText(QString::number(fps));
-    
 }
 
 bool EasyVideoEditor::event(QEvent* e) {
@@ -765,7 +792,50 @@ void EasyVideoEditor::chromakeyApplyButtonClicked() {
 
 };
 
-void EasyVideoEditor::transitionApplyButtonClicked() {};
+void EasyVideoEditor::transitionApplyButtonClicked() {
+    if (ui.rbtn_transition_fadein->isChecked()) {
+        QString transitionTime = ui.edt_transition_fadein_range->text();
+        if (!transitionTime.isEmpty()) {
+            int startIndex = EveProject::getInstance()->getCurrentFrameNumber();
+            double time = transitionTime.toDouble();
+
+            int totalTransitionFrame = EveProject::getInstance()->getBaseFps() * time;
+            int endIndex = startIndex + totalTransitionFrame - 1;
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+                totalTransitionFrame = endIndex - startIndex;
+            }
+
+            double changeWeight = 1.0f / totalTransitionFrame;
+
+            for (int loop = 0; loop < totalTransitionFrame; loop++) {
+                Transition* transition = new Transition(true, changeWeight * loop);
+                EveProject::getInstance()->getFrameByIndex(startIndex + loop)->addCommand(transition);
+            }
+        }
+    }
+    else if (ui.rbtn_transition_fadeout->isChecked()) {
+        QString transitionTime = ui.edt_transition_fadeout_range->text();
+        if (!transitionTime.isEmpty()) {
+            int startIndex = EveProject::getInstance()->getCurrentFrameNumber();
+            double time = transitionTime.toDouble();
+
+            int totalTransitionFrame = EveProject::getInstance()->getBaseFps() * time;
+            int endIndex = startIndex + totalTransitionFrame - 1;
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+                totalTransitionFrame = endIndex - startIndex;
+            }
+
+            double changeWeight = 1.0f / totalTransitionFrame;
+
+            for (int loop = 0; loop < totalTransitionFrame; loop++) {
+                Transition* transition = new Transition(true, 1 - changeWeight * loop);
+                EveProject::getInstance()->getFrameByIndex(startIndex + loop)->addCommand(transition);
+            }
+        }
+    }
+};
 
 void EasyVideoEditor::addImageApplyButtonClicked() {
     QString addImagePath = ui.label_addimage_path->text();
@@ -1154,4 +1224,43 @@ void EasyVideoEditor::getCurrentFrameTime() {
             UsefulFunction::getStringFromMilliseconds(
                 EveProject::getInstance()->getFrameTime(
                     EveProject::getInstance()->getCurrentFrameNumber()))); 
+}
+
+void EasyVideoEditor::addImageXUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int x = value.toInt();
+    int width = ui.edt_addimage_width->text().toInt();
+    if (x + width > EveProject::getInstance()->getBaseWidth()) {
+        ui.edt_addimage_width->setText(QString::number(EveProject::getInstance()->getBaseWidth() - x));
+    }
+    addImageWidthValidator->setRange(0, EveProject::getInstance()->getBaseWidth() - x);
+    updateSampleFrame();
+}
+void EasyVideoEditor::addImageYUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int y = value.toInt();
+    int height = ui.edt_addimage_height->text().toInt();
+    if (y + height > EveProject::getInstance()->getBaseHeight()) {
+        ui.edt_addimage_height->setText(QString::number(EveProject::getInstance()->getBaseHeight() - y));
+    }
+    addImageHeightValidator->setRange(0, EveProject::getInstance()->getBaseHeight() - y);
+    updateSampleFrame();
+}
+void EasyVideoEditor::addImageWidthUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int width = value.toInt();
+    int x = ui.edt_addimage_x->text().toInt();
+    if (x + width > EveProject::getInstance()->getBaseWidth()) {
+        ui.edt_addimage_width->setText(QString::number(EveProject::getInstance()->getBaseWidth() - x));
+    }
+    updateSampleFrame();
+}
+void EasyVideoEditor::addImageHeightUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int height = value.toInt();
+    int y = ui.edt_addimage_y->text().toInt();
+    if (y + height > EveProject::getInstance()->getBaseHeight()) {
+        ui.edt_addimage_height->setText(QString::number(EveProject::getInstance()->getBaseHeight() - y));
+    }
+    updateSampleFrame();
 }
