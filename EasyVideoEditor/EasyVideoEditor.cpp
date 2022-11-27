@@ -386,7 +386,7 @@ void EasyVideoEditor::clear() {
 }
 
 void EasyVideoEditor::newProject() {
-    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("편집할 동영상 파일 선택"), QDir::homePath(), QString::fromLocal8Bit("동영상 (*.mp4 *.avi *.wmv *.mov)"));
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString("편집할 동영상 파일 선택"), QDir::homePath(), QString("동영상 (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
         clear();
         ui.menu_encoding->setEnabled(true);
@@ -452,7 +452,7 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
     }
     mutex.unlock();
     
-    QString saveFilePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("편집한 동영상 저장"), QDir::homePath(), QString("*.").append(encodingType));
+    QString saveFilePath = QFileDialog::getSaveFileName(this, QString("편집한 동영상 저장"), QDir::homePath(), QString("*.").append(encodingType));
     
     if (!saveFilePath.isEmpty()) {
         QObject::disconnect(encodingVideoThreadConnection);
@@ -1105,7 +1105,7 @@ void EasyVideoEditor::addSubtitleRangeFrameButtonClicked() {
 }
 
 void EasyVideoEditor::addImageSelectButtonClicked() {
-    QString addImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 이미지 선택"), QDir::homePath(), QString::fromLocal8Bit("이미지 (*.png *.jpg *.bmp)"));
+    QString addImagePath = QFileDialog::getOpenFileName(this, QString("추가할 이미지 선택"), QDir::homePath(), QString("이미지 (*.png *.jpg *.bmp)"));
     ui.label_addimage_path->setText(addImagePath);
     if (!(ui.label_addimage_path->text()).isEmpty()) {
         ui.edt_addimage_height->setEnabled(true);
@@ -1151,7 +1151,7 @@ void EasyVideoEditor::addImageRangeFrameButtonClicked() {
 }
 
 void EasyVideoEditor::addVideoSelectButtonClicked() {
-    QString addVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 동영상 파일 선택"), QDir::homePath(), QString::fromLocal8Bit("동영상 (*.mp4 *.avi *.wmv *.mov)"));
+    QString addVideoPath = QFileDialog::getOpenFileName(this, QString("추가할 동영상 파일 선택"), QDir::homePath(), QString("동영상 (*.mp4 *.avi *.wmv *.mov)"));
     ui.label_addvideo_path->setText(addVideoPath);
 
     if (!(ui.label_addvideo_path->text()).isEmpty()) {
@@ -1160,7 +1160,7 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
 };
 
 void EasyVideoEditor::chromakeyFilePickerButtonClicked() {
-    QString backgroundImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("추가할 이미지 선택"), QDir::homePath(), QString::fromLocal8Bit("이미지 (*.png *.jpg *.bmp)"));
+    QString backgroundImagePath = QFileDialog::getOpenFileName(this, QString("추가할 이미지 선택"), QDir::homePath(), QString("이미지 (*.png *.jpg *.bmp)"));
     if (!backgroundImagePath.isEmpty()) {
         ui.lbl_chromakey_backgroundfilepath->setText(backgroundImagePath);
         updateSampleFrame();
