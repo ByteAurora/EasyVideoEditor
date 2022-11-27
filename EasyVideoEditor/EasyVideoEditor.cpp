@@ -41,12 +41,10 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
-    ui.cmbox_addsubtitle_font->addItem("맑은 고딕");
-    ui.cmbox_addsubtitle_font->addItem("Noto Sans KR"); 
-    ui.cmbox_addsubtitle_font->addItem("나눔스퀘어");
-    ui.cmbox_addsubtitle_font->addItem("굴림");
-    ui.cmbox_addsubtitle_font->addItem("돋음");
-    ui.cmbox_addsubtitle_font->addItem("휴먼둥근헤드라인");
+    QStringList fontList = QFontDatabase::families();
+    for(QString fontName : fontList) {
+        ui.cmbox_addsubtitle_font->addItem(fontName);
+    }
     std::vector<QGraphicsDropShadowEffect*> buttonEffects;
     for (int loop = 0; loop <37; loop++) {
         QGraphicsDropShadowEffect* videoControlEffect = new QGraphicsDropShadowEffect();
@@ -219,6 +217,15 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.edt_chromakey_valend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_subtitle, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.radioBtn_addsubtitle_top, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.radioBtn_addsubtitle_middle, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.radioBtn_addsubtitle_low, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.spbox_addsubtitle_font_size, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.cmbox_addsubtitle_font, SIGNAL(currentIndexChanged(int)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_color_red, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_color_green, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_color_blue, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -356,6 +363,33 @@ void EasyVideoEditor::updateSampleFrame() {
             frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
             UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::ADD_SUBTITLE) {
+            (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        int option = 0;
+
+        if (ui.radioBtn_addsubtitle_top->isChecked())
+            option = 1;
+        else if (ui.radioBtn_addsubtitle_middle->isChecked())
+            option = 2;
+        else if (ui.radioBtn_addsubtitle_low->isChecked())
+            option = 3;
+
+        AddSubtitle addSubtitle(
+            false,
+            ui.edt_addsubtitle_subtitle->toPlainText(),
+            ui.cmbox_addsubtitle_font->itemText(ui.cmbox_addsubtitle_font->currentIndex()),
+            option,
+            ui.spbox_addsubtitle_font_size->value(),
+            ui.edt_addsubtitle_color_red->text().toInt(),
+            ui.edt_addsubtitle_color_green->text().toInt(),
+            ui.edt_addsubtitle_color_blue->text().toInt()
+        );
+
+        editingFrame.addCommand(&addSubtitle);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
 }
 
@@ -1037,7 +1071,6 @@ void EasyVideoEditor::changePlaySpeedButtonClicked() {
 };
 
 void EasyVideoEditor::addSubtitleButtonClicked() {
-    
     if (ui.edt_addsubtitle_subtitle->toPlainText() != "") {
         int option = 0;
         QLineEdit* rangeStart = ui.edt_addsubtitle_rangestart;

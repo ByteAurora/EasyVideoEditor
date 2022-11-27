@@ -4588,7 +4588,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_addsubtitle_color_red">
+     <widget class="QLineEdit" name="edt_addsubtitle_color_blue">
       <property name="geometry">
        <rect>
         <x>146</x>
@@ -4620,7 +4620,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edt_addsubtitle_color_blue">
+     <widget class="QLineEdit" name="edt_addsubtitle_color_red">
       <property name="geometry">
        <rect>
         <x>420</x>
