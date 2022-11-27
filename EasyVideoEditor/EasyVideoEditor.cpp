@@ -217,7 +217,7 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.edt_chromakey_valend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
     connect(ui.edt_chromakey_satend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
-    connect(ui.edt_addsubtitle_subtitle, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_subtitle, SIGNAL(textChanged()), this, SLOT(updateSampleFrame()));
     connect(ui.radioBtn_addsubtitle_top, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
     connect(ui.radioBtn_addsubtitle_middle, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
     connect(ui.radioBtn_addsubtitle_low, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
