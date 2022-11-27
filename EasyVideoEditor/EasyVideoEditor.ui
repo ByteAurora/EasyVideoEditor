@@ -1868,7 +1868,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
        </font>
       </property>
       <property name="text">
-       <string>초</string>
+       <string>프레임</string>
       </property>
      </widget>
     </widget>
@@ -2493,7 +2493,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
         </rect>
        </property>
        <property name="text">
-        <string>255</string>
+        <string>180</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
