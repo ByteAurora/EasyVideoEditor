@@ -4778,11 +4778,11 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
      </widget>
     </widget>
    </widget>
-   <zorder>w_encodingpage</zorder>
    <zorder>w_sidemenuarea</zorder>
    <zorder>w_sidemenupagearea</zorder>
    <zorder>w_videoarea</zorder>
    <zorder>w_videoinfoarea</zorder>
+   <zorder>w_encodingpage</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
