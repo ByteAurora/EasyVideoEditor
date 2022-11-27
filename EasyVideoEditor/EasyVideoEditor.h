@@ -27,8 +27,6 @@
 #include "Chromakey.h"
 #include "Transition.h"
 #include "AddImage.h"
-#include "AddVideo.h"
-#include "CutVideo.h"
 #include "ChangePlaySpeed.h"
 #include "AddSubtitle.h"
 

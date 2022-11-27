@@ -98,7 +98,6 @@
   <ItemGroup>
     <ClCompile Include="AddImage.cpp" />
     <ClCompile Include="AddSubtitle.cpp" />
-    <ClCompile Include="AddVideo.cpp" />
     <ClCompile Include="EasyVideoEditor.cpp" />
     <ClCompile Include="PlayVideo.cpp" />
     <ClCompile Include="EncodingVideo.cpp" />
@@ -109,7 +108,6 @@
     <ClCompile Include="Chromakey.cpp" />
     <ClCompile Include="ColorEmphasis.cpp" />
     <ClCompile Include="Command.cpp" />
-    <ClCompile Include="CutVideo.cpp" />
     <ClCompile Include="EveProject.cpp" />
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="Frame.cpp" />
@@ -128,7 +126,6 @@
   <ItemGroup>
     <ClInclude Include="AddImage.h" />
     <ClInclude Include="AddSubtitle.h" />
-    <ClInclude Include="AddVideo.h" />
     <QtMoc Include="PlayVideo.h" />
     <QtMoc Include="EncodingVideo.h" />
     <ClInclude Include="Transition.h" />
@@ -138,7 +135,6 @@
     <ClInclude Include="Chromakey.h" />
     <ClInclude Include="ColorEmphasis.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="CutVideo.h" />
     <ClInclude Include="EveProject.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="Frame.h" />

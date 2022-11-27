@@ -76,9 +76,6 @@
     <ClCompile Include="AddSubtitle.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
-    <ClCompile Include="AddVideo.cpp">
-      <Filter>Code\Model\Command</Filter>
-    </ClCompile>
     <ClCompile Include="Transition.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
@@ -95,9 +92,6 @@
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
     <ClCompile Include="ColorEmphasis.cpp">
-      <Filter>Code\Model\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="CutVideo.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
     <ClCompile Include="Filter.cpp">
@@ -153,9 +147,6 @@
     <ClInclude Include="AddSubtitle.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="AddVideo.h">
-      <Filter>Code\Model\Command</Filter>
-    </ClInclude>
     <ClInclude Include="Transition.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
@@ -172,9 +163,6 @@
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
     <ClInclude Include="ColorEmphasis.h">
-      <Filter>Code\Model\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="CutVideo.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
     <ClInclude Include="Filter.h">
