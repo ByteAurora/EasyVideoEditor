@@ -23,10 +23,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Code\Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Code\Widget">
       <UniqueIdentifier>{5873b7b9-ef09-4299-b9dc-231466ccad78}</UniqueIdentifier>
     </Filter>
@@ -36,8 +32,15 @@
     <Filter Include="Code\Model\Command">
       <UniqueIdentifier>{2dd0e29d-1f77-4bc0-bd16-dd896366c956}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Code\Model\Base">
-      <UniqueIdentifier>{00ac45f2-c623-4e24-a209-26f3c8bcf3e8}</UniqueIdentifier>
+    <Filter Include="Code\Base">
+      <UniqueIdentifier>{37cd99bb-b203-48b7-bca7-219736925434}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Base\Header Files">
+      <UniqueIdentifier>{4833465b-3d9a-4025-849a-1d57c1af6718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code\Base\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,9 +52,6 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Code\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Widgets.cpp">
       <Filter>Code\Widget</Filter>
     </ClCompile>
@@ -69,12 +69,6 @@
     </ClCompile>
     <ClCompile Include="Command.cpp">
       <Filter>Code\Model\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="EveProject.cpp">
-      <Filter>Code\Model\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Frame.cpp">
-      <Filter>Code\Model\Base</Filter>
     </ClCompile>
     <ClCompile Include="AddImage.cpp">
       <Filter>Code\Model\Command</Filter>
@@ -109,20 +103,29 @@
     <ClCompile Include="Filter.cpp">
       <Filter>Code\Model\Command</Filter>
     </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Code\Model\Resource</Filter>
+    </ClCompile>
     <ClCompile Include="EasyVideoEditor.cpp">
-      <Filter>Code\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UsefulFunction.cpp">
-      <Filter>Code\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayVideo.cpp">
-      <Filter>Code\Source Files</Filter>
+      <Filter>Code\Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EncodingVideo.cpp">
-      <Filter>Code\Source Files</Filter>
+      <Filter>Code\Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EveProject.cpp">
+      <Filter>Code\Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Code\Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UsefulFunction.cpp">
+      <Filter>Code\Base\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VideoProgressEventFilter.cpp">
-      <Filter>Code\Source Files</Filter>
+      <Filter>Code\Base\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayVideo.cpp">
+      <Filter>Code\Base\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,12 +146,6 @@
     </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Code\Model\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="EveProject.h">
-      <Filter>Code\Model\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Frame.h">
-      <Filter>Code\Model\Base</Filter>
     </ClInclude>
     <ClInclude Include="AddImage.h">
       <Filter>Code\Model\Command</Filter>
@@ -183,25 +180,28 @@
     <ClInclude Include="Filter.h">
       <Filter>Code\Model\Command</Filter>
     </ClInclude>
-    <ClInclude Include="UsefulFunction.h">
-      <Filter>Code\Header Files</Filter>
+    <ClInclude Include="Frame.h">
+      <Filter>Code\Model\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Code\Header Files</Filter>
+    <ClInclude Include="EveProject.h">
+      <Filter>Code\Base\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UsefulFunction.h">
+      <Filter>Code\Base\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EasyVideoEditor.h">
-      <Filter>Code\Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PlayVideo.h">
-      <Filter>Code\Header Files</Filter>
+      <Filter>Code\Base\Header Files</Filter>
     </QtMoc>
     <QtMoc Include="EncodingVideo.h">
-      <Filter>Code\Header Files</Filter>
+      <Filter>Code\Base\Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PlayVideo.h">
+      <Filter>Code\Base\Header Files</Filter>
     </QtMoc>
     <QtMoc Include="VideoProgressEventFilter.h">
-      <Filter>Code\Header Files</Filter>
+      <Filter>Code\Base\Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

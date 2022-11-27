@@ -131,7 +131,6 @@
     <ClInclude Include="AddVideo.h" />
     <QtMoc Include="PlayVideo.h" />
     <QtMoc Include="EncodingVideo.h" />
-    <ClInclude Include="resource1.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="ChangeBrightness.h" />
     <ClInclude Include="ChangeContrast.h" />
