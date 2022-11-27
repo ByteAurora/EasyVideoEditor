@@ -28,7 +28,14 @@ Image::~Image() {
 }
 
 bool Image::loadResource() {
-    image = cv::imread(resourcePath, cv::IMREAD_COLOR);
+    QString name = QString::fromStdString(resourcePath);
+    QFile file(name);
+    file.open(QFile::ReadOnly);
+    qint64 sz = file.size();
+    std::vector<uchar> buf(sz);
+    file.read((char*)buf.data(), sz);
+    image = cv::imdecode(buf, cv::IMREAD_COLOR);
+
     return !image.empty();
 }
 
