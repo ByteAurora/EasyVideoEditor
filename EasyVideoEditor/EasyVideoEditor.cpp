@@ -1,4 +1,4 @@
-#include "EasyVideoEditor.h"
+ï»¿#include "EasyVideoEditor.h"
 
 int EasyVideoEditor::top = 0;
 int EasyVideoEditor::down = 0;
@@ -41,13 +41,12 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
-    ui.cmbox_addsubtitle_font->addItem("SIMPLEX"); // FONT_HERSHEY_SIMPLEX
-    ui.cmbox_addsubtitle_font->addItem("PLAIN"); // FONT_HERSHEY_PLAIN 
-    ui.cmbox_addsubtitle_font->addItem("DUPLEX"); // FONT_HERSHEY_DUPLEX
-    ui.cmbox_addsubtitle_font->addItem("COMPLEX"); // FONT_HERSHEY_COMPLEX
-    ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
-    ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
-    ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
+    ui.cmbox_addsubtitle_font->addItem("ë§‘ì€ ê³ ë”•");
+    ui.cmbox_addsubtitle_font->addItem("Noto Sans KR"); 
+    ui.cmbox_addsubtitle_font->addItem("ë‚˜ëˆ”ìŠ¤í€˜ì–´");
+    ui.cmbox_addsubtitle_font->addItem("êµ´ë¦¼");
+    ui.cmbox_addsubtitle_font->addItem("ë‹ìŒ");
+    ui.cmbox_addsubtitle_font->addItem("íœ´ë¨¼ë‘¥ê·¼í—¤ë“œë¼ì¸");
     std::vector<QGraphicsDropShadowEffect*> buttonEffects;
     for (int loop = 0; loop <37; loop++) {
         QGraphicsDropShadowEffect* videoControlEffect = new QGraphicsDropShadowEffect();
@@ -387,7 +386,7 @@ void EasyVideoEditor::clear() {
 }
 
 void EasyVideoEditor::newProject() {
-    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("ÆíÁıÇÒ µ¿¿µ»ó ÆÄÀÏ ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("µ¿¿µ»ó (*.mp4 *.avi *.wmv *.mov)"));
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("í¸ì§‘í•  ë™ì˜ìƒ íŒŒì¼ ì„ íƒ"), QDir::homePath(), QString::fromLocal8Bit("ë™ì˜ìƒ (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
         clear();
         ui.menu_encoding->setEnabled(true);
@@ -453,7 +452,7 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
     }
     mutex.unlock();
     
-    QString saveFilePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("ÆíÁıÇÑ µ¿¿µ»ó ÀúÀå"), QDir::homePath(), QString("*.").append(encodingType));
+    QString saveFilePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("í¸ì§‘í•œ ë™ì˜ìƒ ì €ì¥"), QDir::homePath(), QString("*.").append(encodingType));
     
     if (!saveFilePath.isEmpty()) {
         QObject::disconnect(encodingVideoThreadConnection);
@@ -1053,8 +1052,8 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
 
         Command* command = new AddSubtitle(
             true,
-            ui.edt_addsubtitle_subtitle->toPlainText().toStdString(),
-            ui.cmbox_addsubtitle_font->currentIndex(),
+            ui.edt_addsubtitle_subtitle->toPlainText(),
+            ui.cmbox_addsubtitle_font->itemText(ui.cmbox_addsubtitle_font->currentIndex()),
             option,
             ui.spbox_addsubtitle_font_size->value(),
             ui.edt_addsubtitle_color_red->text().toInt(),
@@ -1106,7 +1105,7 @@ void EasyVideoEditor::addSubtitleRangeFrameButtonClicked() {
 }
 
 void EasyVideoEditor::addImageSelectButtonClicked() {
-    QString addImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("Ãß°¡ÇÒ ÀÌ¹ÌÁö ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("ÀÌ¹ÌÁö (*.png *.jpg *.bmp)"));
+    QString addImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("ì¶”ê°€í•  ì´ë¯¸ì§€ ì„ íƒ"), QDir::homePath(), QString::fromLocal8Bit("ì´ë¯¸ì§€ (*.png *.jpg *.bmp)"));
     ui.label_addimage_path->setText(addImagePath);
     if (!(ui.label_addimage_path->text()).isEmpty()) {
         ui.edt_addimage_height->setEnabled(true);
@@ -1152,7 +1151,7 @@ void EasyVideoEditor::addImageRangeFrameButtonClicked() {
 }
 
 void EasyVideoEditor::addVideoSelectButtonClicked() {
-    QString addVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("Ãß°¡ÇÒ µ¿¿µ»ó ÆÄÀÏ ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("µ¿¿µ»ó (*.mp4 *.avi *.wmv *.mov)"));
+    QString addVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("ì¶”ê°€í•  ë™ì˜ìƒ íŒŒì¼ ì„ íƒ"), QDir::homePath(), QString::fromLocal8Bit("ë™ì˜ìƒ (*.mp4 *.avi *.wmv *.mov)"));
     ui.label_addvideo_path->setText(addVideoPath);
 
     if (!(ui.label_addvideo_path->text()).isEmpty()) {
@@ -1161,7 +1160,7 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
 };
 
 void EasyVideoEditor::chromakeyFilePickerButtonClicked() {
-    QString backgroundImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("Ãß°¡ÇÒ ÀÌ¹ÌÁö ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("ÀÌ¹ÌÁö (*.png *.jpg *.bmp)"));
+    QString backgroundImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("ì¶”ê°€í•  ì´ë¯¸ì§€ ì„ íƒ"), QDir::homePath(), QString::fromLocal8Bit("ì´ë¯¸ì§€ (*.png *.jpg *.bmp)"));
     if (!backgroundImagePath.isEmpty()) {
         ui.lbl_chromakey_backgroundfilepath->setText(backgroundImagePath);
         updateSampleFrame();

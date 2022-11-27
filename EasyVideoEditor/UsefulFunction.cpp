@@ -58,3 +58,11 @@ void UsefulFunction::writeLog(QString filePath, QString tag, QString message) {
     textStream << logMessage;
     logFile.close();
 }
+
+QImage UsefulFunction::matToQImage(cv::Mat* mat) {
+    return QImage(mat->data, mat->cols, mat->rows, mat->step, QImage::Format_RGB888);
+}
+
+cv::Mat UsefulFunction::QImageToMat(QImage* qimage) {
+    return cv::Mat(qimage->height(), qimage->width(), CV_8UC3, (cv::Scalar*)qimage->scanLine(0));
+}
