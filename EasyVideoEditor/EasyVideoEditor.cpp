@@ -1067,9 +1067,9 @@ void EasyVideoEditor::changePlaySpeedButtonClicked() {
                 int originalSize = EveProject::getInstance()->getFrameList()->size();
                 int frameGap = (int)speed;
                 int deleteCount = 0;
-                for (int loop = 0; loop < originalSize; loop++) {
+                for (int loop = 0; loop < endIndex - startIndex + 1; loop+=frameGap) {
                     if (loop % frameGap == 0 && loop != 0) {
-                        EveProject::getInstance()->removeFrame(loop - deleteCount);
+                        EveProject::getInstance()->removeFrame(startIndex + loop - deleteCount);
                         deleteCount++;
                     }
                 }
