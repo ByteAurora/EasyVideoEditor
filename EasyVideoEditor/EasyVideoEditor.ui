@@ -589,7 +589,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </font>
      </property>
      <property name="text">
-      <string>Height</string>
+      <string>높이</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_width">
@@ -608,7 +608,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </font>
      </property>
      <property name="text">
-      <string>Width</string>
+      <string>너비</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_delay">
@@ -4793,8 +4793,8 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
    <zorder>w_sidemenuarea</zorder>
    <zorder>w_sidemenupagearea</zorder>
    <zorder>w_videoarea</zorder>
-   <zorder>w_encodingpage</zorder>
    <zorder>w_videoinfoarea</zorder>
+   <zorder>w_encodingpage</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
