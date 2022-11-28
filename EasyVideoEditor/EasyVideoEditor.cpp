@@ -508,11 +508,11 @@ void EasyVideoEditor::updateInformationArea() {
     int delay = EveProject::getInstance()->getBaseDelay();
     double fps = EveProject::getInstance()->getBaseFps();
 
-    ui.tbr_allframe->setText(QString::number(size)+" ms");
+    ui.tbr_allframe->setText(QString::number(size)+" frame");
     ui.tbr_width->setText(QString::number(width)+" px");
 ;   ui.tbr_height->setText(QString::number(height)+" px");
     ui.tbr_delay->setText(QString::number(delay)+" ms");
-    ui.tbr_fps->setText(QString::number(fps)+" /sec");
+    ui.tbr_fps->setText(QString::number(fps)+" frame/sec");
 }
 
 bool EasyVideoEditor::event(QEvent* e) {
