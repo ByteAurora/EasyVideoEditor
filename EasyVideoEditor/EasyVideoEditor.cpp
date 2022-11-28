@@ -708,7 +708,10 @@ void EasyVideoEditor::colorEmphasisApplyButtonClicked() {
         else if (ui.rbtn_coloremphasis_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
@@ -735,7 +738,10 @@ void EasyVideoEditor::changeBrightnessApplyButtonClicked() {
         else if (ui.rbtn_changebrightness_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
@@ -762,7 +768,10 @@ void EasyVideoEditor::changeContrastApplyButtonClicked() {
         else if (ui.rbtn_changecontrast_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
@@ -797,7 +806,10 @@ void EasyVideoEditor::filterApplyButtonClicked() {
         else if (ui.rbtn_filter_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
@@ -850,7 +862,10 @@ void EasyVideoEditor::chromakeyApplyButtonClicked() {
         else if (ui.rbtn_chromakey_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
@@ -869,7 +884,7 @@ void EasyVideoEditor::transitionApplyButtonClicked() {
             int endIndex = startIndex + totalTransitionFrame - 1;
             if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
                 endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
-                totalTransitionFrame = endIndex - startIndex;
+                totalTransitionFrame = endIndex - startIndex + 1;
             }
 
             double changeWeight = 1.0f / totalTransitionFrame;
@@ -894,7 +909,7 @@ void EasyVideoEditor::transitionApplyButtonClicked() {
             int endIndex = startIndex + totalTransitionFrame - 1;
             if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
                 endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
-                totalTransitionFrame = endIndex - startIndex;
+                totalTransitionFrame = endIndex - startIndex + 1;
             }
 
             double changeWeight = 1.0f / totalTransitionFrame;
@@ -942,7 +957,10 @@ void EasyVideoEditor::addImageApplyButtonClicked() {
         else if (ui.rbtn_addimage_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
@@ -1106,7 +1124,10 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
         else if (ui.rbtn_addsubtitle_rangeframe->isChecked()) {
             int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
             int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-            for (int loop = startIndex; loop < endIndex; loop++) {
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+            }
+            for (int loop = startIndex; loop <= endIndex; loop++) {
                 EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
             }
         }
