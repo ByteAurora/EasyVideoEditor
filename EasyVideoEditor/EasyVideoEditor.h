@@ -9,6 +9,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include <QGraphicsEffect>
+#include <QFontDatabase>
 #include "SideMenu.h"
 #include "ui_EasyVideoEditor.h"
 #include "Widgets.h"
@@ -16,6 +17,7 @@
 #include "UsefulFunction.h"
 #include "PlayVideo.h"
 #include "EncodingVideo.h"
+#include "VideoProgressEventFilter.h"
 
 // Command class.
 #include "ColorEmphasis.h"
@@ -25,9 +27,6 @@
 #include "Chromakey.h"
 #include "Transition.h"
 #include "AddImage.h"
-#include "AddVideo.h"
-#include "CutVideo.h"
-#include "Resize.h"
 #include "ChangePlaySpeed.h"
 #include "AddSubtitle.h"
 
@@ -54,8 +53,6 @@ public:
     static int down;
     static int left;
     static int right;
-    static int outputVideoWidth;
-    static int outputVideoHeight;
     static QMetaObject::Connection encodingVideoThreadConnection;
 private:
     Ui::EasyVideoEditorClass ui;
@@ -68,6 +65,10 @@ private:
 
     EncodingVideo* encodingVideoThread = NULL;
     PlayVideo* playVideoThread = NULL;
+    QIntValidator* addImageXValidator;
+    QIntValidator* addImageYValidator;
+    QIntValidator* addImageWidthValidator;
+    QIntValidator* addImageHeightValidator;
 private:
     // A function called after a window displayed.
     void workAfterMainWindowShowed();
@@ -118,7 +119,6 @@ private slots:
     void addImageApplyButtonClicked();
     void addVideoApplyButtonClicked();
     void cutVideoApplyButtonClicked();
-    void resizeApplyButtonClicked();
     void changePlaySpeedButtonClicked();
     void addSubtitleButtonClicked();
     void addSubtitleCurrentFrameButtonClicked();
@@ -129,10 +129,13 @@ private slots:
     void addImageAllFrameButtonClicked();
     void addImageRangeFrameButtonClicked();
     void addVideoSelectButtonClicked();
-    void cutVideoCurrentFrameButtonClicked();
-    void cutVideoCurrentFrameToWantFrameButtonClicked();
-    void cutVideoRangeFrameButtonClicked();
+    void chromakeyFilePickerButtonClicked();
 
+    void getCurrentFrameTime();
     void updateEncodingProgressBar(int value);
     void updateSampleFrame();
+    void addImageXUpdated(QString value);
+    void addImageYUpdated(QString value);
+    void addImageWidthUpdated(QString value);
+    void addImageHeightUpdated(QString value);
 };

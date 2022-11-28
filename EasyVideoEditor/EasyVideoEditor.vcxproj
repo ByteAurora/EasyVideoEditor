@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{AEB8FB5F-55DB-4477-9318-2FEB51A018AA}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -26,6 +26,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>NotSet</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -97,7 +98,6 @@
   <ItemGroup>
     <ClCompile Include="AddImage.cpp" />
     <ClCompile Include="AddSubtitle.cpp" />
-    <ClCompile Include="AddVideo.cpp" />
     <ClCompile Include="EasyVideoEditor.cpp" />
     <ClCompile Include="PlayVideo.cpp" />
     <ClCompile Include="EncodingVideo.cpp" />
@@ -108,16 +108,15 @@
     <ClCompile Include="Chromakey.cpp" />
     <ClCompile Include="ColorEmphasis.cpp" />
     <ClCompile Include="Command.cpp" />
-    <ClCompile Include="CutVideo.cpp" />
     <ClCompile Include="EveProject.cpp" />
     <ClCompile Include="Filter.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="Image.cpp" />
-    <ClCompile Include="Resize.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="SideMenu.cpp" />
     <ClCompile Include="UsefulFunction.cpp" />
     <ClCompile Include="Video.cpp" />
+    <ClCompile Include="VideoProgressEventFilter.cpp" />
     <ClCompile Include="Widgets.cpp" />
     <QtRcc Include="EasyVideoEditor.qrc" />
     <QtUic Include="EasyVideoEditor.ui" />
@@ -127,7 +126,6 @@
   <ItemGroup>
     <ClInclude Include="AddImage.h" />
     <ClInclude Include="AddSubtitle.h" />
-    <ClInclude Include="AddVideo.h" />
     <QtMoc Include="PlayVideo.h" />
     <QtMoc Include="EncodingVideo.h" />
     <ClInclude Include="Transition.h" />
@@ -137,16 +135,15 @@
     <ClInclude Include="Chromakey.h" />
     <ClInclude Include="ColorEmphasis.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="CutVideo.h" />
     <ClInclude Include="EveProject.h" />
     <ClInclude Include="Filter.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="Resize.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SideMenu.h" />
     <ClInclude Include="UsefulFunction.h" />
     <ClInclude Include="Video.h" />
+    <QtMoc Include="VideoProgressEventFilter.h" />
     <ClInclude Include="Widgets.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

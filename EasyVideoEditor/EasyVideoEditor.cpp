@@ -1,11 +1,9 @@
-#include "EasyVideoEditor.h"
+ï»¿#include "EasyVideoEditor.h"
 
 int EasyVideoEditor::top = 0;
 int EasyVideoEditor::down = 0;
 int EasyVideoEditor::left = 0;
 int EasyVideoEditor::right = 0;
-int EasyVideoEditor::outputVideoWidth = 0;
-int EasyVideoEditor::outputVideoHeight = 0;
 EasyVideoEditor::Mode EasyVideoEditor::mode = EasyVideoEditor::Mode::MODE_EDIT;
 QMutex EasyVideoEditor::mutex;
 cv::Size EasyVideoEditor::resizeData;
@@ -20,22 +18,35 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.btn_pause->setVisible(false);
     ui.w_contentarea->setEnabled(false);
     ui.w_videocontrolarea->setEnabled(false);
-    ui.edt_coloremphasis_red->setValidator(new QIntValidator(0, 255, this));
-    ui.edt_coloremphasis_green->setValidator(new QIntValidator(0, 255, this));
-    ui.edt_coloremphasis_blue->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_coloremphasis_red->setValidator(new QIntValidator(-255, 255, this));
+    ui.edt_coloremphasis_green->setValidator(new QIntValidator(-255, 255, this));
+    ui.edt_coloremphasis_blue->setValidator(new QIntValidator(-255, 255, this));
+    ui.edt_changebrightness_brightness->setValidator(new QIntValidator(0, 100, this));
+    ui.edt_changecontrast_contrast->setValidator(new QIntValidator(0, 100, this));
+    ui.edt_filter_clarity->setValidator(new QIntValidator(0, 100, this));
+    ui.edt_chromakey_huestart->setValidator(new QIntValidator(0, 180, this));
+    ui.edt_chromakey_hueend->setValidator(new QIntValidator(0, 180, this));
+    ui.edt_chromakey_valstart->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_chromakey_valend->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_chromakey_satstart->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_chromakey_satend->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_transition_fadein_range->setValidator(new QIntValidator(0, 36000, this));
+    ui.edt_transition_fadeout_range->setValidator(new QIntValidator(0, 36000, this));
+    ui.edt_cutvideo_framerange->setValidator(new QIntValidator(0, 36000, this));
+    ui.edt_changeplayspeed_speed->setValidator(new QDoubleValidator(0.f, 100.f, 10, this));
+    ui.edt_addsubtitle_color_red->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_addsubtitle_color_blue->setValidator(new QIntValidator(0, 255, this));
+    ui.edt_addsubtitle_color_green->setValidator(new QIntValidator(0, 255, this));
     ui.sd_coloremphasis_red->setStyleSheet("QSlider::handle:horizontal {background: red;} ");
     ui.sd_coloremphasis_green->setStyleSheet("QSlider::handle:horizontal {background: green;} ");
     ui.sd_coloremphasis_blue->setStyleSheet("QSlider::handle:horizontal {background: blue;} ");
     ui.sd_changebrightness_brightness->setStyleSheet("QSlider::handle:horizontal {background: yellow;} ");
-    ui.cmbox_addsubtitle_font->addItem("SIMPLEX"); // FONT_HERSHEY_SIMPLEX
-    ui.cmbox_addsubtitle_font->addItem("PLAIN"); // FONT_HERSHEY_PLAIN
-    ui.cmbox_addsubtitle_font->addItem("DUPLEX"); // FONT_HERSHEY_DUPLEX
-    ui.cmbox_addsubtitle_font->addItem("COMPLEX"); // FONT_HERSHEY_COMPLEX
-    ui.cmbox_addsubtitle_font->addItem("COMPLEX_SMALL"); // FONT_HERSHEY_COMPLEX_SMALL
-    ui.cmbox_addsubtitle_font->addItem("SCRIPT_SIMPLEX"); // FONT_HERSHEY_SCRIPT_SIMPLEX
-    ui.cmbox_addsubtitle_font->addItem("SCRIPT_COMPLEX"); // FONT_HERSHEY_SCRIPT_COMPLEX
+    QStringList fontList = QFontDatabase::families();
+    for(QString fontName : fontList) {
+        ui.cmbox_addsubtitle_font->addItem(fontName);
+    }
     std::vector<QGraphicsDropShadowEffect*> buttonEffects;
-    for (int loop = 0; loop < 5; loop++) {
+    for (int loop = 0; loop <37; loop++) {
         QGraphicsDropShadowEffect* videoControlEffect = new QGraphicsDropShadowEffect();
         videoControlEffect->setBlurRadius(6);
         videoControlEffect->setOffset(2, 2);
@@ -46,6 +57,40 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     ui.btn_reset->setGraphicsEffect(buttonEffects.at(2));
     ui.btn_forward5seconds->setGraphicsEffect(buttonEffects.at(3));
     ui.btn_backward5seconds->setGraphicsEffect(buttonEffects.at(4));
+    ui.btn_chromakey_filepicker->setGraphicsEffect(buttonEffects.at(5));
+    ui.btn_addimage_apply->setGraphicsEffect(buttonEffects.at(6));
+    ui.btn_addsubtitle_apply->setGraphicsEffect(buttonEffects.at(7));
+    ui.btn_addvideo_apply->setGraphicsEffect(buttonEffects.at(8));
+    ui.btn_changebrightness_apply->setGraphicsEffect(buttonEffects.at(9));
+    ui.btn_changecontrast_apply->setGraphicsEffect(buttonEffects.at(10));
+    ui.btn_changeplayspeed_apply->setGraphicsEffect(buttonEffects.at(11));
+    ui.btn_chromakey_apply->setGraphicsEffect(buttonEffects.at(12));
+    ui.btn_coloremphasis_apply->setGraphicsEffect(buttonEffects.at(13));
+    ui.btn_cutvideo_apply->setGraphicsEffect(buttonEffects.at(14));
+    ui.btn_filter_apply->setGraphicsEffect(buttonEffects.at(15));
+    ui.btn_transition_apply->setGraphicsEffect(buttonEffects.at(16));
+    ui.btn_filter_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(17));
+    ui.btn_cutvideo_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(18));
+    ui.btn_coloremphasis_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(19));
+    ui.btn_chromakey_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(20));
+    ui.btn_changeplayspeed_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(21));
+    ui.btn_changebrightness_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(22));
+    ui.btn_addsubtitle_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(23));
+    ui.btn_addimage_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(24));
+    ui.btn_filter_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(25));
+    ui.btn_cutvideo_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(26));
+    ui.btn_coloremphasis_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(27));
+    ui.btn_chromakey_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(28));
+    ui.btn_changeplayspeed_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(29));
+    ui.btn_changebrightness_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(30));
+    ui.btn_addsubtitle_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(31));
+    ui.btn_addimage_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(32));
+    ui.btn_addimage_select_path->setGraphicsEffect(buttonEffects.at(33));
+    ui.btn_addvideo_select_path->setGraphicsEffect(buttonEffects.at(34));
+    ui.btn_changecontrast_rangestarttocurrent->setGraphicsEffect(buttonEffects.at(35));
+    ui.btn_changecontrast_rangeendtocurrent->setGraphicsEffect(buttonEffects.at(36));
+    ui.menu_encoding->setEnabled(false);
+   
 
     ////// Init data.
     mode = Mode::MODE_EDIT;
@@ -58,10 +103,18 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     new SideMenu(ui.btn_addimage, ui.w_addimage);
     new SideMenu(ui.btn_addvideo, ui.w_addvideo);
     new SideMenu(ui.btn_cutvideo, ui.w_cutvideo);
-    new SideMenu(ui.btn_resize, ui.w_resize);
     new SideMenu(ui.btn_changeplayspeed, ui.w_changeplayspeed);
     new SideMenu(ui.btn_addsubtitle, ui.w_addsubtitle);
     SideMenu::selectSideMenu(ui.btn_coloremphasis);
+    addImageXValidator = new QIntValidator(0, 0, this);
+    addImageYValidator = new QIntValidator(0, 0, this);
+    addImageWidthValidator = new QIntValidator(0, 0, this);
+    addImageHeightValidator = new QIntValidator(0, 0, this);
+    ui.edt_addimage_x->setValidator(addImageXValidator);
+    ui.edt_addimage_y->setValidator(addImageYValidator);
+    ui.edt_addimage_width->setValidator(addImageWidthValidator);
+    ui.edt_addimage_height->setValidator(addImageHeightValidator);
+    ui.sd_videoprogress->installEventFilter(new VideoProgressEventFilter(ui.lbl_videoframe, ui.sd_videoprogress, ui.lbl_currentplaytime, this));
     
     ////// Init signal, slot.
     connect(ui.menu_newproject, SIGNAL(triggered()), this, SLOT(newProjectMenuClicked()));
@@ -79,7 +132,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_addimage, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_cutvideo, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
-    connect(ui.btn_resize, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_changeplayspeed, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.btn_addsubtitle, SIGNAL(clicked()), this, SLOT(sideMenuClicked()));
     connect(ui.sd_videoprogress, SIGNAL(sliderMoved(int)), this, SLOT(videoProgressSliderMoved(int)));
@@ -96,10 +148,30 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.rbtn_addsubtitle_currentframe, SIGNAL(clicked()), this, SLOT(addSubtitleCurrentFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_allframe, SIGNAL(clicked()), this, SLOT(addSubtitleAllFrameButtonClicked()));
     connect(ui.rbtn_addsubtitle_rangeframe, SIGNAL(clicked()), this, SLOT(addSubtitleRangeFrameButtonClicked()));
-    connect(ui.rbtn_cutvideo_currentframe, SIGNAL(clicked()), this, SLOT(cutVideoCurrentFrameButtonClicked()));
-    connect(ui.rbtn_cutvideo_allframe, SIGNAL(clicked()), this, SLOT(cutVideoCurrentFrameToWantFrameButtonClicked()));
-    connect(ui.rbtn_cutvideo_rangeframe, SIGNAL(clicked()), this, SLOT(cutVideoRangeFrameButtonClicked()));
-    
+    connect(ui.btn_chromakey_filepicker, SIGNAL(clicked()), this, SLOT(chromakeyFilePickerButtonClicked()));
+    connect(ui.btn_coloremphasis_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_coloremphasis_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changebrightness_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changebrightness_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changecontrast_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changecontrast_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_filter_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_filter_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_chromakey_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_chromakey_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addimage_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addimage_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_cutvideo_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_cutvideo_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changeplayspeed_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_changeplayspeed_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addsubtitle_rangestarttocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.btn_addsubtitle_rangeendtocurrent, SIGNAL(clicked()), this, SLOT(getCurrentFrameTime()));
+    connect(ui.edt_addimage_x, SIGNAL(textChanged(QString)), this, SLOT(addImageXUpdated(QString)));
+    connect(ui.edt_addimage_y, SIGNAL(textChanged(QString)), this, SLOT(addImageYUpdated(QString)));
+    connect(ui.edt_addimage_width, SIGNAL(textChanged(QString)), this, SLOT(addImageWidthUpdated(QString)));
+    connect(ui.edt_addimage_height, SIGNAL(textChanged(QString)), this, SLOT(addImageHeightUpdated(QString)));
+
     // Connect apply button.
     connect(ui.btn_coloremphasis_apply, SIGNAL(clicked()), this, SLOT(colorEmphasisApplyButtonClicked()));
     connect(ui.btn_changebrightness_apply, SIGNAL(clicked()), this, SLOT(changeBrightnessApplyButtonClicked()));
@@ -110,7 +182,6 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.btn_addimage_apply, SIGNAL(clicked()), this, SLOT(addImageApplyButtonClicked()));
     connect(ui.btn_addvideo_apply, SIGNAL(clicked()), this, SLOT(addVideoApplyButtonClicked()));
     connect(ui.btn_cutvideo_apply, SIGNAL(clicked()), this, SLOT(cutVideoApplyButtonClicked()));
-    connect(ui.btn_resize_apply, SIGNAL(clicked()), this, SLOT(resizeApplyButtonClicked()));
     connect(ui.btn_changeplayspeed_apply, SIGNAL(clicked()), this, SLOT(changePlaySpeedButtonClicked()));
     connect(ui.btn_addsubtitle_apply, SIGNAL(clicked()), this, SLOT(addSubtitleButtonClicked()));
 
@@ -134,6 +205,27 @@ EasyVideoEditor::EasyVideoEditor(QWidget* parent) : QMainWindow(parent){
     connect(ui.rbtn_filter_colorsense_warm, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
     connect(ui.rbtn_filter_colorsense_cool, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
     connect(ui.rbtn_filter_colorsense_bright, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_custom, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_white, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_black, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_green, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.rbtn_chromakey_blue, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.cb_chromakey_reverse, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_huestart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_hueend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_valstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_valend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_satstart, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_chromakey_satend, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_subtitle, SIGNAL(textChanged()), this, SLOT(updateSampleFrame()));
+    connect(ui.radioBtn_addsubtitle_top, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.radioBtn_addsubtitle_middle, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.radioBtn_addsubtitle_low, SIGNAL(clicked()), this, SLOT(updateSampleFrame()));
+    connect(ui.spbox_addsubtitle_font_size, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.cmbox_addsubtitle_font, SIGNAL(currentIndexChanged(int)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_color_red, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_color_green, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
+    connect(ui.edt_addsubtitle_color_blue, SIGNAL(textChanged(QString)), this, SLOT(updateSampleFrame()));
 }
 
 EasyVideoEditor::~EasyVideoEditor()
@@ -195,6 +287,110 @@ void EasyVideoEditor::updateSampleFrame() {
         editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
     }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::CHROMAKEY) {
+        if (!ui.lbl_chromakey_backgroundfilepath->text().isEmpty()) {
+            (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+
+            Image image(ui.lbl_chromakey_backgroundfilepath->text().toStdString());
+            image.loadResource();
+
+            Chromakey* chromakey;
+            if (ui.rbtn_chromakey_custom->isChecked()) {
+                chromakey = new Chromakey(false
+                    , ui.edt_chromakey_huestart->text().toInt(), ui.edt_chromakey_hueend->text().toInt()
+                    , ui.edt_chromakey_satstart->text().toInt(), ui.edt_chromakey_satend->text().toInt()
+                    , ui.edt_chromakey_valstart->text().toInt(), ui.edt_chromakey_valend->text().toInt()
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_white->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 0, 180, 0, 255, 200, 255
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_black->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 0, 180, 0, 255, 0, 30
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_green->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 50, 80, 150, 255, 0, 255
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+            else if (ui.rbtn_chromakey_blue->isChecked()) {
+                chromakey = new Chromakey(false
+                    , 100, 140, 150, 255, 0, 255
+                    , !ui.cb_chromakey_reverse->isChecked(), -1);
+            }
+
+            cv::Mat showFrame;
+            editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            (*chromakey)(&showFrame, &image);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+
+            free(chromakey);
+        } else {
+            cv::Mat showFrame;
+            Frame* frame = EveProject::getInstance()->getCurrentFrame();
+            frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+        }
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::ADD_IMAGE) {
+        if (!ui.label_addimage_path->text().isEmpty() && ui.edt_addimage_width->text().toInt() != 0 && ui.edt_addimage_height->text().toInt() != 0) {
+            (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+
+            Image image(ui.label_addimage_path->text().toStdString());
+            image.loadResource();
+
+            AddImage addImage(
+                false,
+                &image,
+                ui.edt_addimage_x->text().toInt(),
+                ui.edt_addimage_y->text().toInt(),
+                ui.edt_addimage_width->text().toInt(),
+                ui.edt_addimage_height->text().toInt()
+            );
+
+            cv::Mat showFrame;
+            editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            addImage(&showFrame, &image);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+        }
+        else {
+            cv::Mat showFrame;
+            Frame* frame = EveProject::getInstance()->getCurrentFrame();
+            frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+        }
+    }
+    else if (SideMenu::selectedSideMenu() == Command::CommandType::ADD_SUBTITLE) {
+            (*EveProject::getInstance()->getCurrentFrame()).copyTo(&editingFrame);
+        int option = 0;
+
+        if (ui.radioBtn_addsubtitle_top->isChecked())
+            option = 1;
+        else if (ui.radioBtn_addsubtitle_middle->isChecked())
+            option = 2;
+        else if (ui.radioBtn_addsubtitle_low->isChecked())
+            option = 3;
+
+        AddSubtitle addSubtitle(
+            false,
+            ui.edt_addsubtitle_subtitle->toPlainText(),
+            ui.cmbox_addsubtitle_font->itemText(ui.cmbox_addsubtitle_font->currentIndex()),
+            option,
+            ui.spbox_addsubtitle_font_size->value(),
+            ui.edt_addsubtitle_color_red->text().toInt(),
+            ui.edt_addsubtitle_color_green->text().toInt(),
+            ui.edt_addsubtitle_color_blue->text().toInt()
+        );
+
+        editingFrame.addCommand(&addSubtitle);
+        cv::Mat showFrame;
+        editingFrame.getCommandAppliedFrameData(-1, -1, &showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
 }
 
 void EasyVideoEditor::clear() {
@@ -214,6 +410,9 @@ void EasyVideoEditor::clear() {
     ui.w_sidemenupagearea->setEnabled(false);
     ui.w_videocontrolarea->setEnabled(false);
     ui.w_videoarea->setStyleSheet("background-color:#000000;");
+    QPixmap pixmap(ui.lbl_videoframe->size());
+    pixmap.fill(QColor(0, 0, 0));
+    ui.lbl_videoframe->setPixmap(pixmap);
 
     EveProject::getInstance()->clear(this);
 
@@ -221,17 +420,15 @@ void EasyVideoEditor::clear() {
 }
 
 void EasyVideoEditor::newProject() {
-    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("ÆíÁýÇÒ µ¿¿µ»ó ÆÄÀÏ ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("µ¿¿µ»ó (*.mp4 *.avi *.wmv *.mov)"));
+    QString baseVideoPath = QFileDialog::getOpenFileName(this, QString("íŽ¸ì§‘í•  ë™ì˜ìƒ íŒŒì¼ ì„ íƒ"), QDir::homePath(), QString("ë™ì˜ìƒ (*.mp4 *.avi *.wmv *.mov)"));
     if (!baseVideoPath.isEmpty()) {
         clear();
+        ui.menu_encoding->setEnabled(true);
         Video* baseVideo = new Video(0, baseVideoPath.toStdString());
         EveProject::getInstance()->addVideo(baseVideo);
         for (int loop = 0; loop < baseVideo->getFrameCount(); loop++) {
             EveProject::getInstance()->addFrame(new Frame(0, loop));
         }
-
-        outputVideoWidth = EveProject::getInstance()->getBaseWidth();
-        outputVideoHeight = EveProject::getInstance()->getBaseHeight();
 
         ui.w_contentarea->setEnabled(true);
         ui.w_sidemenuarea->setEnabled(true);
@@ -268,9 +465,17 @@ void EasyVideoEditor::newProject() {
         ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
         ui.sd_videoprogress->setValue(0);
 
+        addImageXValidator->setRange(0, EveProject::getInstance()->getBaseWidth());
+        addImageYValidator->setRange(0, EveProject::getInstance()->getBaseHeight());
+        addImageWidthValidator->setRange(0, EveProject::getInstance()->getBaseWidth());
+        addImageHeightValidator->setRange(0, EveProject::getInstance()->getBaseHeight());
+
         cv::Mat showFrame;
         EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
         UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+
+        updateInformationArea();
+
     }
 }
 
@@ -281,7 +486,7 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
     }
     mutex.unlock();
     
-    QString saveFilePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("ÆíÁýÇÑ µ¿¿µ»ó ÀúÀå"), QDir::homePath(), QString("*.").append(encodingType));
+    QString saveFilePath = QFileDialog::getSaveFileName(this, QString("íŽ¸ì§‘í•œ ë™ì˜ìƒ ì €ìž¥"), QDir::homePath(), QString("*.").append(encodingType));
     
     if (!saveFilePath.isEmpty()) {
         QObject::disconnect(encodingVideoThreadConnection);
@@ -297,7 +502,17 @@ void EasyVideoEditor::encodingVideo(QString encodingType) {
 }
 
 void EasyVideoEditor::updateInformationArea() {
+    int size = EveProject::getInstance()->getFrameList()->size();
+    int width = EveProject::getInstance()->getBaseWidth();
+    int height = EveProject::getInstance()->getBaseHeight();
+    int delay = EveProject::getInstance()->getBaseDelay();
+    double fps = EveProject::getInstance()->getBaseFps();
 
+    ui.tbr_allframe->setText(QString::number(size));
+    ui.tbr_width->setText(QString::number(width));
+;   ui.tbr_height->setText(QString::number(height));
+    ui.tbr_delay->setText(QString::number(delay));
+    ui.tbr_fps->setText(QString::number(fps));
 }
 
 bool EasyVideoEditor::event(QEvent* e) {
@@ -311,13 +526,18 @@ bool EasyVideoEditor::event(QEvent* e) {
 }
 
 void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
-    if ((e->key() == Qt::Key_E) && QApplication::keyboardModifiers() && Qt::ControlModifier) {
+    if ((e->key() == Qt::Key_E) && QApplication::keyboardModifiers() && Qt::ControlModifier && EveProject::getInstance()->getFrameList()->size() > 0) {
         mutex.lock();
         if (mode == Mode::MODE_EDIT) {
             mode = Mode::MODE_WATCH_PAUSE;
             ui.w_sidemenuarea->setEnabled(false);
             ui.w_sidemenupagearea->setEnabled(false);
             ui.w_videocontrolarea->setEnabled(true);
+
+            cv::Mat showFrame;
+            Frame* frame = EveProject::getInstance()->getCurrentFrame();
+            frame->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
         }
         else {
             if (mode == Mode::MODE_WATCH_PLAY) {
@@ -328,6 +548,7 @@ void EasyVideoEditor::keyPressEvent(QKeyEvent* e) {
             ui.w_sidemenuarea->setEnabled(true);
             ui.w_sidemenupagearea->setEnabled(true);
             ui.w_videocontrolarea->setEnabled(false);
+            updateSampleFrame();
         }
         mutex.unlock();
     }
@@ -583,9 +804,112 @@ void EasyVideoEditor::filterApplyButtonClicked() {
     }
 };
 
-void EasyVideoEditor::chromakeyApplyButtonClicked() {};
+void EasyVideoEditor::chromakeyApplyButtonClicked() {
+    QString backgroundImagePath = ui.lbl_chromakey_backgroundfilepath->text();
 
-void EasyVideoEditor::transitionApplyButtonClicked() {};
+    if (!backgroundImagePath.isEmpty()) {
+        Image* image = new Image(backgroundImagePath.toStdString());
+        EveProject::getInstance()->addImage(image);
+        QLineEdit* rangeStart = ui.edt_chromakey_rangestart;
+        QLineEdit* rangeEnd = ui.edt_chromakey_rangeend;
+
+        Command* command;
+        if (ui.rbtn_chromakey_custom->isChecked()) {
+            command = new Chromakey(true
+                , ui.edt_chromakey_huestart->text().toInt(), ui.edt_chromakey_hueend->text().toInt()
+                , ui.edt_chromakey_satstart->text().toInt(), ui.edt_chromakey_satend->text().toInt()
+                , ui.edt_chromakey_valstart->text().toInt(), ui.edt_chromakey_valend->text().toInt()
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_white->isChecked()) {
+            command = new Chromakey(true
+                , 0, 180, 0, 255, 200, 255
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_black->isChecked()) {
+            command = new Chromakey(true
+                , 0, 180, 0, 255, 0, 30
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_green->isChecked()) {
+            command = new Chromakey(true
+                , 50, 80, 150, 255, 0, 255
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        } else if (ui.rbtn_chromakey_blue->isChecked()) {
+            command = new Chromakey(true
+                , 100, 140, 150, 255, 0, 255
+                , !ui.cb_chromakey_reverse->isChecked(), image->getResourceId());
+        }
+
+        if (ui.rbtn_chromakey_currentframe->isChecked()) {
+            EveProject::getInstance()->getCurrentFrame()->addCommand(command);
+        }
+        else if (ui.rbtn_chromakey_allframe->isChecked()) {
+            std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+            for (int loop = 0; loop < allFrames->size(); loop++) {
+                allFrames->at(loop)->addCommand(command);
+            }
+        }
+        else if (ui.rbtn_chromakey_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            for (int loop = startIndex; loop < endIndex; loop++) {
+                EveProject::getInstance()->getFrameByIndex(loop)->addCommand(command);
+            }
+        }
+    }
+
+};
+
+void EasyVideoEditor::transitionApplyButtonClicked() {
+    if (ui.rbtn_transition_fadein->isChecked()) {
+        QString transitionTime = ui.edt_transition_fadein_range->text();
+        if (!transitionTime.isEmpty()) {
+            int startIndex = EveProject::getInstance()->getCurrentFrameNumber();
+            double time = transitionTime.toDouble();
+
+            int totalTransitionFrame = EveProject::getInstance()->getBaseFps() * time;
+            int endIndex = startIndex + totalTransitionFrame - 1;
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+                totalTransitionFrame = endIndex - startIndex;
+            }
+
+            double changeWeight = 1.0f / totalTransitionFrame;
+
+            for (int loop = 0; loop < totalTransitionFrame; loop++) {
+                Transition* transition = new Transition(true, changeWeight * loop);
+                EveProject::getInstance()->getFrameByIndex(startIndex + loop)->addCommand(transition);
+            }
+
+            cv::Mat showFrame;
+            EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+        }
+    }
+    else if (ui.rbtn_transition_fadeout->isChecked()) {
+        QString transitionTime = ui.edt_transition_fadeout_range->text();
+        if (!transitionTime.isEmpty()) {
+            int startIndex = EveProject::getInstance()->getCurrentFrameNumber();
+            double time = transitionTime.toDouble();
+
+            int totalTransitionFrame = EveProject::getInstance()->getBaseFps() * time;
+            int endIndex = startIndex + totalTransitionFrame - 1;
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) {
+                endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+                totalTransitionFrame = endIndex - startIndex;
+            }
+
+            double changeWeight = 1.0f / totalTransitionFrame;
+
+            for (int loop = 0; loop < totalTransitionFrame; loop++) {
+                Transition* transition = new Transition(true, 1 - changeWeight * loop);
+                EveProject::getInstance()->getFrameByIndex(startIndex + loop)->addCommand(transition);
+            }
+
+            cv::Mat showFrame;
+            EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+            UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, EasyVideoEditor::resizeData, EasyVideoEditor::top, EasyVideoEditor::down, EasyVideoEditor::left, EasyVideoEditor::right);
+        }
+    }
+};
 
 void EasyVideoEditor::addImageApplyButtonClicked() {
     QString addImagePath = ui.label_addimage_path->text();
@@ -635,6 +959,12 @@ void EasyVideoEditor::addVideoApplyButtonClicked() {
             frames.push_back(new Frame(EveProject::getInstance()->getVideoList()->size() - 1, loop));
         }
         EveProject::getInstance()->addFrames(frames, EveProject::getInstance()->getCurrentFrameNumber());
+
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+        ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+
+        updateInformationArea();
     }
 };
 
@@ -642,42 +972,105 @@ void EasyVideoEditor::cutVideoApplyButtonClicked() {
     QLineEdit* rangeStart = ui.edt_cutvideo_rangestart;
     QLineEdit* rangeEnd = ui.edt_cutvideo_rangeend;
 
+    int leftFrame = 0;
     if(ui.rbtn_cutvideo_currentframe->isChecked()){
         Frame* temp =  EveProject::getInstance()->getCurrentFrame();
         int start = EveProject::getInstance()->getFrameIndex(temp);
-        EveProject::getInstance()->removeFrame(start);
+        leftFrame = EveProject::getInstance()->removeFrame(start);
     }
     else if(ui.rbtn_cutvideo_allframe->isChecked()){
         Frame* temp = EveProject::getInstance()->getCurrentFrame();
         int start = EveProject::getInstance()->getFrameIndex(temp);
         int end = ui.edt_cutvideo_framerange->text().toInt();
-        EveProject::getInstance()->removeFrames(start, end);
+        leftFrame = EveProject::getInstance()->removeFrames(start, end);
     }
     else if (ui.rbtn_cutvideo_rangeframe->isChecked()) {
         int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
         int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
-        EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
+        leftFrame = EveProject::getInstance()->removeFrames(startIndex, (endIndex - startIndex));
+
     }
 
-    EveProject::getInstance()->setCurrentFrameNumber(0);
-    ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size())));
-    ui.lbl_currentplaytime->setText("00:00:00.000");
-    ui.sd_videoprogress->setMinimum(0);
-    ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
-    ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
-    ui.sd_videoprogress->setValue(0);
+    if (leftFrame == 0) {
+        clear();
+    }
+    else {
+        EveProject::getInstance()->setCurrentFrameNumber(0);
+        ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+        ui.lbl_currentplaytime->setText("00:00:00.000");
+        ui.sd_videoprogress->setMinimum(0);
+        ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+        ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+        ui.sd_videoprogress->setValue(0);
 
-    cv::Mat showFrame;
-    EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
-    UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+        cv::Mat showFrame;
+        EveProject::getInstance()->getCurrentFrame()->getCommandAppliedFrameData(-1, -1, &showFrame, true);
+        UsefulFunction::showMatToLabel(ui.lbl_videoframe, &showFrame, resizeData, top, down, left, right);
+    }
+
+
+    updateInformationArea();
 };
 
-void EasyVideoEditor::resizeApplyButtonClicked() {};
+void EasyVideoEditor::changePlaySpeedButtonClicked() {
+    QLineEdit* rangeStart = ui.edt_changeplayspeed_rangestart;
+    QLineEdit* rangeEnd = ui.edt_changeplayspeed_rangeend;
 
-void EasyVideoEditor::changePlaySpeedButtonClicked() {};
+    double speed = ui.edt_changeplayspeed_speed->text().toDouble();
+
+    if (0 < speed) {
+        if (ui.rbtn_changeplayspeed_allframe->isChecked()) {
+            EveProject::getInstance()->setBaseFps(EveProject::getInstance()->getBaseFps() * speed);
+            EveProject::getInstance()->setBaseDelay(EveProject::getInstance()->getBaseDelay() * (1 / speed));
+            EveProject::getInstance()->setCurrentFrameNumber(0);
+            ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+            ui.lbl_currentplaytime->setText("00:00:00.000");
+            ui.sd_videoprogress->setValue(0);
+        }
+        else if (ui.rbtn_changeplayspeed_rangeframe->isChecked()) {
+            int startIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeStart->text()));
+            int endIndex = EveProject::getInstance()->getFrameIndex(UsefulFunction::getMillisecondsFromString(rangeEnd->text()));
+            if (endIndex > EveProject::getInstance()->getFrameList()->size() - 1) endIndex = EveProject::getInstance()->getFrameList()->size() - 1;
+
+            if (speed < 1) {
+                std::vector<Frame*>* allFrames = EveProject::getInstance()->getFrameList();
+                int frameGap = 1 / speed;
+                for (int loop1 = 0; loop1 < endIndex - startIndex + 1; loop1++) {
+                    std::vector<Frame*> addFrames;
+                    for (int loop2 = 0; loop2 < frameGap - 1; loop2++) {
+                        Frame* frame = new Frame();
+                        allFrames->at(startIndex + loop1 * frameGap)->copyTo(frame);
+                        addFrames.push_back(frame);
+                    }
+                    EveProject::getInstance()->addFrames(addFrames, startIndex + frameGap * loop1);
+                }
+            }
+            else {
+                int originalSize = EveProject::getInstance()->getFrameList()->size();
+                int frameGap = (int)speed;
+                int deleteCount = 0;
+                for (int loop = 0; loop < originalSize; loop++) {
+                    if (loop % frameGap == 0 && loop != 0) {
+                        EveProject::getInstance()->removeFrame(loop - deleteCount);
+                        deleteCount++;
+                    }
+                }
+            }
+            EveProject::getInstance()->setCurrentFrameNumber(0);
+            ui.lbl_maxplaytime->setText(UsefulFunction::getStringFromMilliseconds(EveProject::getInstance()->getFrameTime(EveProject::getInstance()->getFrameList()->size() - 1)));
+            ui.lbl_currentplaytime->setText("00:00:00.000");
+            ui.sd_videoprogress->setMinimum(0);
+            ui.sd_videoprogress->setMaximum(EveProject::getInstance()->getFrameList()->size() - 1);
+            ui.sd_videoprogress->setPageStep(EveProject::getInstance()->getFrameList()->size() / 10);
+            ui.sd_videoprogress->setValue(0);
+        }
+    }
+
+    updateInformationArea();
+
+};
 
 void EasyVideoEditor::addSubtitleButtonClicked() {
-    
     if (ui.edt_addsubtitle_subtitle->toPlainText() != "") {
         int option = 0;
         QLineEdit* rangeStart = ui.edt_addsubtitle_rangestart;
@@ -692,8 +1085,8 @@ void EasyVideoEditor::addSubtitleButtonClicked() {
 
         Command* command = new AddSubtitle(
             true,
-            ui.edt_addsubtitle_subtitle->toPlainText().toStdString(),
-            ui.cmbox_addsubtitle_font->currentIndex(),
+            ui.edt_addsubtitle_subtitle->toPlainText(),
+            ui.cmbox_addsubtitle_font->itemText(ui.cmbox_addsubtitle_font->currentIndex()),
             option,
             ui.spbox_addsubtitle_font_size->value(),
             ui.edt_addsubtitle_color_red->text().toInt(),
@@ -745,7 +1138,7 @@ void EasyVideoEditor::addSubtitleRangeFrameButtonClicked() {
 }
 
 void EasyVideoEditor::addImageSelectButtonClicked() {
-    QString addImagePath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("Ãß°¡ÇÒ ÀÌ¹ÌÁö ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("ÀÌ¹ÌÁö (*.png *.jpg *.bmp)"));
+    QString addImagePath = QFileDialog::getOpenFileName(this, QString("ì¶”ê°€í•  ì´ë¯¸ì§€ ì„ íƒ"), QDir::homePath(), QString("ì´ë¯¸ì§€ (*.png *.jpg *.bmp)"));
     ui.label_addimage_path->setText(addImagePath);
     if (!(ui.label_addimage_path->text()).isEmpty()) {
         ui.edt_addimage_height->setEnabled(true);
@@ -762,6 +1155,7 @@ void EasyVideoEditor::addImageSelectButtonClicked() {
         ui.rbtn_addimage_currentframe->setEnabled(true);
         ui.rbtn_addimage_rangeframe->setEnabled(true);
         ui.btn_addimage_apply->setEnabled(true);
+        updateSampleFrame();
     }
 };
 
@@ -790,7 +1184,7 @@ void EasyVideoEditor::addImageRangeFrameButtonClicked() {
 }
 
 void EasyVideoEditor::addVideoSelectButtonClicked() {
-    QString addVideoPath = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("Ãß°¡ÇÒ µ¿¿µ»ó ÆÄÀÏ ¼±ÅÃ"), QDir::homePath(), QString::fromLocal8Bit("µ¿¿µ»ó (*.mp4 *.avi *.wmv *.mov)"));
+    QString addVideoPath = QFileDialog::getOpenFileName(this, QString("ì¶”ê°€í•  ë™ì˜ìƒ íŒŒì¼ ì„ íƒ"), QDir::homePath(), QString("ë™ì˜ìƒ (*.mp4 *.avi *.wmv *.mov)"));
     ui.label_addvideo_path->setText(addVideoPath);
 
     if (!(ui.label_addvideo_path->text()).isEmpty()) {
@@ -798,33 +1192,147 @@ void EasyVideoEditor::addVideoSelectButtonClicked() {
     }
 };
 
+void EasyVideoEditor::chromakeyFilePickerButtonClicked() {
+    QString backgroundImagePath = QFileDialog::getOpenFileName(this, QString("ì¶”ê°€í•  ì´ë¯¸ì§€ ì„ íƒ"), QDir::homePath(), QString("ì´ë¯¸ì§€ (*.png *.jpg *.bmp)"));
+    if (!backgroundImagePath.isEmpty()) {
+        ui.lbl_chromakey_backgroundfilepath->setText(backgroundImagePath);
+        updateSampleFrame();
+    }
+}
+
 void EasyVideoEditor::updateEncodingProgressBar(int value) {
     ui.pb_encoding_progress->setValue(value);
 }
 
-void EasyVideoEditor::cutVideoCurrentFrameButtonClicked() {
-    ui.btn_cutvideo_rangeendtocurrent->setEnabled(false);
-    ui.btn_cutvideo_rangestarttocurrent->setEnabled(false);
-    ui.edt_cutvideo_framerange->setEnabled(false);
-    ui.edt_cutvideo_rangeend->setEnabled(false);
-    ui.edt_cutvideo_rangestart->setEnabled(false);
-    ui.label_23->setEnabled(false);
+void EasyVideoEditor::getCurrentFrameTime() {
+    QObject* senderObject = sender();
+    if (senderObject == ui.btn_coloremphasis_rangestarttocurrent)
+        ui.edt_coloremphasis_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_coloremphasis_rangeendtocurrent)
+        ui.edt_coloremphasis_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changebrightness_rangestarttocurrent)
+        ui.edt_changebrightness_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changebrightness_rangeendtocurrent)
+        ui.edt_changebrightness_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changecontrast_rangestarttocurrent)
+        ui.edt_changecontrast_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changecontrast_rangeendtocurrent)
+        ui.edt_changecontrast_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_filter_rangestarttocurrent)
+        ui.edt_filter_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_filter_rangeendtocurrent)
+        ui.edt_filter_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_chromakey_rangestarttocurrent)
+        ui.edt_chromakey_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_chromakey_rangeendtocurrent)
+        ui.edt_chromakey_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addimage_rangestarttocurrent)
+        ui.edt_addimage_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addimage_rangeendtocurrent)
+        ui.edt_addimage_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_cutvideo_rangestarttocurrent)
+        ui.edt_cutvideo_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_cutvideo_rangeendtocurrent)
+        ui.edt_cutvideo_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changeplayspeed_rangestarttocurrent)
+        ui.edt_changeplayspeed_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_changeplayspeed_rangeendtocurrent)
+        ui.edt_changeplayspeed_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addsubtitle_rangestarttocurrent)
+        ui.edt_addsubtitle_rangestart->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber())));
+    else if (senderObject == ui.btn_addsubtitle_rangeendtocurrent)
+        ui.edt_addsubtitle_rangeend->setText(
+            UsefulFunction::getStringFromMilliseconds(
+                EveProject::getInstance()->getFrameTime(
+                    EveProject::getInstance()->getCurrentFrameNumber()))); 
 }
 
-void EasyVideoEditor::cutVideoCurrentFrameToWantFrameButtonClicked() {
-    ui.btn_cutvideo_rangeendtocurrent->setEnabled(false);
-    ui.btn_cutvideo_rangestarttocurrent->setEnabled(false);
-    ui.edt_cutvideo_framerange->setEnabled(true);
-    ui.edt_cutvideo_rangeend->setEnabled(false);
-    ui.edt_cutvideo_rangestart->setEnabled(false);
-    ui.label_23->setEnabled(false);
+void EasyVideoEditor::addImageXUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int x = value.toInt();
+    int width = ui.edt_addimage_width->text().toInt();
+    if (x + width > EveProject::getInstance()->getBaseWidth()) {
+        ui.edt_addimage_width->setText(QString::number(EveProject::getInstance()->getBaseWidth() - x));
+    }
+    addImageWidthValidator->setRange(0, EveProject::getInstance()->getBaseWidth() - x);
+    updateSampleFrame();
 }
-
-void EasyVideoEditor::cutVideoRangeFrameButtonClicked() {
-    ui.btn_cutvideo_rangeendtocurrent->setEnabled(true);
-    ui.btn_cutvideo_rangestarttocurrent->setEnabled(true);
-    ui.edt_cutvideo_framerange->setEnabled(false);
-    ui.edt_cutvideo_rangeend->setEnabled(true);
-    ui.edt_cutvideo_rangestart->setEnabled(true);
-    ui.label_23->setEnabled(true);
+void EasyVideoEditor::addImageYUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int y = value.toInt();
+    int height = ui.edt_addimage_height->text().toInt();
+    if (y + height > EveProject::getInstance()->getBaseHeight()) {
+        ui.edt_addimage_height->setText(QString::number(EveProject::getInstance()->getBaseHeight() - y));
+    }
+    addImageHeightValidator->setRange(0, EveProject::getInstance()->getBaseHeight() - y);
+    updateSampleFrame();
+}
+void EasyVideoEditor::addImageWidthUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int width = value.toInt();
+    int x = ui.edt_addimage_x->text().toInt();
+    if (x + width > EveProject::getInstance()->getBaseWidth()) {
+        ui.edt_addimage_width->setText(QString::number(EveProject::getInstance()->getBaseWidth() - x));
+    }
+    updateSampleFrame();
+}
+void EasyVideoEditor::addImageHeightUpdated(QString value) {
+    if (value.isEmpty()) value = "0";
+    int height = value.toInt();
+    int y = ui.edt_addimage_y->text().toInt();
+    if (y + height > EveProject::getInstance()->getBaseHeight()) {
+        ui.edt_addimage_height->setText(QString::number(EveProject::getInstance()->getBaseHeight() - y));
+    }
+    updateSampleFrame();
 }

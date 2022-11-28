@@ -38,6 +38,11 @@ private:
 
     // Frame number currently being displayed.
     int currentFrameNumber;
+
+    int baseFps;
+    int baseDelay;
+    int baseWidth;
+    int baseHeight;
 private:
     // Default constructor.
     EveProject();
@@ -79,25 +84,14 @@ public:
     int getFrameTime(int index);
 
     // Remove frame from frame list.
-    void removeFrame(int index);
+    int removeFrame(int index);
     // Remove frames from frame list.
-    void removeFrames(int index, int count);
+    int removeFrames(int index, int count);
 
     // Get current frame pointer.
     Frame* getCurrentFrame();
     // Get current frame pointer and change current frame number to the next frame.
     Frame* getCurrentFrameAndUpdate();
-
-    // Get fps from first resource in video list.
-    double getBaseFps();
-    // Get delay from first resource in video list.
-    int getBaseDelay();
-    // Get frame count from first resource in video list.
-    int getBaseFrameCount();
-    // Get width from first resource in video list.
-    int getBaseWidth();
-    // Get height from first resource in video list.
-    int getBaseHeight();
 
     // Points to the next frame.
     bool forward1Frame();
@@ -123,5 +117,22 @@ public:
     void setCurrentFrameNumber(int frameNumber);
     // Current frame number getter.
     int getCurrentFrameNumber();
+
+    // Get fps from first resource in video list.
+    double getBaseFps();
+    // Get delay from first resource in video list.
+    int getBaseDelay();
+    // Get width from first resource in video list.
+    int getBaseWidth();
+    // Get height from first resource in video list.
+    int getBaseHeight();
+    // Set fps from first resource in video list.
+    void setBaseFps(double baseFps);
+    // Set delay from first resource in video list.
+    void setBaseDelay(int baseDelay);
+    // Set width from first resource in video list.
+    void setBaseWidth(int baseWidth);
+    // Set height from first resource in video list.
+    void setBaseHeight(int baseHeight);
 };
 
