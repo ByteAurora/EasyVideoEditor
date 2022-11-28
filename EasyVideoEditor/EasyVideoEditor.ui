@@ -538,9 +538,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <widget class="QLabel" name="label_allframe">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>471</width>
+       <x>20</x>
+       <y>90</y>
+       <width>200</width>
        <height>61</height>
       </rect>
      </property>
@@ -557,9 +557,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <widget class="QLabel" name="label_fps">
      <property name="geometry">
       <rect>
-       <x>1034</x>
-       <y>170</y>
-       <width>471</width>
+       <x>550</x>
+       <y>160</y>
+       <width>200</width>
        <height>61</height>
       </rect>
      </property>
@@ -576,9 +576,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <widget class="QLabel" name="label_height">
      <property name="geometry">
       <rect>
-       <x>522</x>
-       <y>170</y>
-       <width>471</width>
+       <x>20</x>
+       <y>250</y>
+       <width>200</width>
        <height>61</height>
       </rect>
      </property>
@@ -592,31 +592,12 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       <string>Height</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_videolist">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>170</y>
-       <width>471</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>14</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Video List</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_width">
      <property name="geometry">
       <rect>
-       <x>522</x>
-       <y>10</y>
-       <width>461</width>
+       <x>20</x>
+       <y>170</y>
+       <width>200</width>
        <height>61</height>
       </rect>
      </property>
@@ -633,9 +614,9 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <widget class="QLabel" name="label_delay">
      <property name="geometry">
       <rect>
-       <x>1034</x>
-       <y>10</y>
-       <width>461</width>
+       <x>550</x>
+       <y>90</y>
+       <width>200</width>
        <height>61</height>
       </rect>
      </property>
@@ -652,127 +633,140 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
     <widget class="QLabel" name="tbr_allframe">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>470</width>
-       <height>90</height>
+       <x>260</x>
+       <y>95</y>
+       <width>230</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>20</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #ffffff;</string>
+      <string notr="true">background-color: #ffffff; border-radius: 16px;</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="tbr_width">
      <property name="geometry">
       <rect>
-       <x>522</x>
-       <y>60</y>
-       <width>470</width>
-       <height>90</height>
+       <x>260</x>
+       <y>175</y>
+       <width>230</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>20</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #ffffff;</string>
+      <string notr="true">background-color: #ffffff; border-radius: 16px;</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="tbr_height">
      <property name="geometry">
       <rect>
-       <x>522</x>
-       <y>220</y>
-       <width>470</width>
-       <height>90</height>
+       <x>260</x>
+       <y>255</y>
+       <width>230</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>20</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #ffffff;</string>
+      <string notr="true">background-color: #ffffff; border-radius: 16px;</string>
      </property>
      <property name="text">
       <string/>
      </property>
-    </widget>
-    <widget class="QLabel" name="tbr_videolist">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>220</y>
-       <width>470</width>
-       <height>90</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #ffffff;</string>
-     </property>
-     <property name="text">
-      <string/>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="tbr_fps">
      <property name="geometry">
       <rect>
-       <x>1034</x>
-       <y>220</y>
-       <width>470</width>
-       <height>90</height>
+       <x>790</x>
+       <y>175</y>
+       <width>230</width>
+       <height>50</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>20</pointsize>
+       <pointsize>14</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #ffffff;</string>
+      <string notr="true">background-color: #ffffff; border-radius: 16px;</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="tbr_delay">
      <property name="geometry">
       <rect>
-       <x>1034</x>
-       <y>60</y>
-       <width>470</width>
-       <height>90</height>
+       <x>790</x>
+       <y>95</y>
+       <width>230</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #ffffff; border-radius: 16px;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_allframe_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>300</width>
+       <height>61</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>20</pointsize>
+       <bold>true</bold>
       </font>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #ffffff;</string>
-     </property>
      <property name="text">
-      <string/>
+      <string>Video Infomation</string>
      </property>
     </widget>
    </widget>
@@ -4659,7 +4653,6 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
     <zorder>w_changecontrast</zorder>
     <zorder>w_transition</zorder>
     <zorder>w_filter</zorder>
-    <zorder>w_cutvideo</zorder>
     <zorder>w_coloremphasis</zorder>
     <zorder>w_changeplayspeed</zorder>
     <zorder>w_chromakey</zorder>
@@ -4800,8 +4793,8 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_c
    <zorder>w_sidemenuarea</zorder>
    <zorder>w_sidemenupagearea</zorder>
    <zorder>w_videoarea</zorder>
-   <zorder>w_videoinfoarea</zorder>
    <zorder>w_encodingpage</zorder>
+   <zorder>w_videoinfoarea</zorder>
   </widget>
   <widget class="QMenuBar" name="mb_evemenu">
    <property name="geometry">
