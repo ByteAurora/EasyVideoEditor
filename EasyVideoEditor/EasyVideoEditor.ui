@@ -766,7 +766,7 @@ QPushButton:disabled{ border-image: url(:/EasyVideoEditor/resources/images/btn_p
       </font>
      </property>
      <property name="text">
-      <string>Video Infomation</string>
+      <string>편집 영상 정보</string>
      </property>
     </widget>
    </widget>
