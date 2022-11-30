@@ -13,12 +13,6 @@ Easy Video Editor는 영상 편집 및 자막 추가, 필터, 애니메이션 �
   
 </p>
 
-# 시연영상
-<p align="center">
-
-</p>
-<br>
-
 # 개발환경
 - Software
   - OS: Windows 11
