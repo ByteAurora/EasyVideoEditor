@@ -114,7 +114,7 @@ https://user-images.githubusercontent.com/17138123/230876977-686b1232-27fa-44b1-
 <br>
 
 ## 영상 자르기
-https://user-images.githubusercontent.com/17138123/230880086-85b3868d-8461-44f6-8429-139dd586c922.mp4
+https://user-images.githubusercontent.com/17138123/230882223-2fa711a5-e96b-4af2-a7b9-c088bc2980c9.mp4
 
 <br>
 
